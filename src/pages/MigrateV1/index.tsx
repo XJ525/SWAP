@@ -1,4 +1,4 @@
-import { JSBI, Token } from 'eotc-bscswap-sdk'
+import { JSBI, Token } from '@eotcswap/swap-sdk'
 import React, { useCallback, useContext, useMemo, useState, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { AutoColumn } from '../../components/Column'

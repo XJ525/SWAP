@@ -1,4 +1,4 @@
-import { ChainId } from 'eotc-bscswap-sdk'
+import { ChainId } from '@eotcswap/swap-sdk'
 import { createStore, Store } from 'redux'
 import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction } from './actions'
 import reducer, { initialState, TransactionState } from './reducer'

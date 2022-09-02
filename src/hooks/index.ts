@@ -1,5 +1,5 @@
 import { Web3Provider } from '@ethersproject/providers'
-import { ChainId } from 'eotc-bscswap-sdk'
+import { ChainId } from '@eotcswap/swap-sdk'
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { useEffect, useState } from 'react'
@@ -24,7 +24,7 @@ export function useEagerConnect() {
           setTried(true)
         })
       } else {
-        if (isMobile && window.ethereum) {
+        if (isMobile && window.tronWeb) {
           activate(injected, undefined, true).catch(() => {
             setTried(true)
           })
@@ -49,6 +49,12 @@ export function useEagerConnect() {
  * Use for network and injected - logs user in
  * and out after checking what network theyre on
  */
+export function useInactiveListener(suppress = false) {
+  return undefined
+}
+
+/*
+@TRON
 export function useInactiveListener(suppress = false) {
   const { active, error, activate } = useWeb3ReactCore() // specifically using useWeb3React because of what this hook does
 
@@ -85,3 +91,4 @@ export function useInactiveListener(suppress = false) {
     return undefined
   }, [active, error, suppress, activate])
 }
+*/

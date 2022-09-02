@@ -1,37 +1,48 @@
-import { ChainId, JSBI, Percent, Token, WETH } from 'eotc-bscswap-sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '@eotcswap/swap-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+// @TRON
+// import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import { injected } from '../connectors'
 
-export const ROUTER_ADDRESS = '0xbD537A5afBB63295F1cab9A7A670415e153a91B9'
+// https://etherscan.io/address/0x7a250d5630b4cf539739df2c5dacb4c659f2488d#code
+
+// @TRON only
+const ROUTER_ADDRESSES = {
+  [ChainId.NILE]: '0xb97c2769ec017d0308a40f73d909af141a00e20c',
+  [ChainId.MAINNET]: '0x74d72007c4c71ccdd6f30c6d6ead17f6baed330a',
+  [ChainId.SHASTA]: '0x83dfa1d3e4d834579d9a3b541c49e8c6e53b9ba2'
+}
+
+// TODO(tron): refactor use of ROUTER_ADDRESS so that it works for both nile, shasta and mainnet...
+const chainId = Number(process.env.REACT_APP_CHAIN_ID) as ChainId
+export const ROUTER_ADDRESS = ROUTER_ADDRESSES[chainId]
 
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
-export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
-export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
-export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
-export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
-export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
+// export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
+// export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
+// export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
+// export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
+// export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
+// export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
-  [ChainId.ROPSTEN]: [WETH[ChainId.ROPSTEN]],
-  [ChainId.RINKEBY]: [WETH[ChainId.RINKEBY]],
-  [ChainId.GÖRLI]: [WETH[ChainId.GÖRLI]],
-  [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
-  [ChainId.BSC]: [WETH[ChainId.BSC]],
-  [ChainId.BSC_TSET]: [WETH[ChainId.BSC_TSET]],
-  [ChainId.MATIC]: [WETH[ChainId.MATIC]],
+  [ChainId.NILE]: [WETH[ChainId.NILE]],
+  [ChainId.SHASTA]: [WETH[ChainId.SHASTA]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
+  // TODO(tron): USDT, sUSD, JST USDJ?
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET]]
+  // @TRON
+  // [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
 }
 
 /**
@@ -40,30 +51,38 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
  */
 export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: Token[] } } = {
   [ChainId.MAINNET]: {
-    [AMPL.address]: [DAI, WETH[ChainId.MAINNET]]
+    // @TRON
+    // [AMPL.address]: [DAI, WETH[ChainId.MAINNET]]
   }
 }
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET]]
+  // @TRON
+  // [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET]]
+  // @TRON
+  // [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.MAINNET]: [
+    // @TRON
+    /*
     [
       new Token(ChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
       new Token(ChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')
     ],
     [USDC, USDT],
     [DAI, USDT]
+		*/
   ]
 }
 
@@ -84,11 +103,12 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: injected,
     name: 'Injected',
     iconName: 'arrow-right.svg',
-    description: 'Injected web3 provider.',
+    description: 'Injected provider.',
     href: null,
     color: '#010101',
     primary: true
   },
+  /*
   METAMASK: {
     connector: injected,
     name: 'MetaMask',
@@ -97,6 +117,17 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#E8831D'
   },
+	*/
+  TRONLINK: {
+    connector: injected,
+    name: 'TronLink',
+    iconName: 'tronlink.svg',
+    description: 'Easy-to-use browser extension.',
+    href: null,
+    color: '#48489b'
+  }
+  // @TRON
+  /*
   WALLET_CONNECT: {
     connector: walletconnect,
     name: 'WalletConnect',
@@ -141,6 +172,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#4A6C9B',
     mobile: true
   }
+	*/
 }
 
 export const NetworkContextName = 'NETWORK'
@@ -163,5 +195,7 @@ export const PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN: Percent = new Percent(JSBI.Bi
 export const BLOCKED_PRICE_IMPACT_NON_EXPERT: Percent = new Percent(JSBI.BigInt(1500), BIPS_BASE) // 15%
 
 // used to ensure the user doesn't send so much ETH so they end up with <.01
-export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16)) // .01 ETH
+// @TRON
+// export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16)) // .01 ETH
+export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(6)) // 1 ETH
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))

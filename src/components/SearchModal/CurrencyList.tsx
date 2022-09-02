@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@eotcswap/swap-sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'

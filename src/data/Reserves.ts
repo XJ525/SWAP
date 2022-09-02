@@ -1,4 +1,4 @@
-import { TokenAmount, Pair, Currency } from 'eotc-bscswap-sdk'
+import { TokenAmount, Pair, Currency } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { Interface } from '@ethersproject/abi'
@@ -17,7 +17,7 @@ export enum PairState {
 }
 
 export function usePairs(currencies: [Currency | undefined, Currency | undefined][]): [PairState, Pair | null][] {
-  const { chainId } = useActiveWeb3React()
+  const { chainId /*library*/ } = useActiveWeb3React()
 
   const tokens = useMemo(
     () =>

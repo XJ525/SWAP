@@ -1,5 +1,5 @@
 import { isAddress } from '../../utils'
-import { Token } from 'eotc-bscswap-sdk'
+import { Token } from '@eotcswap/swap-sdk'
 
 export function filterTokens(tokens: Token[], search: string): Token[] {
   if (search.length === 0) return tokens

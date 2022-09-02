@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount } from '@eotcswap/swap-sdk'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PairState, usePair } from '../../data/Reserves'
@@ -146,7 +146,7 @@ export function useDerivedMintInfo(
   const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
 
   if (currencyAAmount && currencyBalances?.[Field.CURRENCY_A]?.lessThan(currencyAAmount)) {
-    error =currencies[Field.CURRENCY_A]?.symbol + ' 余额不足'
+    error = currencies[Field.CURRENCY_A]?.symbol + ' 余额不足'
     // error = 'Insufficient ' + currencies[Field.CURRENCY_A]?.symbol + ' balance'
   }
 

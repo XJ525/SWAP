@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from 'eotc-bscswap-sdk'
+import { Token, TokenAmount } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

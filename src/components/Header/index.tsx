@@ -1,4 +1,4 @@
-import { ChainId } from 'eotc-bscswap-sdk'
+import { ChainId } from '@eotcswap/swap-sdk'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
@@ -138,15 +138,9 @@ const BalanceText = styled(Text)`
 // ChainId.BSC是在sdk中添加的， 对应的值Bsc只是一个展示
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
-  [ChainId.RINKEBY]: 'Rinkeby',
-  [ChainId.ROPSTEN]: 'Ropsten',
-  [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan',
-  [ChainId.BSC]: 'BSC',
-  [ChainId.BSC_TSET]: 'BSC_TSET',
-  [ChainId.MATIC]: 'MATIC'
+  [ChainId.NILE]: 'Nile',
+  [ChainId.SHASTA]: 'Shasta'
 }
-
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
@@ -163,7 +157,7 @@ export default function Header() {
             </UniIcon>
             <TitleText>
               {/* <img style={{ marginLeft: '4px', marginTop: '4px' }} src={isDark ? Wordmark : WordmarkDark} alt="logo" /> */}
-              <span style={isDark ? {color:'black'} : {color:'white'}}> EOTC</span>
+              <span style={isDark ? { color: 'black' } : { color: 'white' }}> EOTC</span>
             </TitleText>
           </Title>
         </HeaderElement>
@@ -175,7 +169,7 @@ export default function Header() {
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} BNB
+                  {userEthBalance?.toSignificant(4)} TRX
                   {/* {userEthBalance?.toSignificant(4)} ETH */}
                 </BalanceText>
               ) : null}

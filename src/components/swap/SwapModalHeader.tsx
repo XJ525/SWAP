@@ -1,4 +1,4 @@
-import { Trade, TradeType } from 'eotc-bscswap-sdk'
+import { Trade, TradeType } from '@eotcswap/swap-sdk'
 import React, { useContext, useMemo } from 'react'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 import { Text } from 'rebass'
@@ -118,7 +118,7 @@ export default function SwapModalHeader({
       {recipient !== null ? (
         <AutoColumn justify="flex-start" gap="sm" style={{ padding: '12px 0 0 0px' }}>
           <TYPE.main>
-            Output will be sent to{' '}
+          输出将被发送到{' '}
             <b title={recipient}>{isAddress(recipient) ? shortenAddress(recipient) : recipient}</b>
           </TYPE.main>
         </AutoColumn>

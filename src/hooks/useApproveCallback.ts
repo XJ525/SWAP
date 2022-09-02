@@ -1,6 +1,6 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Trade, TokenAmount, CurrencyAmount, ETHER } from 'eotc-bscswap-sdk'
+import { Trade, TokenAmount, CurrencyAmount, ETHER } from '@eotcswap/swap-sdk'
 import { useCallback, useMemo } from 'react'
 import { ROUTER_ADDRESS } from '../constants'
 import { useTokenAllowance } from '../data/Allowances'
@@ -8,10 +8,13 @@ import { getTradeVersion, useV1TradeExchangeAddress } from '../data/V1'
 import { Field } from '../state/swap/actions'
 import { useTransactionAdder, useHasPendingApproval } from '../state/transactions/hooks'
 import { computeSlippageAdjustedAmounts } from '../utils/prices'
-import { calculateGasMargin } from '../utils'
+// @TRON
+// import { calculateGasMargin } from '../utils'
 import { useTokenContract } from './useContract'
 import { useActiveWeb3React } from './index'
 import { Version } from './useToggledVersion'
+
+import { DEFAULT_FEE_LIMIT } from '../tron-config'
 
 export enum ApprovalState {
   UNKNOWN,
@@ -50,7 +53,7 @@ export function useApproveCallback(
 
   const approve = useCallback(async (): Promise<void> => {
     if (approvalState !== ApprovalState.NOT_APPROVED) {
-      console.error('approve was called unnecessarily')
+      console.error('不必要地调用了授权')
       return
     }
     if (!token) {
@@ -59,12 +62,12 @@ export function useApproveCallback(
     }
 
     if (!tokenContract) {
-      console.error('tokenContract is null')
+      console.error('令牌合同为空')
       return
     }
 
     if (!amountToApprove) {
-      console.error('missing amount to approve')
+      console.error('缺少授权的金额')
       return
     }
 
@@ -73,25 +76,34 @@ export function useApproveCallback(
       return
     }
 
-    let useExact = false
+    const useExact = false
+    // @TODO(tron): implement estimageGas in java-tron-provider
+    /*
     const estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
       // general fallback for tokens who restrict approval amounts
       useExact = true
       return tokenContract.estimateGas.approve(spender, amountToApprove.raw.toString())
     })
+    */
 
+    // console.log({ tokenContract })
     return tokenContract
       .approve(spender, useExact ? amountToApprove.raw.toString() : MaxUint256, {
-        gasLimit: calculateGasMargin(estimatedGas)
+        // @TRON
+        // gasLimit: calculateGasMargin(estimatedGas)
+        gasLimit: DEFAULT_FEE_LIMIT
       })
       .then((response: TransactionResponse) => {
+        console.log(response, 'TransactionResponse')
+        console.log(JSON.stringify(response))
+
         addTransaction(response, {
-          summary: 'Approve ' + amountToApprove.currency.symbol,
+          summary: '授权 ' + amountToApprove.currency.symbol,
           approval: { tokenAddress: token.address, spender: spender }
         })
       })
       .catch((error: Error) => {
-        console.debug('Failed to approve token', error)
+        console.debug('无法授权令牌', error)
         throw error
       })
   }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction])

@@ -11,11 +11,13 @@ import AccountDetails from '../AccountDetails'
 import PendingView from './PendingView'
 import Option from './Option'
 import { SUPPORTED_WALLETS } from '../../constants'
-import { ExternalLink } from '../../theme'
-import MetamaskIcon from '../../assets/images/metamask.png'
+// import { ExternalLink } from '../../theme'
+// import MetamaskIcon from '../../assets/images/metamask.png'
+import TronLinkIcon from '../../assets/images/tronlink.svg'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
-import { injected, fortmatic, portis } from '../../connectors'
-import { OVERLAY_READY } from '../../connectors/Fortmatic'
+import { injected } from '../../connectors'
+// import { injected, fortmatic, portis } from '../../connectors'
+// import { OVERLAY_READY } from '../../connectors/Fortmatic'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
@@ -195,18 +197,21 @@ export default function WalletModal({
   }
 
   // close wallet modal if fortmatic modal is active
+  /*
   useEffect(() => {
     fortmatic.on(OVERLAY_READY, () => {
       toggleWalletModal()
     })
   }, [toggleWalletModal])
+  */
 
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
-    const isMetamask = window.ethereum && window.ethereum.isMetaMask
+    const isTronLink = !!window.tronWeb
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
+      /*
       if (isMobile) {
         //disable portis on mobile for now
         if (option.connector === portis) {
@@ -232,21 +237,22 @@ export default function WalletModal({
         }
         return null
       }
+      */
 
       // overwrite injected when needed
       if (option.connector === injected) {
         // don't show injected if there's no injected provider
-        if (!(window.web3 || window.ethereum)) {
-          if (option.name === 'MetaMask') {
+        if (!(window.tronWeb)) {
+          if (option.name === 'TronLink') {
             return (
               <Option
                 id={`connect-${key}`}
                 key={key}
-                color={'#E8831D'}
-                header={'Install Metamask'}
+                color={option.color}
+                header={'Install TronLink'}
                 subheader={null}
-                link={'https://metamask.io/'}
-                icon={MetamaskIcon}
+                link={'https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec'}
+                icon={TronLinkIcon}
               />
             )
           } else {
@@ -254,11 +260,11 @@ export default function WalletModal({
           }
         }
         // don't return metamask if injected provider isn't metamask
-        else if (option.name === 'MetaMask' && !isMetamask) {
+        else if (option.name === 'TronLink' && !isTronLink) {
           return null
         }
         // likewise for generic
-        else if (option.name === 'Injected' && isMetamask) {
+        else if (option.name === 'Injected' && isTronLink) {
           return null
         }
       }
@@ -294,12 +300,12 @@ export default function WalletModal({
           <CloseIcon onClick={toggleWalletModal}>
             <CloseColor />
           </CloseIcon>
-          <HeaderRow>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</HeaderRow>
+          <HeaderRow>{error instanceof UnsupportedChainIdError ? '错误的网络' : '连接错误'}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>Please connect to the appropriate Ethereum network.</h5>
+              <h5>请连接到适当的以太坊网络。</h5>
             ) : (
-              'Error connecting. Try refreshing the page.'
+              '连接错误。 尝试刷新页面。'
             )}
           </ContentWrapper>
         </UpperSection>
@@ -334,7 +340,7 @@ export default function WalletModal({
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText>Connect to a wallet</HoverText>
+            <HoverText>连接到钱包</HoverText>
           </HeaderRow>
         )}
         <ContentWrapper>
@@ -349,10 +355,7 @@ export default function WalletModal({
             <OptionGrid>{getOptions()}</OptionGrid>
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
-            <Blurb>
-              <span>以太坊新手? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/">了解有关钱包的更多信息</ExternalLink>
-            </Blurb>
+            <Blurb />
           )}
         </ContentWrapper>
       </UpperSection>

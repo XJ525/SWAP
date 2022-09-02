@@ -1,17 +1,21 @@
-import { BigNumber } from '@ethersproject/bignumber'
+// import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
-import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from 'eotc-bscswap-sdk'
+import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 import { BIPS_BASE, DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../constants'
 import { getTradeVersion, useV1TradeExchangeAddress } from '../data/V1'
 import { useTransactionAdder } from '../state/transactions/hooks'
-import { calculateGasMargin, getRouterContract, isAddress, shortenAddress } from '../utils'
-import isZero from '../utils/isZero'
+import { /*calculateGasMargin,*/ getRouterContract, isAddress, shortenAddress } from '../utils'
+// import isZero from '../utils/isZero'
 import v1SwapArguments from '../utils/v1SwapArguments'
 import { useActiveWeb3React } from './index'
 import { useV1ExchangeContract } from './useContract'
 import useENS from './useENS'
 import { Version } from './useToggledVersion'
+// import { DEFAULT_FEE_LIMIT } from '../tron-config'
+// import { trigger } from '../utils/blockchain'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { trigger } = require('../utils/blockchain')
 
 export enum SwapCallbackState {
   INVALID,
@@ -24,6 +28,7 @@ interface SwapCall {
   parameters: SwapParameters
 }
 
+/*
 interface SuccessfulCall {
   call: SwapCall
   gasEstimate: BigNumber
@@ -33,8 +38,9 @@ interface FailedCall {
   call: SwapCall
   error: Error
 }
+*/
 
-type EstimatedSwapCall = SuccessfulCall | FailedCall
+// type EstimatedSwapCall = SuccessfulCall | FailedCall
 
 /**
  * Returns the swap calls that can be used to make the trade
@@ -138,6 +144,8 @@ export function useSwapCallback(
     return {
       state: SwapCallbackState.VALID,
       callback: async function onSwap(): Promise<string> {
+        // @TRON we just ignore the estimateGas logic...
+        /*
         const estimatedCalls: EstimatedSwapCall[] = await Promise.all(
           swapCalls.map(call => {
             const {
@@ -198,12 +206,33 @@ export function useSwapCallback(
           },
           gasEstimate
         } = successfulEstimation
+       */
 
-        return contract[methodName](...args, {
-          gasLimit: calculateGasMargin(gasEstimate),
-          ...(value && !isZero(value) ? { value, from: account } : { from: account })
-        })
+        // @TODO(tron): make sure the right thing is to always pick first element of swapCalls
+        // console.log({ swapCalls })
+        const {
+          contract,
+          parameters: { methodName, args, value }
+          // gasEstimate
+        } = swapCalls[0]
+        // console.log(swapCalls[0], 'swapCalls[0]')
+        // console.log(...args, '...args')
+        console.log(contract, 'contract,')
+        const [amountIn, amountOutMin, path, to, deadline] = [...args]
+
+        const functionSelector = 'swapExactTokensForTokens(uint256,uint256,address[],address,uint256)'
+        const parameters = [
+          { type: 'uint256', value: amountIn },
+          { type: 'uint256', value: amountOutMin },
+          { type: 'address[]', value: path },
+          { type: 'address', value: to },
+          { type: 'uint256', value: deadline }
+        ]
+        const options = {}
+        // 路由合约地址
+        return trigger('TLd16U1uzWcfLyQM2CdegTi5i1spRwu4k3', functionSelector, parameters, options)
           .then((response: any) => {
+            response.hash = '0x' + response.txid
             const inputSymbol = trade.inputAmount.currency.symbol
             const outputSymbol = trade.outputAmount.currency.symbol
             const inputAmount = trade.inputAmount.toSignificant(3)
@@ -221,6 +250,7 @@ export function useSwapCallback(
 
             const withVersion =
               tradeVersion === Version.v2 ? withRecipient : `${withRecipient} on ${(tradeVersion as any).toUpperCase()}`
+            console.log(withVersion)
 
             addTransaction(response, {
               summary: withVersion
@@ -233,9 +263,10 @@ export function useSwapCallback(
             if (error?.code === 4001) {
               throw new Error('交易被拒绝')
             } else {
+              console.log(error, 'error')
               // otherwise, the error was unexpected and we need to convey that
-              console.error(`Swap failed`, error, methodName, args, value)
-              throw new Error(`Swap failed: ${error.message}`)
+              console.error(`交换失败`, error, 'error', methodName, args, value)
+              throw new Error(`交换失败: ${error.message}`)
             }
           })
       },

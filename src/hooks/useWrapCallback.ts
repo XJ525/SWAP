@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from 'eotc-bscswap-sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
@@ -61,7 +61,6 @@ export default function useWrapCallback(
                 try {
                   const txReceipt = await wethContract.withdraw(`0x${inputAmount.raw.toString(16)}`)
                   addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WETH to ETH` })
-                  
                 } catch (error) {
                   console.error('Could not withdraw', error)
                 }

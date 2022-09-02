@@ -1,5 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
-import { ChainId, WETH } from 'eotc-bscswap-sdk'
+import { ChainId, WETH } from '@eotcswap/swap-sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
 import ENS_ABI from '../constants/abis/ens-registrar.json'
@@ -56,11 +56,16 @@ export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contrac
   let address: string | undefined
   if (chainId) {
     switch (chainId) {
+      // TODO(tron): shasta TNS ?
       case ChainId.MAINNET:
-      case ChainId.GÖRLI:
-      case ChainId.ROPSTEN:
-      case ChainId.RINKEBY:
-        address = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'
+        address = '0x99fb68F0672E3E16AbB071342eF03355dfcb1797'
+        break
+      // TODO
+      case ChainId.NILE:
+        address = '0xD2577ec90C6Fb23EC208B27609867E30D69bDc89'
+        break
+      case ChainId.SHASTA:
+        address = '0x'
         break
     }
   }

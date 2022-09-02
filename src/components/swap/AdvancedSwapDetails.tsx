@@ -1,9 +1,9 @@
-import { Trade, TradeType } from 'eotc-bscswap-sdk'
+import { Trade, TradeType } from '@eotcswap/swap-sdk'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
-import { TYPE } from '../../theme'
+import { TYPE } from '../../theme' 
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from '../../utils/prices'
 import { AutoColumn } from '../Column'
 import QuestionHelper from '../QuestionHelper'
@@ -24,7 +24,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {isExactIn ? '最低收到' : 'Maximum sold'}
+              {isExactIn ? '最低收到' : '最大销售量'}
             </TYPE.black>
             <QuestionHelper text="如果在确认之前出现较大的不利价格变动，您的交易将恢复。" />
           </RowFixed>
@@ -41,7 +41,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-            价格影响
+              价格影响
             </TYPE.black>
             <QuestionHelper text="由于交易规模而导致的市场价格和估计价格之间的差异。" />
           </RowFixed>
@@ -51,7 +51,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-            流动性供应商费用
+              流动性供应商费用
             </TYPE.black>
             <QuestionHelper text="每笔交易的一部分（0.30%）作为协议激励流向流动性提供者。" />
           </RowFixed>

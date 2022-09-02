@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'eotc-bscswap-sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@eotcswap/swap-sdk'
 import React, { useCallback, useContext, useState } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -243,8 +243,7 @@ export default function AddLiquidity({
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
-          {`估计输出。如果价格变化超过 ${allowedSlippage /
-            100}% 您的交易将恢复。`}
+          {`估计输出。如果价格变化超过 ${allowedSlippage / 100}% 您的交易将恢复。`}
         </TYPE.italic>
       </AutoColumn>
     )
@@ -329,13 +328,13 @@ export default function AddLiquidity({
                 <BlueCard>
                   <AutoColumn gap="10px">
                     <TYPE.link fontWeight={600} color={'primaryText1'}>
-                    您是第一个流动性提供者。
+                      您是第一个流动性提供者。
                     </TYPE.link>
                     <TYPE.link fontWeight={400} color={'primaryText1'}>
-                    您添加的代币比例将决定该池的价格。
+                      您添加的代币比例将决定该池的价格。
                     </TYPE.link>
                     <TYPE.link fontWeight={400} color={'primaryText1'}>
-                    一旦您对价格感到满意，请单击供应进行审查。
+                      一旦您对价格感到满意，请单击供应进行审查。
                     </TYPE.link>
                   </AutoColumn>
                 </BlueCard>
@@ -405,7 +404,7 @@ export default function AddLiquidity({
                           width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                            <Dots>授权 {currencies[Field.CURRENCY_A]?.symbol}</Dots>
                           ) : (
                             '授权 ' + currencies[Field.CURRENCY_A]?.symbol
                           )}
@@ -418,7 +417,7 @@ export default function AddLiquidity({
                           width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                            <Dots>授权 {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                           ) : (
                             '授权 ' + currencies[Field.CURRENCY_B]?.symbol
                           )}

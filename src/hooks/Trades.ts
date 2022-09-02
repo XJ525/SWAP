@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, Token, Trade } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, Pair, Token, Trade } from '@eotcswap/swap-sdk'
 import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 

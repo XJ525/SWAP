@@ -1,11 +1,11 @@
-import { CurrencyAmount, JSBI, Token, Trade } from 'eotc-bscswap-sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from '@eotcswap/swap-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
 import AddressInputPanel from '../../components/AddressInputPanel'
-import { ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed,ButtonWallet } from '../../components/Button'
+import { ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed, ButtonWallet } from '../../components/Button'
 import Card, { GreyCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
 import ConfirmSwapModal from '../../components/swap/ConfirmSwapModal'
@@ -19,7 +19,6 @@ import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from '../../
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
-
 
 import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
 import { getTradeVersion, isTradeBetter } from '../../data/V1'
@@ -384,7 +383,10 @@ export default function Swap() {
           <BottomGrouping>
             {!account ? (
               <>
-                <ButtonLight onClick={toggleWalletModal}><ButtonWallet src={Wallet}/>连接钱包</ButtonLight>
+                <ButtonLight onClick={toggleWalletModal}>
+                  <ButtonWallet src={Wallet} />
+                  连接钱包
+                </ButtonLight>
               </>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
@@ -406,7 +408,7 @@ export default function Swap() {
                 >
                   {approval === ApprovalState.PENDING ? (
                     <AutoRow gap="6px" justify="center">
-                      Approving <Loader stroke="white" />
+                      授权 <Loader stroke="white" />
                     </AutoRow>
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                     '合法的'
@@ -438,7 +440,7 @@ export default function Swap() {
                   <Text fontSize={16} fontWeight={500}>
                     {priceImpactSeverity > 3 && !isExpertMode
                       ? `价格影响高`
-                      : `兑换${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      : `${priceImpactSeverity > 2 ? ' 仍要' : ''}兑换`}
                   </Text>
                 </ButtonError>
               </RowBetween>
@@ -466,7 +468,7 @@ export default function Swap() {
                     ? swapInputError
                     : priceImpactSeverity > 3 && !isExpertMode
                     ? `价格影响太高`
-                    : `兑换${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                    : `${priceImpactSeverity > 2 ? ' 仍要' : ''}兑换`}
                 </Text>
               </ButtonError>
             )}

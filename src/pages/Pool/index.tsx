@@ -2,7 +2,7 @@
 import React, { useContext, useMemo } from 'react'
 // styled-components是react的一个库，可以用来美化组件，写法依赖于es6，依赖于webpack
 import { ThemeContext } from 'styled-components'
-import { Pair } from 'eotc-bscswap-sdk'
+import { Pair } from '@eotcswap/swap-sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
@@ -14,8 +14,8 @@ import { StyledInternalLink, TYPE } from '../../theme'
 import { Text } from 'rebass'
 import { LightCard } from '../../components/Card'
 import { RowBetween } from '../../components/Row'
-// , ButtonSecondary 
-import { ButtonPrimary} from '../../components/Button'
+// , ButtonSecondary
+import { ButtonPrimary } from '../../components/Button'
 import { AutoColumn } from '../../components/Column'
 
 import { useActiveWeb3React } from '../../hooks'
@@ -67,7 +67,12 @@ export default function Pool() {
       <AppBody>
         <SwapPoolTabs active={'pool'} />
         <AutoColumn gap="lg" justify="center">
-          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/ETH">
+          <ButtonPrimary
+            id="join-pool-button"
+            as={Link}
+            style={{ padding: 16 }}
+            to="/add/0xa614f803b6fd780986a42c78ec9c7f77e6ded13c/0xdfe9d10781d0e48bcc03f0fda2067e45aec6a144"
+          >
             <Text fontWeight={500} fontSize={20}>
               增加流动性
             </Text>
@@ -84,13 +89,13 @@ export default function Pool() {
             {!account ? (
               <LightCard padding="40px">
                 <TYPE.body color={theme.text3} textAlign="center">
-                  Connect to a wallet to view your liquidity.
+                  连接到钱包以查看您的流动性。
                 </TYPE.body>
               </LightCard>
             ) : v2IsLoading ? (
               <LightCard padding="40px">
                 <TYPE.body color={theme.text3} textAlign="center">
-                  <Dots>Loading</Dots>
+                  <Dots>正在加载</Dots>
                 </TYPE.body>
               </LightCard>
             ) : allV2PairsWithLiquidity?.length > 0 ? (
@@ -109,7 +114,7 @@ export default function Pool() {
 
             <div>
               <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-                {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "没有看到您加入的池?"}{' '}
+                {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : '没有看到您加入的池?'}{' '}
                 <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
                   {hasV1Liquidity ? 'Migrate now.' : '导入它'}
                 </StyledInternalLink>

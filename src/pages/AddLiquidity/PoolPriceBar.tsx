@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from 'eotc-bscswap-sdk'
+import { Currency, Percent, Price } from '@eotcswap/swap-sdk'
 import React, { useContext } from 'react'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'

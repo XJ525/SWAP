@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from 'eotc-bscswap-sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@eotcswap/swap-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

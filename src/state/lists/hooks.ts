@@ -1,9 +1,11 @@
-import { ChainId, Token } from 'eotc-bscswap-sdk'
+import { ChainId, Token } from '@eotcswap/swap-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { AppState } from '../index'
-
+// import defaultList from '@mcswap/default-token-list'
+// swap-default.tokenlist.json'
+import defaultList from '../../swap-default.tokenlist.json'
 type TagDetails = Tags[keyof Tags]
 export interface TagInfo extends TagDetails {
   id: string
@@ -31,14 +33,9 @@ export type TokenAddressMap = Readonly<{ [chainId in ChainId]: Readonly<{ [token
  * An empty result, useful as a default.
  */
 const EMPTY_LIST: TokenAddressMap = {
-  [ChainId.KOVAN]: {},
-  [ChainId.RINKEBY]: {},
-  [ChainId.ROPSTEN]: {},
-  [ChainId.GÖRLI]: {},
+  [ChainId.NILE]: {},
   [ChainId.MAINNET]: {},
-  [ChainId.BSC]: {},
-  [ChainId.BSC_TSET]: {},
-  [ChainId.MATIC]: {}
+  [ChainId.SHASTA]: {}
 }
 
 const listCache: WeakMap<TokenList, TokenAddressMap> | null =
@@ -74,10 +71,11 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
 }
 
 export function useTokenList(url: string | undefined): TokenAddressMap {
-  const lists = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
+  // const lists = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
   return useMemo(() => {
     if (!url) return EMPTY_LIST
-    const current = lists[url]?.current
+    // const current = lists[url]?.current || defaultList
+    const current = defaultList
     if (!current) return EMPTY_LIST
     try {
       return listToTokenMap(current)
@@ -85,7 +83,7 @@ export function useTokenList(url: string | undefined): TokenAddressMap {
       console.error('Could not show token list due to error', error)
       return EMPTY_LIST
     }
-  }, [lists, url])
+  }, [url])
 }
 
 export function useSelectedListUrl(): string | undefined {

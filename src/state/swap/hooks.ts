@@ -1,11 +1,11 @@
 import useENS from '../../hooks/useENS'
 import { Version } from '../../hooks/useToggledVersion'
 import { parseUnits } from '@ethersproject/units'
-import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount, Trade } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount, Trade } from '@eotcswap/swap-sdk'
 import { ParsedQs } from 'qs'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useV1Trade } from '../../data/V1'
+// import { useV1Trade } from '../../data/V1'
 import { useActiveWeb3React } from '../../hooks'
 import { useCurrency } from '../../hooks/Tokens'
 import { useTradeExactIn, useTradeExactOut } from '../../hooks/Trades'
@@ -157,8 +157,8 @@ export function useDerivedSwapInfo(): {
   }
 
   // get link to trade on v1, if a better rate exists
-  const v1Trade = useV1Trade(isExactIn, currencies[Field.INPUT], currencies[Field.OUTPUT], parsedAmount)
-
+  // const v1Trade = useV1Trade(isExactIn, currencies[Field.INPUT], currencies[Field.OUTPUT], parsedAmount)
+  const v1Trade = undefined
   let inputError: string | undefined
   if (!account) {
     inputError = '连接钱包'
@@ -295,8 +295,8 @@ export function useDefaultsFromURLSearch():
       replaceSwapState({
         typedValue: parsed.typedValue,
         field: parsed.independentField,
-        inputCurrencyId: '0x55d398326f99059fF775485246999027B3197955',
-        outputCurrencyId: '0x52445374E55a63C0De647445D5B6a4244702980C',
+        inputCurrencyId: '0xa614f803b6fd780986a42c78ec9c7f77e6ded13c',
+        outputCurrencyId: '0xdfe9d10781d0e48bcc03f0fda2067e45aec6a144',
         // inputCurrencyId: parsed[Field.INPUT].currencyId,
         // outputCurrencyId: parsed[Field.OUTPUT].currencyId,
         recipient: parsed.recipient

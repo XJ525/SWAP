@@ -1,7 +1,8 @@
 import { parseBytes32String } from '@ethersproject/strings'
-import { Currency, ETHER, Token, currencyEquals } from 'eotc-bscswap-sdk'
+import { Currency, ETHER, Token, currencyEquals } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 import { useSelectedTokenList } from '../state/lists/hooks'
+// import { listToTokenMap } from '../state/lists/hooks'
 import { NEVER_RELOAD, useSingleCallResult } from '../state/multicall/hooks'
 import { useUserAddedTokens } from '../state/user/hooks'
 import { isAddress } from '../utils'
@@ -9,10 +10,13 @@ import { isAddress } from '../utils'
 import { useActiveWeb3React } from './index'
 import { useBytes32TokenContract, useTokenContract } from './useContract'
 
+// import defaultList from '@mcswap/default-token-list'
+
 export function useAllTokens(): { [address: string]: Token } {
   const { chainId } = useActiveWeb3React()
   const userAddedTokens = useUserAddedTokens()
   const allTokens = useSelectedTokenList()
+  // const defaultTokens = listToTokenMap(defaultList)
 
   return useMemo(() => {
     if (!chainId) return {}
@@ -27,17 +31,16 @@ export function useAllTokens(): { [address: string]: Token } {
           // must make a copy because reduce modifies the map, and we do not
           // want to make a copy in every iteration
           { ...allTokens[chainId] }
+          // { ...defaultTokens[chainId] }
         )
     )
-  }, [chainId, userAddedTokens, allTokens])
+  }, [chainId, userAddedTokens, allTokens]) // defaultTokens
 }
-
 // Check if currency is included in custom list from user storage
 export function useIsUserAddedToken(currency: Currency): boolean {
   const userAddedTokens = useUserAddedTokens()
   return !!userAddedTokens.find(token => currencyEquals(currency, token))
 }
-
 // parse a name or symbol from a token response
 const BYTES32_REGEX = /^0x[a-fA-F0-9]{64}$/
 function parseStringOrBytes32(str: string | undefined, bytes32: string | undefined, defaultValue: string): string {

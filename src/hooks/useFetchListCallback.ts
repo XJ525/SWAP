@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit'
-import { ChainId } from 'eotc-bscswap-sdk'
+import { ChainId } from '@eotcswap/swap-sdk'
 import { TokenList } from '@uniswap/token-lists'
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
@@ -40,7 +40,7 @@ export function useFetchListCallback(): (listUrl: string) => Promise<TokenList> 
           return tokenList
         })
         .catch(error => {
-          console.debug(`Failed to get list at url ${listUrl}`, error)
+          console.debug(`无法在 url 获取列表 ${listUrl}`, error)
           dispatch(fetchTokenList.rejected({ url: listUrl, requestId, errorMessage: error.message }))
           throw error
         })

@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from 'eotc-bscswap-sdk'
+import { currencyEquals, Trade } from '@eotcswap/swap-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

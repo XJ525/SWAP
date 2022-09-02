@@ -12,15 +12,19 @@ import Transaction from './Transaction'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
-import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
+import { injected } from '../../connectors'
+// import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
+/*
 import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
 import PortisIcon from '../../assets/images/portisIcon.png'
+*/
 import Identicon from '../Identicon'
 import { ButtonSecondary } from '../Button'
 import { ExternalLink as LinkIcon } from 'react-feather'
 import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
+import { fromHex } from 'tron-format-address'
 
 const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
@@ -177,7 +181,6 @@ const IconWrapper = styled.div<{ size?: number }>`
   }
   ${({ theme }) => theme.mediaWidth.upToMedium`
     align-items: flex-end;
-    
   `};
 `
 
@@ -195,10 +198,6 @@ const WalletAction = styled(ButtonSecondary)`
     cursor: pointer;
     text-decoration: underline;
   }
-`
-
-const MainWalletAction = styled(WalletAction)`
-  color: ${({ theme }) => theme.primary1};
 `
 
 function renderTransactions(transactions: string[]) {
@@ -231,12 +230,12 @@ export default function AccountDetails({
   const dispatch = useDispatch<AppDispatch>()
 
   function formatConnectorName() {
-    const { ethereum } = window
-    const isMetaMask = !!(ethereum && ethereum.isMetaMask)
+    const { tronWeb } = window
+    const isTronLink = !!tronWeb
     const name = Object.keys(SUPPORTED_WALLETS)
       .filter(
         k =>
-          SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))
+          SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isTronLink === (k === 'TRONLINK'))
       )
       .map(k => SUPPORTED_WALLETS[k].name)[0]
     return <WalletName>与 {name}</WalletName>
@@ -248,39 +247,6 @@ export default function AccountDetails({
         <IconWrapper size={16}>
           <Identicon />
         </IconWrapper>
-      )
-    } else if (connector === walletconnect) {
-      return (
-        <IconWrapper size={16}>
-          <img src={WalletConnectIcon} alt={'wallet connect logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === walletlink) {
-      return (
-        <IconWrapper size={16}>
-          <img src={CoinbaseWalletIcon} alt={'coinbase wallet logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === fortmatic) {
-      return (
-        <IconWrapper size={16}>
-          <img src={FortmaticIcon} alt={'fortmatic logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === portis) {
-      return (
-        <>
-          <IconWrapper size={16}>
-            <img src={PortisIcon} alt={'portis logo'} />
-            <MainWalletAction
-              onClick={() => {
-                portis.portis.showPortis()
-              }}
-            >
-              Show Portis
-            </MainWalletAction>
-          </IconWrapper>
-        </>
       )
     }
     return null
@@ -296,21 +262,21 @@ export default function AccountDetails({
         <CloseIcon onClick={toggleWalletModal}>
           <CloseColor />
         </CloseIcon>
-        <HeaderRow>账户</HeaderRow>
+        <HeaderRow>账号</HeaderRow>
         <AccountSection>
           <YourAccount>
             <InfoCard>
               <AccountGroupingRow>
                 {formatConnectorName()}
                 <div>
-                  {connector !== injected && connector !== walletlink && (
+                  {connector !== injected && (
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
                         ;(connector as any).close()
                       }}
                     >
-                      Disconnect
+                      断开
                     </WalletAction>
                   )}
                   <WalletAction
@@ -348,7 +314,8 @@ export default function AccountDetails({
                     <AccountControl>
                       <div>
                         {account && (
-                          <Copy toCopy={account}>
+                          <Copy toCopy={fromHex(account)}>
+                          {/* <Copy toCopy={ethAddress.toTron(account)}> */}
                             <span style={{ marginLeft: '4px' }}>复制地址</span>
                           </Copy>
                         )}
@@ -359,7 +326,7 @@ export default function AccountDetails({
                             href={chainId && getEtherscanLink(chainId, ENSName, 'address')}
                           >
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>在币安浏览器上查看</span>
+                            <span style={{ marginLeft: '4px' }}>在Tron浏览器上查看</span>
                           </AddressLink>
                         )}
                       </div>
@@ -370,7 +337,8 @@ export default function AccountDetails({
                     <AccountControl>
                       <div>
                         {account && (
-                          <Copy toCopy={account}>
+                          <Copy toCopy={fromHex(account)}>
+                          {/* <Copy toCopy={ethAddress.toTron(account)}> */}
                             <span style={{ marginLeft: '4px' }}>复制地址</span>
                           </Copy>
                         )}
@@ -381,7 +349,7 @@ export default function AccountDetails({
                             href={getEtherscanLink(chainId, account, 'address')}
                           >
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>在币安浏览器上查看</span>
+                            <span style={{ marginLeft: '4px' }}>在Tron浏览器上查看</span>
                           </AddressLink>
                         )}
                       </div>

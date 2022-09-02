@@ -1,5 +1,5 @@
 import { MaxUint256 } from '@ethersproject/constants'
-import { CurrencyAmount, ETHER, SwapParameters, Token, Trade, TradeOptions, TradeType } from 'eotc-bscswap-sdk'
+import { CurrencyAmount, ETHER, SwapParameters, Token, Trade, TradeOptions, TradeType } from '@eotcswap/swap-sdk'
 import { getTradeVersion } from '../data/V1'
 import { Version } from '../hooks/useToggledVersion'
 
@@ -26,7 +26,7 @@ export default function v1SwapArguments(trade: Trade, options: Omit<TradeOptions
   const isExactIn = trade.tradeType === TradeType.EXACT_INPUT
   const inputETH = trade.inputAmount.currency === ETHER
   const outputETH = trade.outputAmount.currency === ETHER
-  if (inputETH && outputETH) throw new Error('ETHER to ETHER')
+  if (inputETH && outputETH) throw new Error('ETH to ETH')
   const minimumAmountOut = toHex(trade.minimumAmountOut(options.allowedSlippage))
   const maximumAmountIn = toHex(trade.maximumAmountIn(options.allowedSlippage))
   const deadline = deadlineFromNow(options.ttl)

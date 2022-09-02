@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from '@eotcswap/swap-sdk'
 import { useMemo } from 'react'
 import ERC20_INTERFACE from '../../constants/abis/erc20'
 import { useAllTokens } from '../../hooks/Tokens'
@@ -6,7 +6,6 @@ import { useActiveWeb3React } from '../../hooks'
 import { useMulticallContract } from '../../hooks/useContract'
 import { isAddress } from '../../utils'
 import { useSingleContractMultipleData, useMultipleContractSingleData } from '../multicall/hooks'
-
 
 /**
  * Returns a map of the given addresses to their eventually consistent ETH balances.
@@ -107,7 +106,6 @@ export function useCurrencyBalances(
   const containsETH: boolean = useMemo(() => currencies?.some(currency => currency === ETHER) ?? false, [currencies])
   const ethBalance = useETHBalances(containsETH ? [account] : [])
 
-  
   return useMemo(
     () =>
       currencies?.map(currency => {

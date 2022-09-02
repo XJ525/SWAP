@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, JSBI, Pair, Percent, TokenAmount } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Percent, TokenAmount } from '@eotcswap/swap-sdk'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { usePair } from '../../data/Reserves'
@@ -119,11 +119,11 @@ export function useDerivedBurnInfo(
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = '连接钱包'
   }
 
   if (!parsedAmounts[Field.LIQUIDITY] || !parsedAmounts[Field.CURRENCY_A] || !parsedAmounts[Field.CURRENCY_B]) {
-    error = error ?? 'Enter an amount'
+    error = error ?? '输入金额'
   }
 
   return { pair, parsedAmounts, error }

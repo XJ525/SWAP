@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from 'eotc-bscswap-sdk'
+import { CurrencyAmount, ETHER, JSBI } from '@eotcswap/swap-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

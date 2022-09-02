@@ -3,10 +3,11 @@ import { getAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import { abi as IUniswapV2Router02ABI } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
+import { abi as IUniswapV2Router02ABI } from '@mcswap/mcswap-v2-periphery/build/contracts/IUniswapV2Router02.json'
 import { ROUTER_ADDRESS } from '../constants'
-import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from 'eotc-bscswap-sdk'
+import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@eotcswap/swap-sdk'
 import { TokenAddressMap } from '../state/lists/hooks'
+import { fromHex } from 'tron-format-address'
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export function isAddress(value: any): string | false {
@@ -18,19 +19,36 @@ export function isAddress(value: any): string | false {
 }
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1: 'etherscan.io',
-  3: 'ropsten.etherscan.io',
-  4: 'rinkeby.etherscan.io',
-  5: 'goerli.etherscan.io',
-  42: 'kovan.etherscan.io',
-  //256: 'testnet.hecoinfo.com'
-  56: 'bscscan.com',
-  97: 'testnet.bscscan.com',
-  137: 'polygonscan.com'
+  11111: '',
+  1: 'shasta.',
+  201910292: 'nile.'
 }
 
+// TODO: TRON: use tronscan...
 export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}`
+  console.log({ chainId })
+  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[11111]}tronscan.org`
+
+  switch (type) {
+    case 'transaction': {
+      return `${prefix}/#/transaction/${data.replace('0x', '')}`
+      // return `${prefix}/#/transaction/${remove0xPrefix(data)}`
+    }
+    case 'token': {
+      return `${prefix}/#/token20/${fromHex(data)}`
+      // return `${prefix}/#/token20/${ethAddress.toTron(data)}`
+    }
+    case 'address':
+    default: {
+      return `${prefix}/#/address/${fromHex(data)}`
+      // return `${prefix}/#/address/${ethAddress.toTron(data)}`
+    }
+  }
+}
+
+/*
+export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
+  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
 
   switch (type) {
     case 'transaction': {
@@ -45,8 +63,20 @@ export function getEtherscanLink(chainId: ChainId, data: string, type: 'transact
     }
   }
 }
+*/
 
-// shorten the checksummed version of the input address to have 0x + 4 characters at start and end
+// shorten the checksummed version of the input address to have 4 characters at start and end
+export function shortenAddress(address: string, chars = 4): string {
+  const parsed = isAddress(address)
+  if (!parsed) {
+    throw Error(`Invalid 'address' parameter '${address}'.`)
+  }
+  const tronAddress = fromHex(parsed)
+  // const tronAddress = ethAddress.toTron(parsed)
+  return `${tronAddress.substring(0, chars)}...${tronAddress.substr(-chars)}`
+}
+
+/*
 export function shortenAddress(address: string, chars = 4): string {
   const parsed = isAddress(address)
   if (!parsed) {
@@ -54,6 +84,7 @@ export function shortenAddress(address: string, chars = 4): string {
   }
   return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`
 }
+*/
 
 // add 10%
 export function calculateGasMargin(value: BigNumber): BigNumber {
