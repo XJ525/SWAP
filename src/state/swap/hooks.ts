@@ -1,7 +1,7 @@
 import useENS from '../../hooks/useENS'
 import { Version } from '../../hooks/useToggledVersion'
 import { parseUnits } from '@ethersproject/units'
-import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount, Trade } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Token, TokenAmount, Trade } from 'eotc-bscswap-sdk'
 import { ParsedQs } from 'qs'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -116,6 +116,9 @@ export function useDerivedSwapInfo(): {
   inputError?: string
   v1Trade: Trade | undefined
   v2TradeList: TradeList | null
+  allowedPairs: {
+    [key: string]: [Pair | null]
+  }
 } {
   const { account } = useActiveWeb3React()
 
@@ -141,13 +144,20 @@ export function useDerivedSwapInfo(): {
   // 精确输入 independentField === 'INPUT"
   const isExactIn: boolean = independentField === Field.INPUT
   const parsedAmount = tryParseAmount(typedValue, (isExactIn ? inputCurrency : outputCurrency) ?? undefined)
-  const bestTradeExactInObj = useTradeExactIn(isExactIn ? parsedAmount : undefined, outputCurrency ?? undefined)
-  const bestTradeExactOutObj = useTradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined)
+  const { TradeList: bestTradeExactInObj, allowedPairs: ExactInAllowedPairs } = useTradeExactIn(
+    isExactIn ? parsedAmount : undefined,
+    outputCurrency ?? undefined
+  )
+  const { TradeList: bestTradeExactOutObj, allowedPairs: ExactOutAllowedPairs } = useTradeExactOut(
+    inputCurrency ?? undefined,
+    !isExactIn ? parsedAmount : undefined
+  )
   const bestTradeExactIn = bestTradeExactInObj?.EOTC
   const bestTradeExactOut = bestTradeExactOutObj?.EOTC
   const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
+  const allowedPairs = isExactIn ? ExactInAllowedPairs : ExactOutAllowedPairs
   const v2TradeList = isExactIn ? bestTradeExactInObj : bestTradeExactOutObj
-  console.log(bestTradeExactInObj, 'bestTradeExactInObj')
+  // console.log(bestTradeExactInObj, 'bestTradeExactInObj')
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
     [Field.OUTPUT]: relevantTokenBalances[1]
@@ -230,7 +240,8 @@ export function useDerivedSwapInfo(): {
     v2Trade: v2Trade ?? undefined,
     inputError,
     v1Trade,
-    v2TradeList
+    v2TradeList,
+    allowedPairs
   }
 }
 

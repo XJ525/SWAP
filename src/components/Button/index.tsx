@@ -62,6 +62,35 @@ export const ButtonPrimary = styled(Base)`
     opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
   }
 `
+export const ButtonExchang = styled(Base)`
+  background-color: ${({ theme }) => theme.primary1};
+  color: white;
+  border-radius: 8px;
+  /* width: 75px;
+  height: 30px; */
+  white-space: nowrap;
+  padding: 7px 26px;
+  &:focus {
+    box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.primary1)};
+    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
+  }
+  &:hover {
+    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
+  }
+  &:active {
+    box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.1, theme.primary1)};
+    background-color: ${({ theme }) => darken(0.1, theme.primary1)};
+  }
+  &:disabled {
+    background-color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? theme.primary1 : theme.bg3)};
+    color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? 'white' : theme.text3)};
+    cursor: auto;
+    box-shadow: none;
+    border: 1px solid transparent;
+    outline: none;
+    opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.7' : '1')};
+  }
+`
 // ${({ theme }) => theme.primaryText1}
 export const ButtonLight = styled(Base)`
   background-color: ${({ theme }) => theme.primary5};
@@ -270,12 +299,30 @@ export function ButtonConfirmed({
     return <ButtonPrimary {...rest} altDisabledStyle={altDisabledStyle} />
   }
 }
+export function ButtonConfirmedExchange({
+  confirmed,
+  altDisabledStyle,
+  ...rest
+}: { confirmed?: boolean; altDisabledStyle?: boolean } & ButtonProps) {
+  if (confirmed) {
+    return <ButtonConfirmedStyle {...rest} />
+  } else {
+    return <ButtonExchang {...rest} altDisabledStyle={altDisabledStyle} />
+  }
+}
 
 export function ButtonError({ error, ...rest }: { error?: boolean } & ButtonProps) {
   if (error) {
     return <ButtonErrorStyle {...rest} />
   } else {
     return <ButtonPrimary {...rest} />
+  }
+}
+export function ButtonErrorExchang({ error, ...rest }: { error?: boolean } & ButtonProps) {
+  if (error) {
+    return <ButtonErrorStyle {...rest} />
+  } else {
+    return <ButtonExchang {...rest} />
   }
 }
 

@@ -95,12 +95,17 @@ export interface TradeList {
  * Returns the best trade for the exact amount of tokens in to the given token out
  * 将输入代币的确切数量的最佳交易返回给给定的代币
  */
-export function useTradeExactIn(currencyAmountIn?: CurrencyAmount, currencyOut?: Currency): TradeList | null {
+export function useTradeExactIn(
+  currencyAmountIn?: CurrencyAmount,
+  currencyOut?: Currency
+): { TradeList: TradeList | null; allowedPairs: object } {
   // 允许的交易对
   const allowedPairs = useAllCommonPairs(currencyAmountIn?.currency, currencyOut)
   return useMemo(() => {
     const TradeList: TradeList = {}
-    if (!currencyAmountIn || !currencyOut) return null
+    if (!currencyAmountIn || !currencyOut) {
+      return { allowedPairs, TradeList: null }
+    }
     for (const item in allowedPairs) {
       if (allowedPairs[item].length > 0) {
         TradeList[item] =
@@ -112,7 +117,7 @@ export function useTradeExactIn(currencyAmountIn?: CurrencyAmount, currencyOut?:
         TradeList[item] = null
       }
     }
-    return TradeList
+    return { allowedPairs, TradeList }
     // if (currencyAmountIn && currencyOut && allowedPairs.length > 0) {
     //   // console.log(
     //   //   '43434',
@@ -135,7 +140,10 @@ export function useTradeExactIn(currencyAmountIn?: CurrencyAmount, currencyOut?:
 /**
  * Returns the best trade for the token in to the exact amount of token out
  */
-export function useTradeExactOut(currencyIn?: Currency, currencyAmountOut?: CurrencyAmount): TradeList | null {
+export function useTradeExactOut(
+  currencyIn?: Currency,
+  currencyAmountOut?: CurrencyAmount
+): { TradeList: TradeList | null; allowedPairs: object } {
   const allowedPairs = useAllCommonPairs(currencyIn, currencyAmountOut?.currency)
 
   return useMemo(() => {
@@ -147,7 +155,9 @@ export function useTradeExactOut(currencyIn?: Currency, currencyAmountOut?: Curr
     // }
     // return null
     const TradeList: TradeList = {}
-    if (!currencyAmountOut || !currencyIn) return null
+    if (!currencyAmountOut || !currencyIn) {
+      return { allowedPairs, TradeList: null }
+    }
     for (const item in allowedPairs) {
       if (allowedPairs[item].length > 0) {
         TradeList[item] =
@@ -159,6 +169,6 @@ export function useTradeExactOut(currencyIn?: Currency, currencyAmountOut?: Curr
         TradeList[item] = null
       }
     }
-    return TradeList
+    return { allowedPairs, TradeList }
   }, [allowedPairs, currencyIn, currencyAmountOut])
 }

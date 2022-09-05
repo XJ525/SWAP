@@ -175,6 +175,7 @@ export default function Swap() {
   const [approval, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage)
 
   // check if user has gone through approval process, used to show two step buttons, reset on token change
+  //检查用户是否已通过审批程序，用于显示两个步骤按钮，重置对令牌的改变
   const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
 
   // mark when a user has submitted an approval, reset onTokenSelection for input field
@@ -243,6 +244,7 @@ export default function Swap() {
 
   // show approve flow when: no error on inputs, not approved or pending, or approved in current session
   // never show if price impact is above threshold in non expert mode
+  //在非专家模式中，永远不要显示价格影响是否高于阈值
   const showApproveFlow =
     !swapInputError &&
     (approval === ApprovalState.NOT_APPROVED ||

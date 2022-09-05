@@ -20,9 +20,10 @@ export default function PriceText({ trade, allowedSlippage }: { trade: Trade; al
   return (
     <>
       <QueryText>
-        {trade
+        {trade.outputAmount.toSignificant(6)}
+        {/* {trade
           ? `${slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(4)} ${trade.outputAmount.currency.symbol}`
-          : ''}
+          : ''} */}
       </QueryText>
       <TokenBalance>
         (手续费：{realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'})

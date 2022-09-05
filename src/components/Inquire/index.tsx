@@ -8,6 +8,7 @@ import { Currency, Trade } from 'eotc-bscswap-sdk'
 import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
 import { useDerivedSwapInfo } from '../../state/swap/hooks'
 import PriceText from './PriceText'
+import ExchangeButton from './ExchangeButton'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
 const Lists = styled.div`
   /* position: relative;
@@ -103,10 +104,12 @@ export default function Inquire({ currency }: CurrencyInquire) {
     parsedAmount,
     currencies,
     v2TradeList,
-    inputError: swapInputError
+    inputError: swapInputError,
+    allowedPairs
   } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
+  console.log('allowedPairs', allowedPairs['PANCAKE'][0]?.reserve0)
   // const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
   return (
     <Lists>
@@ -129,8 +132,14 @@ export default function Inquire({ currency }: CurrencyInquire) {
                   <ActiveText> {item}</ActiveText>
                 </ListDiv>
                 <ListDiv>
-                  <TokenBalance>EOTC余额: 999</TokenBalance>
-                  <TokenBalance>BNB余额: 898</TokenBalance>
+                  <TokenBalance>
+                    {allowedPairs[item]?.[0]?.reserve0.token.symbol}余额:{' '}
+                    {allowedPairs[item]?.[0]?.reserve0.toSignificant(2)}
+                  </TokenBalance>
+                  <TokenBalance>
+                    {allowedPairs[item]?.[0]?.reserve1.token.symbol}余额:{' '}
+                    {allowedPairs[item]?.[0]?.reserve1.toSignificant(2)}
+                  </TokenBalance>
                 </ListDiv>
               </ListTitle>
               <ListTitle>
@@ -138,7 +147,8 @@ export default function Inquire({ currency }: CurrencyInquire) {
                   <PriceText trade={v2TradeList[item] as Trade} allowedSlippage={allowedSlippage} />
                   {/* <TokenBalance>(手续费：~$0.003)</TokenBalance> */}
                 </ListDiv>
-                <QueryButton>交换</QueryButton>
+                <ExchangeButton trade={v2TradeList[item] as Trade} allowedSlippage={allowedSlippage} dexName={item} />
+                {/* <QueryButton>交换</QueryButton> */}
               </ListTitle>
               {/* <ListTitle>
               <ListDiv>
