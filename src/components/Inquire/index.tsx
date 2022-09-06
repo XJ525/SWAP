@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Refresh from '../../assets/images/refresh.svg'
 import querylogo from '../../assets/images/eotc.png'
@@ -6,7 +6,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances, useCurrencyBalance } from '../../state/wallet/hooks'
 import { Currency, Trade } from 'eotc-bscswap-sdk'
 import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
-import { useDerivedSwapInfo } from '../../state/swap/hooks'
+import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
@@ -41,7 +41,7 @@ const ActiveText = styled.div`
 `
 
 const QueryList = styled.div`
-  border: 1px solid #237ff8;
+  /* border: 1px solid #237ff8; */
   border-radius: 6px;
   margin: 10px 0px;
 `
@@ -80,20 +80,6 @@ interface CurrencyInquire {
 }
 
 export default function Inquire({ currency }: CurrencyInquire) {
-  const arr = [
-    {
-      id: 1,
-      tokenName: 'EOTC'
-    },
-    {
-      id: 2,
-      tokenName: 'USDT'
-    },
-    {
-      id: 3,
-      tokenName: 'Sushi'
-    }
-  ]
   const { account } = useActiveWeb3React()
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
@@ -109,7 +95,13 @@ export default function Inquire({ currency }: CurrencyInquire) {
   } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
-  console.log('allowedPairs', allowedPairs['PANCAKE'][0]?.reserve0)
+  const [selectDexName, setDexName] = useDexNameState()
+  // const [activeDex, setActiveDex] = useState(selectDexName)
+  const dexList = useMemo(() => {
+    const dex = v2TradeList ? Object.keys(v2TradeList as object) : []
+    // setDexName(dex.find(item => v2TradeList?.[item]))
+    return dex
+  }, [v2TradeList])
   // const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
   return (
     <Lists>
@@ -119,12 +111,16 @@ export default function Inquire({ currency }: CurrencyInquire) {
       </ListTitle>
 
       {v2TradeList ? (
-        Object.keys(v2TradeList as object).map(item => {
-          {
-            console.log(v2TradeList[item])
-          }
+        dexList.map(item => {
           return v2TradeList[item] ? (
-            <QueryList key={item}>
+            <QueryList
+              key={item}
+              style={selectDexName == item ? { border: '1px solid #237ff8' } : {}}
+              onClick={() => {
+                console.log('999')
+                setDexName(item)
+              }}
+            >
               {/* <AdvancedSwapDetailsDropdown trade={v2TradeList[item] as Trade | undefined} /> */}
               <ListTitle>
                 <ListDiv>
@@ -169,7 +165,7 @@ export default function Inquire({ currency }: CurrencyInquire) {
             </ListTitle> */}
             </QueryList>
           ) : (
-            <></>
+            <div key={item}></div>
           )
         })
       ) : (

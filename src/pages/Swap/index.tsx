@@ -36,6 +36,7 @@ import { Field } from '../../state/swap/actions'
 import {
   useDefaultsFromURLSearch,
   useDerivedSwapInfo,
+  useDexNameState,
   useSwapActionHandlers,
   useSwapState
 } from '../../state/swap/hooks'
@@ -50,6 +51,7 @@ import Wallet from '../../assets/images/wallet.png'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
+  const [selectDexName] = useDexNameState()
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -105,9 +107,6 @@ export default function Swap() {
         [Version.v1]: v1Trade,
         [Version.v2]: v2Trade
       }[toggledVersion]
-  console.log(isTradeBetter(v2TradeList?.PANCAKE as any, v2TradeList?.SUHSI as any), 'isTradeBetter')
-  console.log(isTradeBetter(v2TradeList?.SUHSI as any, v2TradeList?.PANCAKE as any), 'isTradeBetter')
-
   const betterTradeLinkVersion: Version | undefined =
     toggledVersion === Version.v2 && isTradeBetter(v2Trade, v1Trade, BETTER_TRADE_LINK_THRESHOLD)
       ? Version.v1
@@ -352,6 +351,7 @@ export default function Swap() {
                   currency={currencies[Field.OUTPUT]}
                   onCurrencySelect={handleOutputSelect}
                   otherCurrency={currencies[Field.INPUT]}
+                  showInput={false}
                   id="swap-currency-output"
                 />
 
@@ -372,7 +372,7 @@ export default function Swap() {
                 {showWrap ? null : (
                   <Card padding={'.25rem .75rem 0 .75rem'} borderRadius={'20px'}>
                     <AutoColumn gap="4px">
-                      {Boolean(trade) && (
+                      {Boolean(trade) && false && (
                         <RowBetween align="center">
                           <Text fontWeight={500} fontSize={14} color={theme.text2}>
                             价格
@@ -531,6 +531,7 @@ export default function Swap() {
               </BottomGrouping> */}
             </Wrapper>
           </AppBody>
+          <AdvancedSwapDetailsDropdown trade={v2TradeList?.[selectDexName] as Trade | undefined} />
           {/* <AdvancedSwapDetailsDropdown trade={v2TradeList?.EOTC as Trade | undefined} />
           <div>PANCAKE</div>
           <AdvancedSwapDetailsDropdown trade={v2TradeList?.PANCAKE as Trade | undefined} />

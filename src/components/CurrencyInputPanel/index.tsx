@@ -134,6 +134,7 @@ interface CurrencyInputPanelProps {
   otherCurrency?: Currency | null
   id: string
   showCommonBases?: boolean
+  showInput?: boolean
 }
 
 export default function CurrencyInputPanel({
@@ -150,7 +151,8 @@ export default function CurrencyInputPanel({
   hideInput = false,
   otherCurrency,
   id,
-  showCommonBases
+  showCommonBases,
+  showInput = true
 }: CurrencyInputPanelProps) {
   // const { t } = useTranslation()
 
@@ -225,7 +227,7 @@ export default function CurrencyInputPanel({
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}
             </Aligner>
           </CurrencySelect>
-          {!hideInput && (
+          {!hideInput && showInput && (
             <>
               <NumericalInput
                 className="token-amount-input"

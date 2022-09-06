@@ -3,7 +3,7 @@ import ReactGA from 'react-ga'
 import { useActiveWeb3React } from '../../hooks'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { Field } from '../../state/swap/actions'
-import { useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
+import { useDerivedSwapInfo, useDexNameState, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
 import { BottomGrouping, SwapCallbackError } from '../swap/styleds'
 import {
   ButtonErrorExchang,
@@ -99,10 +99,14 @@ export default function ExchangeButton({
     trade,
     allowedSlippage,
     deadline,
-    recipient
+    recipient,
+    dexName
   )
   // toggle wallet when disconnected
   const toggleWalletModal = useWalletModalToggle()
+
+  // console.log(selectDexName, 'selectDexName')
+  // setDexName('EOTC')
   // modal and loading
   const [{ showConfirm, tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
     showConfirm: boolean

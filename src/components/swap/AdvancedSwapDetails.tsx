@@ -48,7 +48,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
           <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
         </RowBetween>
 
-        <RowBetween>
+        {/* <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
               流动性供应商费用
@@ -58,7 +58,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
           <TYPE.black fontSize={14} color={theme.text1}>
             {realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'}
           </TYPE.black>
-        </RowBetween>
+        </RowBetween> */}
       </AutoColumn>
     </>
   )

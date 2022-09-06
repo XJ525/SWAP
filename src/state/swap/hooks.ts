@@ -13,7 +13,15 @@ import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { isAddress } from '../../utils'
 import { AppDispatch, AppState } from '../index'
 import { useCurrencyBalances } from '../wallet/hooks'
-import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
+import {
+  Field,
+  replaceSwapState,
+  selectCurrency,
+  setDexName,
+  setRecipient,
+  switchCurrencies,
+  typeInput
+} from './actions'
 import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
@@ -21,6 +29,17 @@ import { computeSlippageAdjustedAmounts } from '../../utils/prices'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
+}
+export function useDexNameState() {
+  const dispatch = useDispatch<AppDispatch>()
+  const onDexNameSelection = useCallback(
+    dexName => {
+      console.log(dexName, 'dexName')
+      return dispatch(setDexName({ dexName }))
+    },
+    [dispatch]
+  )
+  return [useSelector<AppState, AppState['dexNameState']>(state => state.dexNameState).dexName, onDexNameSelection]
 }
 
 export function useSwapActionHandlers(): {
@@ -201,16 +220,6 @@ export function useDerivedSwapInfo(): {
   //  计算考虑滑点的情况下的输入 v2
   const slippageAdjustedAmounts = v2Trade && allowedSlippage && computeSlippageAdjustedAmounts(v2Trade, allowedSlippage)
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  //@ts-ignore
-  console.log(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    //@ts-ignore
-    slippageAdjustedAmounts?.INPUT?.toFixed(2),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    //@ts-ignore
-    slippageAdjustedAmounts?.OUTPUT?.toFixed(6),
-    'slippageAdjustedAmounts'
-  )
   // 计算考虑滑点的情况下的输入 v1
   const slippageAdjustedAmountsV1 =
     v1Trade && allowedSlippage && computeSlippageAdjustedAmounts(v1Trade, allowedSlippage)
