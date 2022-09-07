@@ -1,4 +1,5 @@
 import { AddressZero } from '@ethersproject/constants'
+import { Trades } from '../constants'
 import {
   BigintIsh,
   Currency,
@@ -167,6 +168,7 @@ const ZERO_PERCENT = new Percent('0')
 const ONE_HUNDRED_PERCENT = new Percent('1')
 
 // returns whether tradeB is better than tradeA by at least a threshold percentage amount
+// 评估交易b是否比交易a至少好一个百分比
 export function isTradeBetter(
   tradeA: Trade | undefined,
   tradeB: Trade | undefined,
@@ -192,8 +194,9 @@ export function isTradeBetter(
     return tradeA.executionPrice.raw.multiply(minimumDelta.add(ONE_HUNDRED_PERCENT)).lessThan(tradeB.executionPrice)
   }
 }
-export function tradeBetterSort(TradeList: TradeList): TradeList {
-  const TradeListKeys = Object.keys(TradeList)
-  if (TradeListKeys.length <= 0) return TradeList
-  return TradeList
+export function tradeBetterSort(Trades: Trades): Trades {
+  if (Trades.length <= 0) return Trades
+  return Trades.sort((TradeA, TradeB) => {
+    return isTradeBetter(TradeA.trade, TradeB.trade) ? 1 : -1
+  })
 }

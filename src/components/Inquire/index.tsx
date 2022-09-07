@@ -11,10 +11,8 @@ import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
 import { CONTRACT } from '../../constants'
+import { tradeBetterSort } from '../../data/V1'
 const Lists = styled.div`
-  /* position: relative;
-  top: -455px;
-  left: 550px; */
   padding: 1rem;
   border-radius: 30px;
   font-size: 18px;
@@ -58,12 +56,6 @@ const TokenBalance = styled.span`
   color: #7586a7;
 `
 
-// const QueryText = styled.span`
-//   color: ${({ theme }) => theme.text1};
-//   font-size: 22px;
-//   font-weight: 500;
-// `
-
 const QueryButton = styled.button`
   background-color: ${({ theme }) => theme.primary1};
   color: #fff;
@@ -98,11 +90,8 @@ export default function Inquire({ currency }: CurrencyInquire) {
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
   const [selectDexName, setDexName] = useDexNameState()
-  const dexList = useMemo(() => {
-    const dex = v2TradeList ? Object.keys(v2TradeList as object) : []
-    // setDexName(dex.find(item => v2TradeList?.[item]))
-    return dex
-  }, [v2TradeList])
+  const Trades = useMemo(() => tradeBetterSort(v2Trades), [v2Trades])
+
   return (
     <Lists>
       <ListTitle>
@@ -111,7 +100,7 @@ export default function Inquire({ currency }: CurrencyInquire) {
       </ListTitle>
 
       {v2TradeList ? (
-        v2Trades.map(item => {
+        Trades.map(item => {
           return item.trade ? (
             <QueryList
               key={item.name}
