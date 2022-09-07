@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { Fragment, useMemo } from 'react'
 import styled from 'styled-components'
 // import Refresh from '../../assets/images/refresh.svg'
 // import querylogo from '../../assets/images/eotc.png'
@@ -104,7 +104,7 @@ export default function Inquire() {
               </ListTitle>
             </QueryList>
           ) : (
-            <></>
+            <Fragment key={item.name}></Fragment>
           )
         })
       ) : (
