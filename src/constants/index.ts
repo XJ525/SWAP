@@ -2,7 +2,7 @@ import { ChainId, JSBI, Pair, Percent, Token, Trade, WETH } from 'eotc-bscswap-s
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
-import { PairState } from '../data/Reserves'
+// import { PairState } from '../data/Reserves'
 
 export const ROUTER_ADDRESS = '0xbD537A5afBB63295F1cab9A7A670415e153a91B9'
 export const AGGREGATION_ADDRESS = '0x2ae87E829a0bA3d9d7cFDD47128f43917fF5556C'

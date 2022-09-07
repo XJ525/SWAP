@@ -1,8 +1,7 @@
 import { Trade } from 'eotc-bscswap-sdk'
 import React from 'react'
 import styled from 'styled-components'
-import { Field } from '../../state/swap/actions'
-import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from '../../utils/prices'
+import { computeTradePriceBreakdown } from '../../utils/prices'
 const QueryText = styled.span`
   color: ${({ theme }) => theme.text1};
   font-size: 22px;
@@ -14,9 +13,9 @@ const TokenBalance = styled.span`
   color: #7586a7;
 `
 
-export default function PriceText({ trade, allowedSlippage }: { trade: Trade; allowedSlippage: number }) {
-  const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
-  const { priceImpactWithoutFee, realizedLPFee } = computeTradePriceBreakdown(trade)
+export default function PriceText({ trade }: { trade: Trade; allowedSlippage: number }) {
+  // const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
+  const { realizedLPFee } = computeTradePriceBreakdown(trade)
   return (
     <>
       <QueryText>

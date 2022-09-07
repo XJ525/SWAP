@@ -98,7 +98,13 @@ export interface TradeList {
 export function useTradeExactIn(
   currencyAmountIn?: CurrencyAmount,
   currencyOut?: Currency
-): { TradeList: TradeList | null; allowedPairs: object; Trades: Trades } {
+): {
+  TradeList: TradeList | null
+  allowedPairs: {
+    [key: string]: [Pair | null]
+  }
+  Trades: Trades
+} {
   // 允许的交易对
   const allowedPairs = useAllCommonPairs(currencyAmountIn?.currency, currencyOut)
   return useMemo(() => {
@@ -146,7 +152,13 @@ export function useTradeExactIn(
 export function useTradeExactOut(
   currencyIn?: Currency,
   currencyAmountOut?: CurrencyAmount
-): { TradeList: TradeList | null; allowedPairs: object; Trades: Trades } {
+): {
+  TradeList: TradeList | null
+  allowedPairs: {
+    [key: string]: [Pair | null]
+  }
+  Trades: Trades
+} {
   const allowedPairs = useAllCommonPairs(currencyIn, currencyAmountOut?.currency)
 
   return useMemo(() => {

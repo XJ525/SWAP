@@ -1,11 +1,7 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import Refresh from '../../assets/images/refresh.svg'
-import querylogo from '../../assets/images/eotc.png'
-import { useActiveWeb3React } from '../../hooks'
-import { useETHBalances, useCurrencyBalance } from '../../state/wallet/hooks'
-import { Currency, Trade } from 'eotc-bscswap-sdk'
-import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
+// import Refresh from '../../assets/images/refresh.svg'
+// import querylogo from '../../assets/images/eotc.png'
 import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
@@ -56,34 +52,14 @@ const TokenBalance = styled.span`
   color: #7586a7;
 `
 
-const QueryButton = styled.button`
-  background-color: ${({ theme }) => theme.primary1};
-  color: #fff;
-  border-radius: 8px;
-  width: 75px;
-  height: 30px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-`
+// interface CurrencyInquire {
+//   currency?: Currency | null
+//   arr?: Array<Text>
+// }
 
-interface CurrencyInquire {
-  currency?: Currency | null
-  arr?: Array<Text>
-}
-
-export default function Inquire({ currency }: CurrencyInquire) {
-  const {
-    v1Trade,
-    v2Trade,
-    currencyBalances,
-    parsedAmount,
-    currencies,
-    v2TradeList,
-    inputError: swapInputError,
-    allowedPairs,
-    v2Trades
-  } = useDerivedSwapInfo()
+export default function Inquire() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { v2TradeList, v2Trades } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
   const { selectDexName, setDexName } = useDexNameState()

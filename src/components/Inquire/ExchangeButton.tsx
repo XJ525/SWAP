@@ -69,7 +69,7 @@ export default function ExchangeButton({
   // check whether the user has approved the router on the input token
   //检查用户是否已经批准了路由器的输入令牌
   const [approval, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage, dexName)
-  const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
+  const [approvalSubmitted] = useState<boolean>(false)
   // 是否专家模式
   const [isExpertMode] = useExpertModeManager()
   // 在非专家模式中，永远不要显示价格影响是否高于阈值
@@ -112,7 +112,7 @@ export default function ExchangeButton({
     swapErrorMessage: undefined,
     txHash: undefined
   })
-  const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
+  const { onUserInput } = useSwapActionHandlers()
   const { address: recipientAddress } = useENSAddress(recipient)
   const handleSwap = useCallback(() => {
     if (priceImpactWithoutFee && !confirmPriceImpactWithoutFee(priceImpactWithoutFee)) {

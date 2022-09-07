@@ -16,7 +16,7 @@ import {
   TradeType,
   WETH
 } from 'eotc-bscswap-sdk'
-import { TradeList } from '../hooks/Trades'
+// import { TradeList } from '../hooks/Trades'
 import { useMemo } from 'react'
 import { useActiveWeb3React } from '../hooks'
 import { useAllTokens } from '../hooks/Tokens'
