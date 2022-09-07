@@ -407,27 +407,28 @@ export default function Swap() {
                     </ButtonLight>
                   </>
                 ) : (
-                  <ButtonError
-                    onClick={() => {
-                      // if (isExpertMode) {
-                      //   handleSwap()
-                      // } else {
-                      //   setSwapState({
-                      //     tradeToConfirm: trade,
-                      //     attemptingTxn: false,
-                      //     swapErrorMessage: undefined,
-                      //     showConfirm: true,
-                      //     txHash: undefined
-                      //   })
-                      // }
-                    }}
-                    id="swap-button"
-                    disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
-                  >
-                    <Text fontSize={20} fontWeight={500}>
-                      查询
-                    </Text>
-                  </ButtonError>
+                  <></>
+                  // <ButtonError
+                  //   onClick={() => {
+                  //     // if (isExpertMode) {
+                  //     //   handleSwap()
+                  //     // } else {
+                  //     //   setSwapState({
+                  //     //     tradeToConfirm: trade,
+                  //     //     attemptingTxn: false,
+                  //     //     swapErrorMessage: undefined,
+                  //     //     showConfirm: true,
+                  //     //     txHash: undefined
+                  //     //   })
+                  //     // }
+                  //   }}
+                  //   id="swap-button"
+                  //   disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+                  // >
+                  //   <Text fontSize={20} fontWeight={500}>
+                  //     查询
+                  //   </Text>
+                  // </ButtonError>
                 )}
                 {showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />}
                 {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
@@ -531,12 +532,7 @@ export default function Swap() {
               </BottomGrouping> */}
             </Wrapper>
           </AppBody>
-          <AdvancedSwapDetailsDropdown trade={v2TradeList?.[selectDexName] as Trade | undefined} />
-          {/* <AdvancedSwapDetailsDropdown trade={v2TradeList?.EOTC as Trade | undefined} />
-          <div>PANCAKE</div>
-          <AdvancedSwapDetailsDropdown trade={v2TradeList?.PANCAKE as Trade | undefined} />
-          <div>SUHSI</div>
-          <AdvancedSwapDetailsDropdown trade={v2TradeList?.SUHSI as Trade | undefined} /> */}
+          <AdvancedSwapDetailsDropdown trade={v2TradeList?.[selectDexName as string] as Trade | undefined} />
         </div>
         <Inquire />
       </div>

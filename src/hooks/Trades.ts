@@ -3,7 +3,7 @@ import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 // import { CONTRACT } from '../constants'
 
-import { BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from '../constants'
+import { BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES, Trades } from '../constants'
 import { PairState, usePairsPor } from '../data/Reserves'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 
@@ -98,26 +98,29 @@ export interface TradeList {
 export function useTradeExactIn(
   currencyAmountIn?: CurrencyAmount,
   currencyOut?: Currency
-): { TradeList: TradeList | null; allowedPairs: object } {
+): { TradeList: TradeList | null; allowedPairs: object; Trades: Trades } {
   // 允许的交易对
   const allowedPairs = useAllCommonPairs(currencyAmountIn?.currency, currencyOut)
   return useMemo(() => {
     const TradeList: TradeList = {}
+    const Trades: Trades = []
     if (!currencyAmountIn || !currencyOut) {
-      return { allowedPairs, TradeList: null }
+      return { allowedPairs, TradeList: null, Trades }
     }
     for (const item in allowedPairs) {
       if (allowedPairs[item].length > 0) {
-        TradeList[item] =
+        const trade =
           Trade.bestTradeExactIn(allowedPairs[item], currencyAmountIn, currencyOut, {
             maxHops: 3,
             maxNumResults: 1
           })[0] ?? null
+        TradeList[item] = trade
+        Trades.push({ name: item, trade, pairs: allowedPairs[item] })
       } else {
         TradeList[item] = null
       }
     }
-    return { allowedPairs, TradeList }
+    return { allowedPairs, TradeList, Trades: [...Trades] }
     // if (currencyAmountIn && currencyOut && allowedPairs.length > 0) {
     //   // console.log(
     //   //   '43434',
@@ -143,32 +146,28 @@ export function useTradeExactIn(
 export function useTradeExactOut(
   currencyIn?: Currency,
   currencyAmountOut?: CurrencyAmount
-): { TradeList: TradeList | null; allowedPairs: object } {
+): { TradeList: TradeList | null; allowedPairs: object; Trades: Trades } {
   const allowedPairs = useAllCommonPairs(currencyIn, currencyAmountOut?.currency)
 
   return useMemo(() => {
-    // if (currencyIn && currencyAmountOut && allowedPairs.length > 0) {
-    //   return (
-    //     Trade.bestTradeExactOut(allowedPairs, currencyIn, currencyAmountOut, { maxHops: 3, maxNumResults: 1 })[0] ??
-    //     null
-    //   )
-    // }
-    // return null
     const TradeList: TradeList = {}
+    const Trades: Trades = []
     if (!currencyAmountOut || !currencyIn) {
-      return { allowedPairs, TradeList: null }
+      return { allowedPairs, TradeList: null, Trades }
     }
     for (const item in allowedPairs) {
       if (allowedPairs[item].length > 0) {
-        TradeList[item] =
+        const trade =
           Trade.bestTradeExactIn(allowedPairs[item], currencyAmountOut, currencyIn, {
             maxHops: 3,
             maxNumResults: 1
           })[0] ?? null
+        Trades.push({ name: item, trade, pairs: allowedPairs[item] })
+        TradeList[item] = trade
       } else {
         TradeList[item] = null
       }
     }
-    return { allowedPairs, TradeList }
+    return { allowedPairs, TradeList, Trades: [...Trades] }
   }, [allowedPairs, currencyIn, currencyAmountOut])
 }

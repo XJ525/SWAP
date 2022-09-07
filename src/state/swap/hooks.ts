@@ -26,6 +26,7 @@ import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { computeSlippageAdjustedAmounts } from '../../utils/prices'
+import { Trades } from '../../constants'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
@@ -127,6 +128,7 @@ function involvesAddress(trade: Trade, checksummedAddress: string): boolean {
 }
 
 // from the current swap inputs, compute the best trade and return it.
+// 从当前的交换输入，计算出最好的交易并返回
 export function useDerivedSwapInfo(): {
   currencies: { [field in Field]?: Currency }
   currencyBalances: { [field in Field]?: CurrencyAmount }
@@ -138,6 +140,7 @@ export function useDerivedSwapInfo(): {
   allowedPairs: {
     [key: string]: [Pair | null]
   }
+  v2Trades: Trades
 } {
   const { account } = useActiveWeb3React()
 
@@ -163,20 +166,22 @@ export function useDerivedSwapInfo(): {
   // 精确输入 independentField === 'INPUT"
   const isExactIn: boolean = independentField === Field.INPUT
   const parsedAmount = tryParseAmount(typedValue, (isExactIn ? inputCurrency : outputCurrency) ?? undefined)
-  const { TradeList: bestTradeExactInObj, allowedPairs: ExactInAllowedPairs } = useTradeExactIn(
+  const { TradeList: bestTradeExactInObj, allowedPairs: ExactInAllowedPairs, Trades: exactInTrades } = useTradeExactIn(
     isExactIn ? parsedAmount : undefined,
     outputCurrency ?? undefined
   )
-  const { TradeList: bestTradeExactOutObj, allowedPairs: ExactOutAllowedPairs } = useTradeExactOut(
-    inputCurrency ?? undefined,
-    !isExactIn ? parsedAmount : undefined
-  )
+  const {
+    TradeList: bestTradeExactOutObj,
+    allowedPairs: ExactOutAllowedPairs,
+    Trades: exactOutTrades
+  } = useTradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined)
   const bestTradeExactIn = bestTradeExactInObj?.EOTC
   const bestTradeExactOut = bestTradeExactOutObj?.EOTC
   const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
   const allowedPairs = isExactIn ? ExactInAllowedPairs : ExactOutAllowedPairs
   const v2TradeList = isExactIn ? bestTradeExactInObj : bestTradeExactOutObj
   // console.log(bestTradeExactInObj, 'bestTradeExactInObj')
+  const v2Trades = isExactIn ? exactInTrades : exactOutTrades
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
     [Field.OUTPUT]: relevantTokenBalances[1]
@@ -250,7 +255,8 @@ export function useDerivedSwapInfo(): {
     inputError,
     v1Trade,
     v2TradeList,
-    allowedPairs
+    allowedPairs,
+    v2Trades
   }
 }
 

@@ -10,6 +10,7 @@ import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
+import { CONTRACT } from '../../constants'
 const Lists = styled.div`
   /* position: relative;
   top: -455px;
@@ -91,85 +92,64 @@ export default function Inquire({ currency }: CurrencyInquire) {
     currencies,
     v2TradeList,
     inputError: swapInputError,
-    allowedPairs
+    allowedPairs,
+    v2Trades
   } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
   const [selectDexName, setDexName] = useDexNameState()
-  // const [activeDex, setActiveDex] = useState(selectDexName)
   const dexList = useMemo(() => {
     const dex = v2TradeList ? Object.keys(v2TradeList as object) : []
     // setDexName(dex.find(item => v2TradeList?.[item]))
     return dex
   }, [v2TradeList])
-  // const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
   return (
     <Lists>
       <ListTitle>
         <ActiveText>查询结果</ActiveText>
-        <ListImg src={Refresh}></ListImg>
+        {/* <ListImg src={Refresh}></ListImg> */}
       </ListTitle>
 
       {v2TradeList ? (
-        dexList.map(item => {
-          return v2TradeList[item] ? (
+        v2Trades.map(item => {
+          return item.trade ? (
             <QueryList
-              key={item}
-              style={selectDexName == item ? { border: '1px solid #237ff8' } : {}}
+              key={item.name}
+              style={selectDexName == item.name ? { border: '1px solid #237ff8' } : {}}
               onClick={() => {
-                console.log('999')
-                setDexName(item)
+                setDexName(item.name)
               }}
             >
-              {/* <AdvancedSwapDetailsDropdown trade={v2TradeList[item] as Trade | undefined} /> */}
               <ListTitle>
                 <ListDiv>
-                  <ListImg src={querylogo}></ListImg>
-                  <ActiveText> {item}</ActiveText>
+                  <ListImg src={CONTRACT[item.name].Icon}></ListImg>
+                  <ActiveText> {item.name}</ActiveText>
                 </ListDiv>
                 <ListDiv>
                   <TokenBalance>
-                    {allowedPairs[item]?.[0]?.reserve0.token.symbol}余额:{' '}
-                    {allowedPairs[item]?.[0]?.reserve0.toSignificant(2)}
+                    {item.pairs?.[0]?.reserve0.token.symbol}余额: {item.pairs?.[0]?.reserve0.toSignificant(2)}
                   </TokenBalance>
                   <TokenBalance>
-                    {allowedPairs[item]?.[0]?.reserve1.token.symbol}余额:{' '}
-                    {allowedPairs[item]?.[0]?.reserve1.toSignificant(2)}
+                    {item.pairs?.[0]?.reserve1.token.symbol}余额: {item.pairs?.[0]?.reserve1.toSignificant(2)}
                   </TokenBalance>
                 </ListDiv>
               </ListTitle>
               <ListTitle>
                 <ListDiv>
-                  <PriceText trade={v2TradeList[item] as Trade} allowedSlippage={allowedSlippage} />
-                  {/* <TokenBalance>(手续费：~$0.003)</TokenBalance> */}
+                  <PriceText trade={item.trade} allowedSlippage={allowedSlippage} />
                 </ListDiv>
-                <ExchangeButton trade={v2TradeList[item] as Trade} allowedSlippage={allowedSlippage} dexName={item} />
-                {/* <QueryButton>交换</QueryButton> */}
+                <ExchangeButton trade={item.trade} allowedSlippage={allowedSlippage} dexName={item.name} />
               </ListTitle>
-              {/* <ListTitle>
-              <ListDiv>
-                <ListImg src={querylogo}></ListImg>
-                <ActiveText> {item.tokenName}</ActiveText>
-              </ListDiv>
-              <ListDiv>
-                <TokenBalance>EOTC余额: {selectedCurrencyBalance?.toSignificant(6)}</TokenBalance>
-                <TokenBalance>BNB余额: {userEthBalance?.toSignificant(4)}</TokenBalance>
-              </ListDiv>
-            </ListTitle>
-            <ListTitle>
-              <ListDiv>
-                <QueryText>2.38 EOTC</QueryText>
-                <TokenBalance>(手续费：~$0.003)</TokenBalance>
-              </ListDiv>
-              <QueryButton>交换</QueryButton>
-            </ListTitle> */}
             </QueryList>
           ) : (
-            <div key={item}></div>
+            <></>
           )
         })
       ) : (
-        <>输入查询</>
+        <ListTitle>
+          <ActiveText>输入查询</ActiveText>
+          {/* <ListImg src={Refresh}></ListImg> */}
+        </ListTitle>
       )}
     </Lists>
   )
