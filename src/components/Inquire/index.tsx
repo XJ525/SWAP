@@ -73,9 +73,6 @@ interface CurrencyInquire {
 }
 
 export default function Inquire({ currency }: CurrencyInquire) {
-  const { account } = useActiveWeb3React()
-  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const {
     v1Trade,
     v2Trade,
@@ -89,7 +86,7 @@ export default function Inquire({ currency }: CurrencyInquire) {
   } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
-  const [selectDexName, setDexName] = useDexNameState()
+  const { selectDexName, setDexName } = useDexNameState()
   const Trades = useMemo(() => tradeBetterSort(v2Trades), [v2Trades])
 
   return (

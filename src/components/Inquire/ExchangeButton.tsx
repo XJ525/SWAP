@@ -3,7 +3,7 @@ import ReactGA from 'react-ga'
 import { useActiveWeb3React } from '../../hooks'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { Field } from '../../state/swap/actions'
-import { useDerivedSwapInfo, useDexNameState, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
+import { useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
 import { BottomGrouping, SwapCallbackError } from '../swap/styleds'
 import {
   ButtonErrorExchang,
@@ -41,16 +41,7 @@ export default function ExchangeButton({
 }) {
   const { account } = useActiveWeb3React()
   const { independentField, typedValue, recipient } = useSwapState()
-  const {
-    v1Trade,
-    v2Trade,
-    currencyBalances,
-    parsedAmount,
-    currencies,
-    v2TradeList,
-    inputError: swapInputError
-  } = useDerivedSwapInfo()
-  // console.log(currencies, 'currencies')
+  const { parsedAmount, currencies, inputError: swapInputError } = useDerivedSwapInfo()
   const { wrapType, execute: onWrap, inputError: wrapInputError } = useWrapCallback(
     currencies[Field.INPUT],
     currencies[Field.OUTPUT],

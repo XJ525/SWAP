@@ -35,12 +35,14 @@ export function useDexNameState() {
   const dispatch = useDispatch<AppDispatch>()
   const onDexNameSelection = useCallback(
     dexName => {
-      console.log(dexName, 'dexName')
       return dispatch(setDexName({ dexName }))
     },
     [dispatch]
   )
-  return [useSelector<AppState, AppState['dexNameState']>(state => state.dexNameState).dexName, onDexNameSelection]
+  return {
+    selectDexName: useSelector<AppState, AppState['dexNameState']>(state => state.dexNameState).dexName,
+    setDexName: onDexNameSelection
+  }
 }
 
 export function useSwapActionHandlers(): {
