@@ -121,7 +121,7 @@ export function useTradeExactIn(
             maxNumResults: 1
           })[0] ?? null
         TradeList[item] = trade
-        Trades.push({ name: item, trade, pairs: allowedPairs[item] })
+        trade ? Trades.push({ name: item, trade, pairs: allowedPairs[item] }) : null
       } else {
         TradeList[item] = null
       }
@@ -174,7 +174,8 @@ export function useTradeExactOut(
             maxHops: 3,
             maxNumResults: 1
           })[0] ?? null
-        Trades.push({ name: item, trade, pairs: allowedPairs[item] })
+        trade ? Trades.push({ name: item, trade, pairs: allowedPairs[item] }) : null
+        // Trades.push({ name: item, trade, pairs: allowedPairs[item] })
         TradeList[item] = trade
       } else {
         TradeList[item] = null

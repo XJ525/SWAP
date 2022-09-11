@@ -177,13 +177,15 @@ export function useDerivedSwapInfo(): {
     allowedPairs: ExactOutAllowedPairs,
     Trades: exactOutTrades
   } = useTradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined)
-  const bestTradeExactIn = bestTradeExactInObj?.EOTC
-  const bestTradeExactOut = bestTradeExactOutObj?.EOTC
-  const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
+
   const allowedPairs = isExactIn ? ExactInAllowedPairs : ExactOutAllowedPairs
   const v2TradeList = isExactIn ? bestTradeExactInObj : bestTradeExactOutObj
   // console.log(bestTradeExactInObj, 'bestTradeExactInObj')
   const v2Trades = isExactIn ? exactInTrades : exactOutTrades
+  const bestTradeExactIn = v2Trades[0]?.trade
+  const bestTradeExactOut = v2Trades[0]?.trade
+  console.log(v2Trades[0], 'bestTradeExact')
+  const v2Trade = isExactIn ? bestTradeExactIn : bestTradeExactOut
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
     [Field.OUTPUT]: relevantTokenBalances[1]

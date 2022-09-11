@@ -24,6 +24,7 @@ import { useV1FactoryContract } from '../hooks/useContract'
 import { Version } from '../hooks/useToggledVersion'
 import { NEVER_RELOAD, useSingleCallResult, useSingleContractMultipleData } from '../state/multicall/hooks'
 import { useETHBalances, useTokenBalance, useTokenBalances } from '../state/wallet/hooks'
+import { computeTradePriceBreakdown, warningSeverity } from '../utils/prices'
 
 export function useV1ExchangeAddress(tokenAddress?: string): string | undefined {
   const contract = useV1FactoryContract()
@@ -198,5 +199,14 @@ export function tradeBetterSort(Trades: Trades): Trades {
   if (Trades.length <= 0) return Trades
   return Trades.sort((TradeA, TradeB) => {
     return isTradeBetter(TradeA.trade, TradeB.trade) ? 1 : -1
+  })
+}
+export function filtrTrades(Trades: Trades): Trades {
+  if (Trades.length <= 0) return Trades
+  return Trades.filter(item => {
+    const trade = item.trade
+    const { priceImpactWithoutFee } = computeTradePriceBreakdown(trade)
+    const priceImpactSeverity = warningSeverity(priceImpactWithoutFee)
+    return priceImpactSeverity < 4
   })
 }

@@ -4,7 +4,8 @@ import { useActiveWeb3React } from '../../hooks'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { Field } from '../../state/swap/actions'
 import { useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
-import { SwapCallbackError } from '../swap/styleds'
+// import { SwapCallbackError } from '../swap/styleds'
+
 import {
   ButtonErrorExchang,
   ButtonLight,
@@ -18,7 +19,7 @@ import { ApprovalState, useApproveCallbackFromTrade } from '../../hooks/useAppro
 import { JSBI, Trade } from 'eotc-bscswap-sdk'
 import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import { useExpertModeManager, useUserDeadline } from '../../state/user/hooks'
-import { AutoRow, RowBetween } from '../Row'
+import { RowBetween } from '../Row'
 import Loader from '../Loader'
 import { Text } from 'rebass'
 import ProgressSteps from '../ProgressSteps'
@@ -29,8 +30,12 @@ import { getTradeVersion } from '../../data/V1'
 import Wallet from '../../assets/images/wallet.png'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import ConfirmSwapModal from '../swap/ConfirmSwapModal'
-// display: flex;
-// align-items: center;
+import styled from 'styled-components'
+const LoadingButton = styled.div`
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+`
 export default function ExchangeButton({
   trade,
   allowedSlippage,
@@ -203,9 +208,9 @@ export default function ExchangeButton({
             >
               <Text fontSize={16} fontWeight={500}>
                 {approval === ApprovalState.PENDING ? (
-                  <AutoRow gap="6px" justify="center">
-                    批准 <Loader stroke="white" />
-                  </AutoRow>
+                  <LoadingButton>
+                    授权 <Loader stroke="white" />
+                  </LoadingButton>
                 ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                   '合法的'
                 ) : (
@@ -242,9 +247,7 @@ export default function ExchangeButton({
         ) : (
           <ButtonErrorExchang
             onClick={() => {
-              console.log('787878')
               if (isExpertMode) {
-                console.log('isExpertMode')
                 handleSwap()
               } else {
                 setSwapState({
@@ -270,7 +273,7 @@ export default function ExchangeButton({
           </ButtonErrorExchang>
         )}
         {showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />}
-        {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
+        {/* {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null} */}
         {/* {betterTradeLinkVersion && <BetterTradeLink version={betterTradeLinkVersion} />} */}
       </div>
     </>

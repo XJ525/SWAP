@@ -5,9 +5,9 @@ import styled from 'styled-components'
 import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
-import { useUserSlippageTolerance } from '../../state/user/hooks'
+import { useExpertModeManager, useUserSlippageTolerance } from '../../state/user/hooks'
 import { CONTRACT } from '../../constants'
-import { tradeBetterSort } from '../../data/V1'
+import { tradeBetterSort, filtrTrades } from '../../data/V1'
 import { AutoRow } from '../Row'
 import { LpHelper } from '../QuestionHelper'
 import { isMobile } from 'react-device-detect'
@@ -61,7 +61,10 @@ export default function Inquire() {
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
   const { selectDexName, setDexName } = useDexNameState()
-  const Trades = useMemo(() => tradeBetterSort(v2Trades), [v2Trades])
+  const [isExpertMode] = useExpertModeManager()
+  const Trades = useMemo(() => {
+    return !isExpertMode ? filtrTrades(tradeBetterSort(v2Trades)) : tradeBetterSort(v2Trades)
+  }, [v2Trades, isExpertMode])
 
   return (
     <Lists>
