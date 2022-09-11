@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { computeTradePriceBreakdown } from '../../utils/prices'
 const QueryText = styled.span`
   color: ${({ theme }) => theme.text1};
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
+  white-space: nowrap;
 `
 const TokenBalance = styled.span`
   margin-left: 10px;
@@ -18,14 +19,9 @@ export default function PriceText({ trade }: { trade: Trade; allowedSlippage: nu
   const { realizedLPFee } = computeTradePriceBreakdown(trade)
   return (
     <>
-      <QueryText>
-        {trade.outputAmount.toSignificant(6)}
-        {/* {trade
-          ? `${slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(4)} ${trade.outputAmount.currency.symbol}`
-          : ''} */}
-      </QueryText>
+      <QueryText>{trade.outputAmount.toSignificant(4) + ' ' + trade.outputAmount.currency.symbol}</QueryText>
       <TokenBalance>
-        (手续费：{realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'})
+        (手续费：{realizedLPFee ? `${realizedLPFee.toSignificant(3)} ${trade.inputAmount.currency.symbol}` : '-'})
       </TokenBalance>
     </>
   )

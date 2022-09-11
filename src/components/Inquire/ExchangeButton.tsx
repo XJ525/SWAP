@@ -4,7 +4,7 @@ import { useActiveWeb3React } from '../../hooks'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { Field } from '../../state/swap/actions'
 import { useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from '../../state/swap/hooks'
-import { BottomGrouping, SwapCallbackError } from '../swap/styleds'
+import { SwapCallbackError } from '../swap/styleds'
 import {
   ButtonErrorExchang,
   ButtonLight,
@@ -29,7 +29,8 @@ import { getTradeVersion } from '../../data/V1'
 import Wallet from '../../assets/images/wallet.png'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import ConfirmSwapModal from '../swap/ConfirmSwapModal'
-
+// display: flex;
+// align-items: center;
 export default function ExchangeButton({
   trade,
   allowedSlippage,
@@ -175,7 +176,7 @@ export default function ExchangeButton({
         swapErrorMessage={swapErrorMessage}
         onDismiss={handleConfirmDismiss}
       />
-      <BottomGrouping>
+      <div>
         {!account ? (
           <>
             <ButtonLight onClick={toggleWalletModal}>
@@ -271,7 +272,7 @@ export default function ExchangeButton({
         {showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />}
         {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
         {/* {betterTradeLinkVersion && <BetterTradeLink version={betterTradeLinkVersion} />} */}
-      </BottomGrouping>
+      </div>
     </>
   )
 }

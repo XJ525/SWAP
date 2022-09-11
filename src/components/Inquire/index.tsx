@@ -8,6 +8,10 @@ import ExchangeButton from './ExchangeButton'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
 import { CONTRACT } from '../../constants'
 import { tradeBetterSort } from '../../data/V1'
+import { AutoRow } from '../Row'
+import { LpHelper } from '../QuestionHelper'
+import { isMobile } from 'react-device-detect'
+// import { AutoColumn } from '../Column'
 const Lists = styled.div`
   padding: 1rem;
   border-radius: 30px;
@@ -41,10 +45,10 @@ const QueryList = styled.div`
   margin: 10px 0px;
 `
 
-const ListDiv = styled.div`
-  display: flex;
-  line-height: 25px;
-`
+// const ListDiv = styled.div`
+//   display: flex;
+//   line-height: 25px;
+// `
 
 const TokenBalance = styled.span`
   margin-left: 10px;
@@ -52,13 +56,7 @@ const TokenBalance = styled.span`
   color: #7586a7;
 `
 
-// interface CurrencyInquire {
-//   currency?: Currency | null
-//   arr?: Array<Text>
-// }
-
 export default function Inquire() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { v2TradeList, v2Trades } = useDerivedSwapInfo()
   // 用户允许的滑点
   const [allowedSlippage] = useUserSlippageTolerance()
@@ -83,23 +81,41 @@ export default function Inquire() {
               }}
             >
               <ListTitle>
-                <ListDiv>
+                <AutoRow gap="6px">
                   <ListImg src={CONTRACT[item.name].Icon}></ListImg>
                   <ActiveText> {item.name}</ActiveText>
-                </ListDiv>
-                <ListDiv>
-                  <TokenBalance>
-                    {item.pairs?.[0]?.reserve0.token.symbol}余额: {item.pairs?.[0]?.reserve0.toSignificant(2)}
-                  </TokenBalance>
-                  <TokenBalance>
-                    {item.pairs?.[0]?.reserve1.token.symbol}余额: {item.pairs?.[0]?.reserve1.toSignificant(2)}
-                  </TokenBalance>
-                </ListDiv>
+                </AutoRow>
+                <AutoRow gap="6px" justify="flex-end">
+                  {isMobile ? (
+                    <LpHelper
+                      text={
+                        <>
+                          <TokenBalance>
+                            {item.pairs?.[0]?.reserve0.token.symbol}余额: {item.pairs?.[0]?.reserve0.toSignificant(2)}
+                          </TokenBalance>
+                          <TokenBalance>
+                            {item.pairs?.[0]?.reserve1.token.symbol}余额: {item.pairs?.[0]?.reserve1.toSignificant(2)}
+                          </TokenBalance>
+                        </>
+                      }
+                    />
+                  ) : (
+                    <>
+                      <TokenBalance>
+                        {item.pairs?.[0]?.reserve0.token.symbol}余额: {item.pairs?.[0]?.reserve0.toSignificant(2)}
+                      </TokenBalance>
+                      <TokenBalance>
+                        {item.pairs?.[0]?.reserve1.token.symbol}余额: {item.pairs?.[0]?.reserve1.toSignificant(2)}
+                      </TokenBalance>
+                    </>
+                  )}
+                </AutoRow>
               </ListTitle>
               <ListTitle>
-                <ListDiv>
+                {/* <ListDiv></ListDiv> */}
+                <AutoRow gap="6px">
                   <PriceText trade={item.trade} allowedSlippage={allowedSlippage} />
-                </ListDiv>
+                </AutoRow>
                 <ExchangeButton trade={item.trade} allowedSlippage={allowedSlippage} dexName={item.name} />
               </ListTitle>
             </QueryList>
