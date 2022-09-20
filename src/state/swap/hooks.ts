@@ -1,7 +1,7 @@
 import useENS from '../../hooks/useENS'
 import { Version } from '../../hooks/useToggledVersion'
 import { parseUnits } from '@ethersproject/units'
-import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Token, TokenAmount, Trade } from 'eotc-bscswap-sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Token, TokenAmount, Trade } from 'eotc-bscswap-sdk'
 import { ParsedQs } from 'qs'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -57,8 +57,8 @@ export function useSwapActionHandlers(): {
       dispatch(
         selectCurrency({
           field,
-          // currencyId: currency instanceof Token ? currency.address : currency === ETHER ? 'BNB' : ''
-          currencyId: currency instanceof Token ? currency.address : currency === ETHER ? 'ETH' : ''
+          // currencyId: currency instanceof Token ? currency.address : currency === Currency.ETHER ? 'BNB' : ''
+          currencyId: currency instanceof Token ? currency.address : currency === Currency.ETHER ? 'ETH' : ''
         })
       )
     },

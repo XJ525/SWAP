@@ -1,6 +1,6 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Trade, TokenAmount, CurrencyAmount, ETHER } from 'eotc-bscswap-sdk'
+import { Trade, TokenAmount, CurrencyAmount, Currency } from 'eotc-bscswap-sdk'
 import { useCallback, useMemo } from 'react'
 import { CONTRACT } from '../constants'
 import { useTokenAllowance } from '../data/Allowances'
@@ -34,7 +34,7 @@ export function useApproveCallback(
   // check the current approval status
   const approvalState: ApprovalState = useMemo(() => {
     if (!amountToApprove || !spender) return ApprovalState.UNKNOWN
-    if (amountToApprove.currency === ETHER) return ApprovalState.APPROVED
+    if (amountToApprove.currency === Currency.ETHER) return ApprovalState.APPROVED
     // we might not have enough data to know whether or not we need to approve
     if (!currentAllowance) return ApprovalState.UNKNOWN
 

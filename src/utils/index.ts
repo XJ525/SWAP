@@ -5,7 +5,7 @@ import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import IUniswapV2Router02ABIJSON from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
 import { ROUTER_ADDRESS, AGGREGATION_ADDRESS, CONTRACT } from '../constants'
-import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from 'eotc-bscswap-sdk'
+import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency } from 'eotc-bscswap-sdk'
 import { TokenAddressMap } from '../state/lists/hooks'
 import IAggregationABI from '../constants/abis/IAggregationABI.json'
 const { abi: IUniswapV2Router02ABI } = IUniswapV2Router02ABIJSON
@@ -111,6 +111,6 @@ export function escapeRegExp(string: string): string {
 }
 
 export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
-  if (currency === ETHER) return true
+  if (currency === Currency.ETHER) return true
   return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address])
 }

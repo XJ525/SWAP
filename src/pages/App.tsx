@@ -1,10 +1,13 @@
-import React, { Suspense } from 'react'
+import { Currency } from 'eotc-bscswap-sdk'
+import React, { Suspense, useEffect } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import Header from '../components/Header'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
+import { getChainInfo } from '../constants/chainInfo'
+import { useActiveWeb3React } from '../hooks'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import AddLiquidity from './AddLiquidity'
 // import { useAggregation } from '../hooks/useAggregation'
@@ -60,6 +63,14 @@ const Marginer = styled.div`
 
 export default function App() {
   // useAggregation()
+
+  const { chainId } = useActiveWeb3React()
+  useEffect(() => {
+    const nativeCurrency = getChainInfo(chainId)?.nativeCurrency
+    if (nativeCurrency) {
+      Currency.setETHER(nativeCurrency.decimals, nativeCurrency.symbol, nativeCurrency.name)
+    }
+  }, [chainId])
   return (
     <Suspense fallback={null}>
       <HashRouter>

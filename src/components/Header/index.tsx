@@ -20,6 +20,7 @@ import Menu from '../Menu'
 import Row from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
+import { getChainInfo } from '../../constants/chainInfo'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -158,10 +159,9 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
-
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
-
+  const nativeCurrency = getChainInfo(chainId)?.nativeCurrency
   return (
     <HeaderFrame>
       <RowBetweenHeader>
@@ -183,15 +183,15 @@ export default function Header() {
 
           {!isMobile && (
             <HeaderElement>
-              <TestnetWrapper>
+              {/* <TestnetWrapper>
                 {!isMobile && chainId && NETWORK_LABELS[chainId] && (
                   <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>
                 )}
-              </TestnetWrapper>
+              </TestnetWrapper> */}
               <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
                 {account && userEthBalance ? (
                   <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                    {userEthBalance?.toSignificant(4)} BNB
+                    {userEthBalance?.toSignificant(4)} {nativeCurrency?.symbol}
                     {/* {userEthBalance?.toSignificant(4)} ETH */}
                   </BalanceText>
                 ) : null}
@@ -216,7 +216,7 @@ export default function Header() {
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} BNB
+                  {userEthBalance?.toSignificant(4)} {nativeCurrency?.symbol}
                   {/* {userEthBalance?.toSignificant(4)} ETH */}
                 </BalanceText>
               ) : null}
