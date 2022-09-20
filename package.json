@@ -116,6 +116,6 @@
   "dependencies": {
     "@ethersproject/solidity": "^5.7.0",
     "@web3-reactv3/core": "npm:@web3-react/core@^8.0.35-beta.0",
-    "eotc-bscswap-sdk": "^1.0.0"
+    "eotc-bscswap-sdk": "git+https://github.com/XJ525/eotc-bscswap-sdk.git"
   }
 }
