@@ -12,7 +12,7 @@ import LogoDark from '../../assets/svg/logo2.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-
+import NetworkSelector from './NetworkSelector'
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
 import Menu from '../Menu'
@@ -168,6 +168,9 @@ export default function Header() {
           </Title>
         </HeaderElement>
         <HeaderControls>
+          <HeaderElement>
+            <NetworkSelector />
+          </HeaderElement>
           <HeaderElement>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
