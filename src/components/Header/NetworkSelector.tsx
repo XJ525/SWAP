@@ -56,6 +56,11 @@ const FlyoutMenu = styled.div`
   @media screen and (min-width: ${MEDIA_WIDTHSV3.upToSmall}px) {
     top: 40px;
   }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    top: 60px;
+    right: 20px;
+    width: auto;
+  `};
 `
 const FlyoutMenuContents = styled.div`
   align-items: flex-start;

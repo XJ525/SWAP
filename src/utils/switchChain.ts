@@ -42,13 +42,15 @@ export const switchChain = async (connector: Connector, chainId: SupportedChainI
           } as any
         ]
       })
+      window.location.reload()
     } else {
       await window?.ethereum?.request({
         method: 'wallet_addEthereumChain',
         params: [addChainParameter as any]
       })
+      window.location.reload()
     }
 
-    await connector.activate(addChainParameter)
+    // await connector.activate(addChainParameter)
   }
 }

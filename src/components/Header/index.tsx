@@ -17,7 +17,7 @@ import { YellowCard } from '../Card'
 import Settings from '../Settings'
 import Menu from '../Menu'
 
-import Row, { RowBetween } from '../Row'
+import Row from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 
@@ -47,7 +47,7 @@ const HeaderElementWrap = styled.div`
   align-items: center;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    margin-top: 0.5rem;
+    // margin-top: 0.5rem;
 `};
 `
 
@@ -109,24 +109,33 @@ const UniIcon = styled.div`
 
     img { 
       width: 1.8rem;
-      position: absolute;
+      // position: absolute;
       left: 50%;
-      transform: translateX(-50%);
+      // transform: translateX(-50%);
       top: 28px;
       pointer-events:none;
     }
   `};
 `
-
+const RowBetweenHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1rem 0 1rem;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    align-items: center;
+  `};
+`
 const HeaderControls = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 50px
+    // flex-direction: column;
+    // align-items: flex-end;
+    // margin-top: 50px
   `};
 `
 
@@ -155,7 +164,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
-      <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
+      <RowBetweenHeader>
         <HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -171,6 +180,35 @@ export default function Header() {
           <HeaderElement>
             <NetworkSelector />
           </HeaderElement>
+
+          {!isMobile && (
+            <HeaderElement>
+              <TestnetWrapper>
+                {!isMobile && chainId && NETWORK_LABELS[chainId] && (
+                  <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>
+                )}
+              </TestnetWrapper>
+              <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+                {account && userEthBalance ? (
+                  <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                    {userEthBalance?.toSignificant(4)} BNB
+                    {/* {userEthBalance?.toSignificant(4)} ETH */}
+                  </BalanceText>
+                ) : null}
+                <Web3Status />
+              </AccountElement>
+            </HeaderElement>
+          )}
+
+          <HeaderElementWrap>
+            <VersionSwitch />
+            <Settings />
+            <Menu />
+          </HeaderElementWrap>
+        </HeaderControls>
+      </RowBetweenHeader>
+      {isMobile && (
+        <RowBetweenHeader style={{ justifyContent: 'flex-end' }}>
           <HeaderElement>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
@@ -185,13 +223,8 @@ export default function Header() {
               <Web3Status />
             </AccountElement>
           </HeaderElement>
-          <HeaderElementWrap>
-            <VersionSwitch />
-            <Settings />
-            <Menu />
-          </HeaderElementWrap>
-        </HeaderControls>
-      </RowBetween>
+        </RowBetweenHeader>
+      )}
     </HeaderFrame>
   )
 }

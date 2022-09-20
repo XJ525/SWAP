@@ -6,6 +6,7 @@ import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from '..
 import celoLogo from '../assets/svg/celo_logo.svg'
 import optimismLogoUrl from '../assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from '../assets/svg/polygon-matic-logo.svg'
+import bscLogoUrl from '../assets/svg/bnb.svg'
 import ms from 'ms.macro'
 import { colorsDark } from '../theme/colors'
 
@@ -225,8 +226,8 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: 'https://bscscan.com/',
     infoLink: 'https://info.uniswap.org/#/polygon/',
     label: 'BSC',
-    logoUrl: polygonMaticLogo,
-    circleLogoUrl: polygonCircleLogoUrl,
+    logoUrl: bscLogoUrl,
+    circleLogoUrl: bscLogoUrl,
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background

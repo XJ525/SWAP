@@ -49,9 +49,9 @@ const StyledMenu = styled.div`
   text-align: left;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    position: absolute;
-    left: 15px;
-    top: 25px;
+    // position: absolute;
+    // left: 15px;
+    // top: 25px;
   `};
 `
 // min-width: 8.125rem;

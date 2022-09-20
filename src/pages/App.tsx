@@ -7,7 +7,7 @@ import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import AddLiquidity from './AddLiquidity'
-import { useAggregation } from '../hooks/useAggregation'
+// import { useAggregation } from '../hooks/useAggregation'
 import {
   RedirectDuplicateTokenIds,
   RedirectOldAddLiquidityPathStructure,
@@ -59,7 +59,7 @@ const Marginer = styled.div`
 `
 
 export default function App() {
-  useAggregation()
+  // useAggregation()
   return (
     <Suspense fallback={null}>
       <HashRouter>
