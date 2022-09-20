@@ -1,26 +1,27 @@
 import { useWeb3React } from '@web3-react/core'
-import { getConnection } from '../connection/utils'
+// import { getConnection } from '../connection/utils'
 import { SupportedChainId } from '../constants/chains'
 import { useCallback } from 'react'
 import { addPopup } from '../state/applicationv3/reducer'
 import { updateConnectionError } from '../state/connection/reducer'
 import { useAppDispatch } from '../state/hooks'
 import { switchChain } from '../utils/switchChain'
-
+// import { Connector } from '@web3-react/types'
 export default function useSelectChain() {
   const dispatch = useAppDispatch()
   const { connector } = useWeb3React()
 
   return useCallback(
     async (targetChain: SupportedChainId) => {
-      if (!connector) return
+      console.log('targetChain', targetChain)
+      // if (!connector) return
+      // const connectionType = getConnection(connector)?.type
 
-      const connectionType = getConnection(connector)?.type
       // const connectionType = ''
-
+      const connectionType: any = 'INJECTED'
       try {
-        dispatch(updateConnectionError({ connectionType, error: undefined }))
-        await switchChain(connector, targetChain)
+        // dispatch(updateConnectionError({ connectionType, error: undefined }))
+        await switchChain(connector as any, targetChain)
       } catch (error) {
         console.error('Failed to switch networks', error)
         if (error instanceof Error) {

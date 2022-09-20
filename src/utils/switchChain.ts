@@ -1,8 +1,8 @@
 import { Connector } from '@web3-react/types'
-import { networkConnection, walletConnectConnection } from 'connection'
-import { getChainInfo } from 'constants/chainInfo'
-import { isSupportedChain, SupportedChainId } from 'constants/chains'
-import { FALLBACK_URLS, RPC_URLS } from 'constants/networks'
+// import { networkConnection, walletConnectConnection } from '../connection'
+import { getChainInfo } from '../constants/chainInfo'
+import { isSupportedChain, SupportedChainId } from '../constants/chains'
+import { FALLBACK_URLS, RPC_URLS } from '../constants/networks'
 
 function getRpcUrl(chainId: SupportedChainId): string {
   switch (chainId) {
@@ -23,17 +23,32 @@ function getRpcUrl(chainId: SupportedChainId): string {
 export const switchChain = async (connector: Connector, chainId: SupportedChainId) => {
   if (!isSupportedChain(chainId)) {
     throw new Error(`Chain ${chainId} not supported for connector (${typeof connector})`)
-  } else if (connector === walletConnectConnection.connector || connector === networkConnection.connector) {
-    await connector.activate(chainId)
   } else {
     const info = getChainInfo(chainId)
+    const chainIdhex = '0x' + chainId.toString(16)
     const addChainParameter = {
-      chainId,
+      chainId: chainIdhex,
       chainName: info.label,
       rpcUrls: [getRpcUrl(chainId)],
       nativeCurrency: info.nativeCurrency,
-      blockExplorerUrls: [info.explorer],
+      blockExplorerUrls: [info.explorer]
     }
+    if (chainId == 1) {
+      await window?.ethereum?.request({
+        method: 'wallet_switchEthereumChain',
+        params: [
+          {
+            chainId: chainIdhex
+          } as any
+        ]
+      })
+    } else {
+      await window?.ethereum?.request({
+        method: 'wallet_addEthereumChain',
+        params: [addChainParameter as any]
+      })
+    }
+
     await connector.activate(addChainParameter)
   }
 }

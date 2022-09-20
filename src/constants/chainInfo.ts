@@ -216,6 +216,20 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
     defaultListUrl: CELO_LIST
+  },
+  [SupportedChainId.BSC]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://wallet.polygon.technology/bridge',
+    docs: 'https://polygon.io/',
+    explorer: 'https://bscscan.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'BSC',
+    logoUrl: polygonMaticLogo,
+    circleLogoUrl: polygonCircleLogoUrl,
+    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
   }
 }
 

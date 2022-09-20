@@ -276,9 +276,10 @@ function Row({
 const NETWORK_SELECTOR_CHAINS = [
   SupportedChainId.MAINNET,
   SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.CELO
+  // SupportedChainId.OPTIMISM,
+  // SupportedChainId.ARBITRUM_ONE,
+  // SupportedChainId.CELO,
+  SupportedChainId.BSC
 ]
 
 export default function NetworkSelector() {
@@ -310,8 +311,8 @@ export default function NetworkSelector() {
       <SelectorControls supportedChain={onSupportedChain}>
         {onSupportedChain ? (
           <>
-            <SelectorLogo src={info.logoUrl} />
-            <SelectorLabel>{info.label}</SelectorLabel>
+            <SelectorLogo src={info?.logoUrl} />
+            <SelectorLabel>{info?.label}</SelectorLabel>
             <StyledChevronDown />
           </>
         ) : (
@@ -331,6 +332,7 @@ export default function NetworkSelector() {
             {NETWORK_SELECTOR_CHAINS.map((chainId: SupportedChainId) => (
               <Row
                 onSelectChain={async (targetChainId: SupportedChainId) => {
+                  // window.alert('Select')
                   await selectChain(targetChainId)
                   closeModal()
                 }}

@@ -1,11 +1,11 @@
 import { CoinbaseWallet } from '@web3-react/coinbase-wallet'
-import { initializeConnector, Web3ReactHooks } from '@web3-react/core'
+import { initializeConnector, Web3ReactHooks } from '@web3-reactv3/core'
 import { GnosisSafe } from '@web3-react/gnosis-safe'
 import { MetaMask } from '@web3-react/metamask'
 import { Network } from '@web3-react/network'
 import { Connector } from '@web3-react/types'
 import { WalletConnect } from '@web3-react/walletconnect'
-import { SupportedChainId } from 'constants/chains'
+import { SupportedChainId } from '../constants/chains'
 
 import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
 import { RPC_URLS } from '../constants/networks'

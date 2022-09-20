@@ -8,9 +8,21 @@ declare module 'fortmatic'
 
 interface Window {
   ethereum?: {
+    request(arg0: {
+      method: string
+      params: {
+        chainId: string
+        chainName: string
+        nativeCurrency: { name: string; symbol: string; decimals: number }
+        rpcUrls: string[]
+        blockExplorerUrls: string[]
+      }[]
+    }): unknown
     isMetaMask?: true
     on?: (...args: any[]) => void
     removeListener?: (...args: any[]) => void
+    isCoinbaseWallet?: true
+    autoRefreshOnNetworkChange?: boolean
   }
   web3?: {}
 }
