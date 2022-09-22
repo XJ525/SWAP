@@ -57,11 +57,11 @@ export const BSC_AGGREGATION: CONTRACT = {
   }
 }
 export const POLYGON_AGGREGATION: CONTRACT = {
-  Pancake: {
-    FACTORY: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
-    ROUTER: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
-    INIT_CODE_HASH: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
-    Icon: require('../assets/images/swapLogo/pancake.png')
+  QuickSwap: {
+    FACTORY: '0x5757371414417b8c6caad45baef941abc7d3ab32',
+    ROUTER: '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
+    INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
+    Icon: require('../assets/images/swapLogo/quickswap.png')
   },
   Suhsi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
@@ -70,9 +70,9 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    FACTORY: '0x4dB8F9d94A78059E0D3E5613D10e5954E8D2cEA0',
+    ROUTER: '0x8622eA28be3015c01F264e9b901FD8316Bb78D09',
+    INIT_CODE_HASH: '0xbefea3a2bcb72e1832a4942be85b93f40e641166b7116e00cdd2ce40c0e78ac1',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {
