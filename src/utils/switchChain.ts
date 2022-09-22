@@ -1,4 +1,3 @@
-import { Connector } from '@web3-react/types'
 // import { networkConnection, walletConnectConnection } from '../connection'
 import { getChainInfo } from '../constants/chainInfo'
 import { isSupportedChain, SupportedChainId } from '../constants/chains'
@@ -20,7 +19,7 @@ function getRpcUrl(chainId: SupportedChainId): string {
   }
 }
 
-export const switchChain = async (connector: Connector, chainId: SupportedChainId) => {
+export const switchChain = async (connector: any, chainId: SupportedChainId) => {
   if (!isSupportedChain(chainId)) {
     throw new Error(`Chain ${chainId} not supported for connector (${typeof connector})`)
   } else {
@@ -33,8 +32,11 @@ export const switchChain = async (connector: Connector, chainId: SupportedChainI
       nativeCurrency: info.nativeCurrency,
       blockExplorerUrls: [info.explorer]
     }
-    if (chainId == 1) {
-      await window?.ethereum?.request({
+    try {
+    } catch (error) {}
+
+    connector
+      .request({
         method: 'wallet_switchEthereumChain',
         params: [
           {
@@ -42,15 +44,24 @@ export const switchChain = async (connector: Connector, chainId: SupportedChainI
           } as any
         ]
       })
-      window.location.reload()
-    } else {
-      await window?.ethereum?.request({
-        method: 'wallet_addEthereumChain',
-        params: [addChainParameter as any]
+      .catch(async (error: { code: number }) => {
+        console.error(error)
+        if (error.code === 4902) {
+          await connector.request({
+            method: 'wallet_addEthereumChain',
+            params: [{ ...addChainParameter }]
+          })
+        }
+
+        throw error
       })
+    if (connector.isTokenPocket) {
       window.location.reload()
     }
-
-    // await connector.activate(addChainParameter)
+    // window.location.reload()
+    // window.location.reload()
   }
+
+  // await connector.activate(addChainParameter)
+  // }
 }

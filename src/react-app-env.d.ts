@@ -7,7 +7,7 @@ declare module 'jazzicon' {
 declare module 'fortmatic'
 
 interface Window {
-  ethereum?: {
+  ethereum: {
     request(arg0: {
       method: string
       params: {

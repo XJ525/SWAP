@@ -6,7 +6,8 @@ import { useActiveWeb3React } from '../hooks'
 import { useMultipleContractSingleData } from '../state/multicall/hooks'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { getAddress } from '../hooks/usePair'
-import { CONTRACT } from '../constants'
+import { CONTRACT, CONTRACTS } from '../constants'
+import { SupportedChainId } from '../constants/chains'
 const { abi: IUniswapV2PairABI } = IUniswapV2PairABIJSON
 const PAIR_INTERFACE = new Interface(IUniswapV2PairABI)
 
@@ -37,18 +38,21 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
   // 通过tokenA tokenB 获取pair address
   const pairAddresses = useMemo(() => {
     const pairAddressesObj: PairAddressesObj = {}
-    for (const item in CONTRACT) {
-      pairAddressesObj[item] = tokens.map(([tokenA, tokenB]) => {
-        return tokenA && tokenB && !tokenA.equals(tokenB)
-          ? getAddress(tokenA, tokenB, {
-              FACTORY: CONTRACT[item].FACTORY,
-              INIT_CODE_HASH: CONTRACT[item].INIT_CODE_HASH
-            })
-          : undefined
-      })
+    if (chainId) {
+      for (const item in CONTRACTS[chainId]) {
+        pairAddressesObj[item] = tokens.map(([tokenA, tokenB]) => {
+          return tokenA && tokenB && !tokenA.equals(tokenB)
+            ? getAddress(tokenA, tokenB, {
+                FACTORY: CONTRACTS[chainId][item].FACTORY,
+                INIT_CODE_HASH: CONTRACTS[chainId][item].INIT_CODE_HASH
+              })
+            : undefined
+        })
+      }
     }
+
     return Object.assign(pairAddressesObj, {})
-  }, [tokens])
+  }, [chainId, tokens])
 
   const resultses = useCallback(() => {
     const res: Resultses = {}

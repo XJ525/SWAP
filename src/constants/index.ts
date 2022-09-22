@@ -2,8 +2,9 @@ import { ChainId, JSBI, Pair, Percent, Token, Trade, WETH } from 'eotc-bscswap-s
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import { SupportedChainId } from './chains'
 // import { PairState } from '../data/Reserves'
-
+import { BSC_AGGREGATION, MAINNET_AGGREGATION, POLYGON_AGGREGATION } from './Aggregations'
 export const ROUTER_ADDRESS = '0xbD537A5afBB63295F1cab9A7A670415e153a91B9'
 export const AGGREGATION_ADDRESS = '0x2ae87E829a0bA3d9d7cFDD47128f43917fF5556C'
 
@@ -86,6 +87,22 @@ export const CONTRACT: CONTRACT = {
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
   }
+}
+export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
+  [SupportedChainId.MAINNET]: MAINNET_AGGREGATION,
+  [SupportedChainId.ROPSTEN]: CONTRACT,
+  [SupportedChainId.RINKEBY]: CONTRACT,
+  [SupportedChainId.GOERLI]: CONTRACT,
+  [SupportedChainId.KOVAN]: CONTRACT,
+  [SupportedChainId.POLYGON]: POLYGON_AGGREGATION,
+  [SupportedChainId.POLYGON_MUMBAI]: CONTRACT,
+  [SupportedChainId.CELO]: CONTRACT,
+  [SupportedChainId.CELO_ALFAJORES]: CONTRACT,
+  [SupportedChainId.ARBITRUM_ONE]: CONTRACT,
+  [SupportedChainId.ARBITRUM_RINKEBY]: CONTRACT,
+  [SupportedChainId.OPTIMISM]: CONTRACT,
+  [SupportedChainId.OPTIMISTIC_KOVAN]: CONTRACT,
+  [SupportedChainId.BSC]: BSC_AGGREGATION
 }
 export interface TradesItem {
   name: string

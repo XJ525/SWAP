@@ -6,11 +6,12 @@ import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
 import { useExpertModeManager, useUserSlippageTolerance } from '../../state/user/hooks'
-import { CONTRACT } from '../../constants'
+import { CONTRACT, CONTRACTS } from '../../constants'
 import { tradeBetterSort, filtrTrades } from '../../data/V1'
 import { AutoRow } from '../Row'
 import { LpHelper } from '../QuestionHelper'
 import { isMobile } from 'react-device-detect'
+import { useActiveWeb3React } from '../../hooks'
 // import { AutoColumn } from '../Column'
 const Lists = styled.div`
   padding: 1rem;
@@ -62,6 +63,7 @@ export default function Inquire() {
   const [allowedSlippage] = useUserSlippageTolerance()
   const { selectDexName, setDexName } = useDexNameState()
   const [isExpertMode] = useExpertModeManager()
+  const { chainId } = useActiveWeb3React()
   const Trades = useMemo(() => {
     return !isExpertMode ? filtrTrades(tradeBetterSort(v2Trades)) : tradeBetterSort(v2Trades)
   }, [v2Trades, isExpertMode])
@@ -85,7 +87,7 @@ export default function Inquire() {
             >
               <ListTitle>
                 <AutoRow gap="6px">
-                  <ListImg src={CONTRACT[item.name].Icon}></ListImg>
+                  <ListImg src={CONTRACTS[chainId as any][item.name].Icon}></ListImg>
                   <ActiveText> {item.name}</ActiveText>
                 </AutoRow>
                 <AutoRow gap="6px" justify="flex-end">

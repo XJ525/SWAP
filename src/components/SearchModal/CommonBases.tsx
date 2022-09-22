@@ -53,7 +53,7 @@ export default function CommonBases({
         >
           <CurrencyLogo currency={Currency.ETHER} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            BNB
+            {Currency.ETHER.symbol}
             {/* BNB */}
           </Text>
         </BaseWrapper>

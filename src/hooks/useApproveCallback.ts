@@ -2,7 +2,7 @@ import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Trade, TokenAmount, CurrencyAmount, Currency } from 'eotc-bscswap-sdk'
 import { useCallback, useMemo } from 'react'
-import { CONTRACT } from '../constants'
+import { CONTRACT, CONTRACTS } from '../constants'
 import { useTokenAllowance } from '../data/Allowances'
 import { getTradeVersion, useV1TradeExchangeAddress } from '../data/V1'
 import { Field } from '../state/swap/actions'
@@ -106,7 +106,8 @@ export function useApproveCallbackFromTrade(trade?: Trade, allowedSlippage = 0, 
     () => (trade ? computeSlippageAdjustedAmounts(trade, allowedSlippage)[Field.INPUT] : undefined),
     [trade, allowedSlippage]
   )
+  const { chainId } = useActiveWeb3React()
   const tradeIsV1 = getTradeVersion(trade) === Version.v1
   const v1ExchangeAddress = useV1TradeExchangeAddress(trade)
-  return useApproveCallback(amountToApprove, tradeIsV1 ? v1ExchangeAddress : CONTRACT[dexName].ROUTER)
+  return useApproveCallback(amountToApprove, tradeIsV1 ? v1ExchangeAddress : CONTRACTS[chainId as any][dexName].ROUTER)
 }
