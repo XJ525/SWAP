@@ -6,7 +6,7 @@ import { useDerivedSwapInfo, useDexNameState } from '../../state/swap/hooks'
 import PriceText from './PriceText'
 import ExchangeButton from './ExchangeButton'
 import { useExpertModeManager, useUserSlippageTolerance } from '../../state/user/hooks'
-import { CONTRACT, CONTRACTS } from '../../constants'
+import { CONTRACTS } from '../../constants'
 import { tradeBetterSort, filtrTrades } from '../../data/V1'
 import { AutoRow } from '../Row'
 import { LpHelper } from '../QuestionHelper'
@@ -117,7 +117,6 @@ export default function Inquire() {
                 </AutoRow>
               </ListTitle>
               <ListTitle>
-                {/* <ListDiv></ListDiv> */}
                 <AutoRow gap="6px">
                   <PriceText trade={item.trade} allowedSlippage={allowedSlippage} />
                 </AutoRow>

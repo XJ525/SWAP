@@ -70,9 +70,9 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x4dB8F9d94A78059E0D3E5613D10e5954E8D2cEA0',
-    ROUTER: '0x8622eA28be3015c01F264e9b901FD8316Bb78D09',
-    INIT_CODE_HASH: '0xbefea3a2bcb72e1832a4942be85b93f40e641166b7116e00cdd2ce40c0e78ac1',
+    FACTORY: '0x015151d9779c07A8E5039F02d6a23186EA4876Bb',
+    ROUTER: '0xa47c718E7e3405a852C3759224F8edA88E20018B',
+    INIT_CODE_HASH: '0x8f5b0de3ff77e3f4d6539cd371233f258e01de85ec54335eee38954af1d8bec3',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {

@@ -4,7 +4,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import IUniswapV2Router02ABIJSON from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
-import { ROUTER_ADDRESS, AGGREGATION_ADDRESS, CONTRACT, CONTRACTS } from '../constants'
+import { AGGREGATION_ADDRESS, CONTRACTS } from '../constants'
 import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency } from 'eotc-bscswap-sdk'
 import { TokenAddressMap } from '../state/lists/hooks'
 import IAggregationABI from '../constants/abis/IAggregationABI.json'
@@ -97,7 +97,9 @@ export function getContract(address: string, ABI: any, library: Web3Provider, ac
 
 // account is optional
 export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
-  return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account)
+  const routerAddress = CONTRACTS[_]['EOTC'].ROUTER
+  return getContract(routerAddress, IUniswapV2Router02ABI, library, account)
+  // return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account)
 }
 export function getRouterContractPro(_: number, library: Web3Provider, account?: string, dexName = 'EOTC'): Contract {
   return getContract(CONTRACTS[_][dexName].ROUTER, IUniswapV2Router02ABI, library, account)

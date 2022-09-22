@@ -420,7 +420,7 @@ export default function Swap() {
                   //   </Text>
                   // </ButtonError>
                 )}
-                {showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />}
+                {false && showApproveFlow && <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />}
                 {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
                 {betterTradeLinkVersion && <BetterTradeLink version={betterTradeLinkVersion} />}
               </BottomGrouping>
