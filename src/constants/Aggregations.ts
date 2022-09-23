@@ -1,5 +1,6 @@
 interface CONTRACT {
   [key: string]: {
+    name?: string
     FACTORY: string
     ROUTER: string
     INIT_CODE_HASH: string
@@ -70,11 +71,18 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
+    name: 'Eotcswap V2',
     FACTORY: '0x015151d9779c07A8E5039F02d6a23186EA4876Bb',
     ROUTER: '0xa47c718E7e3405a852C3759224F8edA88E20018B',
     INIT_CODE_HASH: '0x8f5b0de3ff77e3f4d6539cd371233f258e01de85ec54335eee38954af1d8bec3',
     Icon: require('../assets/images/eotc.png')
   },
+  // EOTC: {
+  //   FACTORY: '0x5757371414417b8c6caad45baef941abc7d3ab32',
+  //   ROUTER: '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
+  //   INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
+  //   Icon: require('../assets/images/swapLogo/quickswap.png')
+  // },
   Mdex: {
     FACTORY: '0x3CD1C46068dAEa5Ebb0d3f55F6915B10648062B8',
     ROUTER: '0x0384E9ad329396C3A6A401243Ca71633B2bC4333',

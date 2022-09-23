@@ -83,7 +83,7 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
       })
     }
     return res
-  }, [pairAddresses, tokens])
+  }, [chainId, pairAddresses, tokens])
 
   return resultses()
 }
@@ -143,7 +143,7 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
         )
       ]
     })
-  }, [results, tokens])
+  }, [chainId, results, tokens])
 }
 export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair | null] {
   return usePairs([[tokenA, tokenB]])[0]

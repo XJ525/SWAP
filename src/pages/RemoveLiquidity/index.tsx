@@ -42,6 +42,7 @@ import { useWalletModalToggle } from '../../state/application/hooks'
 import { useUserDeadline, useUserSlippageTolerance } from '../../state/user/hooks'
 import { BigNumber } from '@ethersproject/bignumber'
 import { useGetRouterAddress } from '../../hooks/useGetRouterAddress'
+import { CONTRACTS } from '../../constants'
 
 export default function RemoveLiquidity({
   history,
@@ -116,7 +117,7 @@ export default function RemoveLiquidity({
       { name: 'verifyingContract', type: 'address' }
     ]
     const domain = {
-      name: 'Uniswap V2',
+      name: CONTRACTS[chainId as any]['EOTC']?.name || 'Uniswap V2',
       version: '1',
       chainId: chainId,
       verifyingContract: pair.liquidityToken.address
@@ -144,6 +145,8 @@ export default function RemoveLiquidity({
       primaryType: 'Permit',
       message
     })
+
+    console.log(JSON.parse(data), 'data')
 
     library
       .send('eth_signTypedData_v4', [account, data])
@@ -275,6 +278,9 @@ export default function RemoveLiquidity({
     } else {
       throw new Error('Attempting to confirm without approval or a signature. Please contact support.')
     }
+    // await router['removeLiquidityETHWithPermitSupportingFeeOnTransferTokens'](...args, {
+    //   gasLimit: 230000
+    // })
 
     const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
       methodNames.map(methodName =>

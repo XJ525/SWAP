@@ -37,7 +37,6 @@ export default function Pool() {
     () => trackedTokenPairs.map(tokens => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
     [trackedTokenPairs]
   )
-  console.log(tokenPairsWithLiquidityTokens, 'tokenPairsWithLiquidityTokens44')
   const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map(tpwlt => tpwlt.liquidityToken), [
     tokenPairsWithLiquidityTokens
   ])
@@ -55,13 +54,11 @@ export default function Pool() {
       ),
     [tokenPairsWithLiquidityTokens, v2PairsBalances]
   )
-  console.log(liquidityTokensWithBalances, 'liquidityTokensWithBalances')
   const v2Pairs = usePairs(liquidityTokensWithBalances.map(({ tokens }) => tokens))
   const v2IsLoading =
     fetchingV2PairBalances || v2Pairs?.length < liquidityTokensWithBalances.length || v2Pairs?.some(V2Pair => !V2Pair)
 
   const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
-  console.log(allV2PairsWithLiquidity, v2Pairs, 'allV2PairsWithLiquidity')
   const hasV1Liquidity = useUserHasLiquidityInAllTokens()
 
   return (
