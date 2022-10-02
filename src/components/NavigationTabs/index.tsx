@@ -43,7 +43,32 @@ const StyledNavLink = styled(NavLink).attrs({
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 `
+const StyledNavLinkMining = styled(NavLink).attrs({
+  activeClassName
+})`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text3};
+  font-size: 14px;
+  font-weight: 400;
+  width: 85px;
+  height: 2.75rem;
+  &.${activeClassName} {
+    font-weight: 500;
+    background: #237ff8;
+    color: ${({ theme }) => theme.white};
+  }
 
+  :hover,
+  :focus {
+    color: ${({ theme }) => darken(0.1, theme.text1)};
+  }
+`
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
@@ -52,7 +77,10 @@ const ActiveText = styled.div`
 const StyledArrowLeft = styled(ArrowLeft)`
   color: ${({ theme }) => theme.text1};
 `
-
+const _MiningTabs = styled(Tabs)`
+  background: ${({ theme }) => theme.color1};
+  border-radius: 0.5rem;
+`
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   const { t } = useTranslation()
   return (
@@ -103,5 +131,17 @@ export function AddRemoveTabs({ adding }: { adding: boolean }) {
         />
       </RowBetween>
     </Tabs>
+  )
+}
+export function MiningTabs({ active }: { active: 'stake' | 'unstake' }) {
+  return (
+    <_MiningTabs>
+      <StyledNavLinkMining id={`mining-stake-nav-link`} to={'/mining/stake'} isActive={() => active === 'stake'}>
+        质押
+      </StyledNavLinkMining>
+      <StyledNavLinkMining id={`mining-unstake-nav-link`} to={'/mining/unstake'} isActive={() => active === 'unstake'}>
+        赎回
+      </StyledNavLinkMining>
+    </_MiningTabs>
   )
 }

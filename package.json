@@ -3,6 +3,7 @@
   "description": "Uniswap Interface",
   "homepage": ".",
   "private": true,
+  "proxy": "https://api.eotcyu.club",
   "devDependencies": {
     "@ethersproject/experimental": "^5.0.1",
     "@popperjs/core": "^2.4.4",
@@ -117,6 +118,7 @@
     "@ethersproject/solidity": "^5.7.0",
     "@web3-reactv3/core": "npm:@web3-react/core@^8.0.35-beta.0",
     "eotc-bscswap-sdk": "git+https://github.com/XJ525/eotc-bscswap-sdk.git",
-    "vconsole": "^3.14.6"
+    "vconsole": "^3.14.6",
+    "react-vant": "^1.4.4"
   }
 }

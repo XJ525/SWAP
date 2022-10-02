@@ -54,6 +54,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
 
   const [showMore, setShowMore] = useState(false)
+  console.log(pair, 'pair')
 
   const userPoolBalance = useTokenBalance(account ?? undefined, pair.liquidityToken)
   const totalPoolTokens = useTotalSupply(pair.liquidityToken)
