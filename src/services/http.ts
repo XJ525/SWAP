@@ -132,6 +132,11 @@ export const getStakeRecord = async (params: GetStakeRecordParams): Promise<any>
       url: `/api/SWAP/Mylp?${qs.stringify(params)}`
     })
     res = handleorderNumber(res.data as any)
+    console.log(JSON.stringify(res))
+    // res = [
+    //   { num: '100.000000', cycle: '6', type: '2', date: '2022-10-03 11:29', id: '00000029' },
+    //   { num: '100.000000', cycle: '6', type: '1', date: '2022-10-03 07:11', id: '00000028' }
+    // ]
     return res
   } catch (e) {
     console.error(e)

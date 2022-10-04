@@ -41,6 +41,7 @@ export const OrderCard = styled.div`
   background: ${({ theme }) => theme.bg9};
   border-radius: 10px;
   padding: 0.93rem;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.08);
 `
 export const ButtonUnStake = styled(ButtonPrimary)`
   padding: 0.6875rem 0;

@@ -16,17 +16,17 @@ const EarningsCard = styled.div`
 const _PledgeTag = styled.div<{
   type?: '0' | '1' | '2' | '3' | '4' | string
 }>`
-  background: ${({ type }) =>
-    (type === '0' && '#333136') ||
-    (type === '1' && '#333136') ||
-    (type === '2' && '#1E3157') ||
-    (type === '3' && '#1A1B27') ||
-    (type === '4' && '#1A1B27')};
+  background: ${({ type, theme }) =>
+    (type === '0' && theme.bg12) ||
+    (type === '1' && theme.bg12) ||
+    (type === '2' && theme.bg13) ||
+    (type === '3' && theme.bg11) ||
+    (type === '4' && theme.bg11)};
   border-radius: 15px 0px 0px 15px;
   padding: 6px 15px;
-  color: ${({ type }) =>
-    (type === '0' && '#e6b37c') ||
-    (type === '1' && '#e6b37c') ||
+  color: ${({ type, theme }) =>
+    (type === '0' && theme.text10) ||
+    (type === '1' && theme.text10) ||
     (type === '2' && '#1178FF') ||
     (type === '3' && '#999999') ||
     (type === '4' && '#999999')};
@@ -137,7 +137,7 @@ export function Record({ history }: { history: any }) {
               </Text>
             </AutoColumn>
             <AutoColumn style={{ width: '50%', justifyContent: 'end' }} gap="md">
-              <Text fontWeight={400} fontSize={14} color={'#fffff'}>
+              <Text fontWeight={400} fontSize={14} color={'#ffffff'}>
                 待赎回
               </Text>
               <Text style={{ lineHeight: '25px' }} fontWeight={'bold'} fontSize={18} color={'#ffffff'}>
@@ -186,7 +186,7 @@ export function Record({ history }: { history: any }) {
             <OrderCard style={{ paddingRight: 0 }}>
               <RowEnd style={{ alignItems: 'flex-start' }}>
                 <AutoColumn style={{ width: '50%' }} gap="sm">
-                  <Text fontWeight={400} fontSize={14} color={'#FFFFFF'}>
+                  <Text fontWeight={400} fontSize={14} color={theme.text7}>
                     订单编号: {item.id}
                   </Text>
                   <Text fontWeight={400} fontSize={14} color={theme.text8}>
@@ -199,37 +199,37 @@ export function Record({ history }: { history: any }) {
               </RowEnd>
               <Box mt={'20px'} pr={'0.93rem'}>
                 <RowEnd>
-                  <AutoColumn style={{ width: '33%' }} gap="md">
+                  <AutoColumn style={{ width: '50%' }} gap="md">
                     <div style={{ textAlign: 'center' }}>
-                      <Text fontWeight={400} fontSize={14} color={'#FFFFFF'}>
+                      <Text fontWeight={400} fontSize={14} color={'#90939B'}>
                         质押数量
                       </Text>
                       <Text
                         style={{ lineHeight: '25px', marginTop: '5px' }}
                         fontWeight={'bold'}
                         fontSize={18}
-                        color={'#FFFFFF'}
+                        color={theme.text7}
                       >
                         {item.num}
                       </Text>
                     </div>
                   </AutoColumn>
-                  <AutoColumn style={{ width: '33%' }} gap="md">
+                  <AutoColumn style={{ width: '50%' }} gap="md">
                     <div style={{ textAlign: 'center' }}>
-                      <Text fontWeight={400} fontSize={14} color={'#fffff'}>
+                      <Text fontWeight={400} fontSize={14} color={'#90939B'}>
                         预估收益
                       </Text>
                       <Text
                         style={{ lineHeight: '25px', marginTop: '5px' }}
                         fontWeight={'bold'}
                         fontSize={18}
-                        color={'#ffffff'}
+                        color={theme.text9}
                       >
-                        {item.earnings}
+                        {item.earnings} EOTC
                       </Text>
                     </div>
                   </AutoColumn>
-                  <AutoColumn style={{ width: '33%' }} gap="md">
+                  {/* <AutoColumn style={{ width: '33%' }} gap="md">
                     <div style={{ textAlign: 'center' }}>
                       <Text fontWeight={400} fontSize={14} color={'#fffff'}>
                         到期可赎回
@@ -240,10 +240,10 @@ export function Record({ history }: { history: any }) {
                         fontSize={18}
                         color={'#ffffff'}
                       >
-                        {Number(item.num) + item.earnings}
+                        {item.earnings}
                       </Text>
                     </div>
-                  </AutoColumn>
+                  </AutoColumn> */}
                 </RowEnd>
                 {item.type === '2' && (
                   <Box mt={'15px'}>

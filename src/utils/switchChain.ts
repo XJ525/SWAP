@@ -35,7 +35,7 @@ export const switchChain = async (connector: any, chainId: SupportedChainId) => 
     try {
     } catch (error) {}
 
-    connector
+    await connector
       .request({
         method: 'wallet_switchEthereumChain',
         params: [

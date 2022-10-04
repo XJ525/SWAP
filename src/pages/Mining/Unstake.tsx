@@ -86,7 +86,7 @@ export default function UnStake() {
                       预估收益
                     </Text>
                     <Text fontWeight={'bold'} fontSize={20} color={'#E6B37C'}>
-                      + {item.num * APY_LIST[selectedDate]}
+                      + {item.num * APY_LIST[selectedDate]} EOTC
                     </Text>
                   </AutoColumn>
                 </RowEnd>
