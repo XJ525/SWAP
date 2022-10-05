@@ -30,7 +30,7 @@ export const FixedHeightRow2 = styled(RowBetween)`
   ${({ theme }) => theme.mediaWidth.upToMoreSmall`
     display:flex;
     height:40px;
-    flex-direction: column;
+    // flex-direction: column;
   `};
 `
 

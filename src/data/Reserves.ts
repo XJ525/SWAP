@@ -1,4 +1,4 @@
-import { TokenAmount, Pair, Currency /*Token*/ } from 'eotc-bscswap-sdk'
+import { TokenAmount, Pair, Currency /*Token*/, Token } from 'eotc-bscswap-sdk'
 import { useMemo, useCallback } from 'react'
 import IUniswapV2PairABIJSON from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { Interface } from '@ethersproject/abi'
@@ -78,8 +78,19 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
           FACTORY: CONTRACTS[chainId as any][item].FACTORY,
           INIT_CODE_HASH: CONTRACTS[chainId as any][item].INIT_CODE_HASH
         })
-        console.log(liquidityTokenAddress, 'liquidityTokenAddress')
-        return [PairState.EXISTS, new Pair(tokenAmountA, tokenAmountB, liquidityTokenAddress)]
+
+        const isEOTCUSDT = liquidityTokenAddress === '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+        const decimals = isEOTCUSDT ? 6 : 18
+        console.log(decimals, 'decimals')
+        const liquidityToken = new Token(
+          tokenAmounts[0].token.chainId,
+          liquidityTokenAddress,
+          decimals,
+          'EOTC-V2',
+          'Eotc swap'
+        )
+
+        return [PairState.EXISTS, new Pair(tokenAmountA, tokenAmountB, liquidityTokenAddress, liquidityToken)]
       })
     }
     return res
@@ -134,12 +145,23 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
         FACTORY: CONTRACTS[chainId as any]['EOTC'].FACTORY,
         INIT_CODE_HASH: CONTRACTS[chainId as any]['EOTC'].INIT_CODE_HASH
       })
+      const isEOTCUSDT = liquidityTokenAddress === '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+      const decimals = isEOTCUSDT ? 6 : 18
+      const liquidityToken = new Token(
+        tokenAmounts[0].token.chainId,
+        liquidityTokenAddress,
+        decimals,
+        'EOTC-V2',
+        'Eotc swap'
+      )
+
       return [
         PairState.EXISTS,
         new Pair(
           new TokenAmount(token0, reserve0.toString()),
           new TokenAmount(token1, reserve1.toString()),
-          liquidityTokenAddress
+          liquidityTokenAddress,
+          liquidityToken
         )
       ]
     })
