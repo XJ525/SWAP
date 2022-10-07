@@ -26,10 +26,10 @@ export const FixedHeightRow = styled(RowBetween)`
   height: 24px;
 `
 export const FixedHeightRow2 = styled(RowBetween)`
-  height: 24px;
+  /* height: 24px; */
+  display: flex;
   ${({ theme }) => theme.mediaWidth.upToMoreSmall`
-    display:flex;
-    height:40px;
+    flex-wrap: wrap
     // flex-direction: column;
   `};
 `

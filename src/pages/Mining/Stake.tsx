@@ -8,29 +8,23 @@ import { Text } from 'rebass'
 import { ButtonPrimary } from '../../components/Button'
 import { Input as NumericalInput } from '../../components/NumericalInput'
 import { RadioCycle, RecordLink, APY_LIST } from './index'
-import { useTokenBalance } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { tryParseAmount } from '../../state/swap/hooks'
-import { Token } from 'eotc-bscswap-sdk'
 import { BodyMining, Box, BoxSB, MaxButton, BoxInput } from './styleds'
 import { stake as stakeApi } from '../../services'
 import { useStakeCallback } from '../../hooks/useStakeCallback'
 import { CHAIN_IDS_TO_NAMES } from '../../constants/chains'
+import { useGetLpTokenBalance } from './hook'
 export default function Stake() {
   const theme = useContext(ThemeContext)
   const { account, chainId } = useActiveWeb3React()
   const [selectedDate, setSelectedDate] = useState(6)
   const [visible, setVisible] = useState(false)
-  const LPTOKEN_ADDRESS = '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
   const to = '0xdCAaB3E9Ade1000fd23Fa0EAcd2D7E1359300D8B'
-  const userPoolBalance = useTokenBalance(
-    account ?? undefined,
-    new Token(chainId as any, LPTOKEN_ADDRESS, 6, 'EOTC-V2', 'Eotcswap V2')
-  )
-
+  const { userPoolBalance, LpTonke, LPTOKEN_ADDRESS } = useGetLpTokenBalance()
   const [lpInput, setLpInput] = useState('')
-  const MIN_STAKE = '1'
-  const amount = tryParseAmount(lpInput, new Token(chainId as any, LPTOKEN_ADDRESS, 6, 'EOTC-V2', 'Eotcswap V2'))
+  const MIN_STAKE = '100'
+  const amount = tryParseAmount(lpInput, LpTonke)
   const buttonError = useMemo(() => {
     if (!amount) return '输入'
     if (userPoolBalance?.lessThan(amount)) return '余额不足'

@@ -7,6 +7,7 @@ import { useMultipleContractSingleData } from '../state/multicall/hooks'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { getAddress } from '../hooks/usePair'
 import { CONTRACTS } from '../constants'
+import { LpTokenList } from '../constants/lpTokenList'
 // import { SupportedChainId } from '../constants/chains'
 const { abi: IUniswapV2PairABI } = IUniswapV2PairABIJSON
 const PAIR_INTERFACE = new Interface(IUniswapV2PairABI)
@@ -79,7 +80,7 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
           INIT_CODE_HASH: CONTRACTS[chainId as any][item].INIT_CODE_HASH
         })
 
-        const isEOTCUSDT = liquidityTokenAddress === '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+        const isEOTCUSDT = liquidityTokenAddress.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
         const decimals = isEOTCUSDT ? 6 : 18
         console.log(decimals, 'decimals')
         const liquidityToken = new Token(
@@ -145,7 +146,7 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
         FACTORY: CONTRACTS[chainId as any]['EOTC'].FACTORY,
         INIT_CODE_HASH: CONTRACTS[chainId as any]['EOTC'].INIT_CODE_HASH
       })
-      const isEOTCUSDT = liquidityTokenAddress === '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+      const isEOTCUSDT = liquidityTokenAddress.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
       const decimals = isEOTCUSDT ? 6 : 18
       const liquidityToken = new Token(
         tokenAmounts[0].token.chainId,

@@ -27,9 +27,17 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.BSC]: [
     // "Safe" URLs
     'https://bsc-dataseed1.ninicoin.io',
+    'https://bsc-dataseed.binance.org/',
+    'https://bsc-dataseed1.defibit.io/',
+    'https://bsc-dataseed2.defibit.io/',
+    'https://bsc-dataseed3.defibit.io/',
+    'https://bsc-dataseed4.defibit.io/',
+    'https://bsc-dataseed2.ninicoin.io/',
+    'https://bsc-dataseed3.ninicoin.io/',
+    'https://bsc-dataseed4.ninicoin.io/',
+    'https://bsc-dataseed1.binance.org/',
+    'https://bsc-dataseed2.binance.org/'
     // "Fallback" URLs
-    'https://rpc.ankr.com/eth',
-    'https://eth-mainnet.public.blastapi.io'
   ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs

@@ -221,7 +221,6 @@ const CHAIN_INFO: ChainInfoMap = {
   [SupportedChainId.BSC]: {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
-    bridge: 'https://wallet.polygon.technology/bridge',
     docs: 'https://polygon.io/',
     explorer: 'https://bscscan.com/',
     infoLink: 'https://info.uniswap.org/#/polygon/',

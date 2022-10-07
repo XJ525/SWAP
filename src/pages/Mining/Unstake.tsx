@@ -1,11 +1,7 @@
-import React, { useState, useContext, useMemo, useEffect, useCallback } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { ThemeContext } from 'styled-components'
 import Header from './Header'
 import { Text } from 'rebass'
-import { useTokenBalance } from '../../state/wallet/hooks'
-import { useActiveWeb3React } from '../../hooks'
-import { tryParseAmount } from '../../state/swap/hooks'
-import { Token } from 'eotc-bscswap-sdk'
 import { BodyMining, Box, BoxSB, OrderCard } from './styleds'
 import { ClickableText } from '../Pool/styleds'
 import { AutoColumn } from '../../components/Column'
@@ -14,28 +10,14 @@ import { RadioCycle, RecordLink } from './index'
 import { APY_LIST } from './index'
 import { useGetStakeRecord } from './hook'
 import { ButtonUnStake } from './ButtonUnStake'
+import { useGetLpTokenBalance } from './hook'
 
 export default function UnStake() {
   const theme = useContext(ThemeContext)
-  const { account, chainId } = useActiveWeb3React()
   const [selectedDate, setSelectedDate] = useState(6)
   const [stakeRecord] = useGetStakeRecord()
   const [unstakeData, setUnstakeData] = useState([])
-  const LPTOKEN_ADDRESS = '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
-  const userPoolBalance = useTokenBalance(
-    account ?? undefined,
-    new Token(chainId as any, LPTOKEN_ADDRESS, 6, 'EOTC-V2', 'Eotcswap V2')
-  )
-  const [lpInput] = useState('')
-  const MIN_STAKE = '1'
-  const amount = tryParseAmount(lpInput, new Token(chainId as any, LPTOKEN_ADDRESS, 6, 'EOTC-V2', 'Eotcswap V2'))
-  const buttonError = useMemo(() => {
-    if (!amount) return '输入'
-    if (userPoolBalance?.lessThan(amount)) return '余额不足'
-    if (amount.lessThan(MIN_STAKE)) return `最低抵押${MIN_STAKE} LP`
-    return ''
-  }, [amount, userPoolBalance])
-  console.log(buttonError)
+  const { userPoolBalance } = useGetLpTokenBalance()
   const handleStakeRecordData = useCallback(() => {
     setUnstakeData(stakeRecord.filter((item: any) => item.cycle == selectedDate && item.type === '2'))
   }, [selectedDate, stakeRecord])

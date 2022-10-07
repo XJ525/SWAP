@@ -14,8 +14,6 @@ export const transfer = async ({
   contract: any
   gasEstimate: any
 }) => {
-  console.log(contract, 'contract')
-  console.log(contract?.transfer, '878787')
   return contract?.transfer(to, amount, { gasLimit: calculateGasMargin(gasEstimate) })
 }
 export function useStakeCallback({

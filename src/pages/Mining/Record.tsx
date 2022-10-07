@@ -1,12 +1,14 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Text } from 'rebass'
-import { RowEnd } from '../../components/Row'
+import { RowBetween, RowEnd } from '../../components/Row'
 import { AutoColumn } from '../../components/Column'
 import { Box, OrderCard, BoxSB, LoadingRows } from './styleds'
 import { useGetStakeRecord } from './hook'
 import { APY_LIST, LpTag, GoBack /*PositionsLoadingPlaceholder*/ } from './index'
 import { ButtonUnStake } from './ButtonUnStake'
+import dayjs from 'dayjs'
+import { toFixed } from '../../utils'
 const EarningsCard = styled.div`
   width: 100%;
   padding: 15px 40px 20px 40px;
@@ -63,6 +65,14 @@ export function Record({ history }: { history: any }) {
       //   item.type = '2'
       // }
       item.earnings = item.num * APY_LIST[item.cycle]
+      const dayms = 24 * 60 * 60 * 1000
+
+      item.stakeDate =
+        parseInt(((Date.now() - Date.parse(item.date)) / dayms) as any) > item.cycle * 30
+          ? item.cycle * 30
+          : parseInt(((Date.now() - Date.parse(item.date)) / dayms) as any)
+
+      item.unstakeDate = dayjs(Date.parse(item.date) + item.cycle * 30 * dayms + dayms).format('YYYY-MM-DD')
       return item
     })
 
@@ -124,7 +134,7 @@ export function Record({ history }: { history: any }) {
           fontSize={22}
           color={'#FFFFFF'}
         >
-          +{data.accEarnings}
+          +{toFixed(data.accEarnings, 2)}
         </Text>
         <Box mt={'10px'}>
           <RowEnd>
@@ -133,7 +143,7 @@ export function Record({ history }: { history: any }) {
                 当前质押
               </Text>
               <Text style={{ lineHeight: '25px' }} fontWeight={'bold'} fontSize={18} color={'#FFFFFF'}>
-                {data.atStake}
+                {toFixed(data.atStake, 2)}
               </Text>
             </AutoColumn>
             <AutoColumn style={{ width: '50%', justifyContent: 'end' }} gap="md">
@@ -141,7 +151,7 @@ export function Record({ history }: { history: any }) {
                 待赎回
               </Text>
               <Text style={{ lineHeight: '25px' }} fontWeight={'bold'} fontSize={18} color={'#ffffff'}>
-                {data.toRedeem}
+                {toFixed(data.toRedeem, 2)}
               </Text>
             </AutoColumn>
           </RowEnd>
@@ -210,7 +220,7 @@ export function Record({ history }: { history: any }) {
                         fontSize={18}
                         color={theme.text7}
                       >
-                        {item.num}
+                        {toFixed(item.num, 2)}
                       </Text>
                     </div>
                   </AutoColumn>
@@ -225,7 +235,7 @@ export function Record({ history }: { history: any }) {
                         fontSize={18}
                         color={theme.text9}
                       >
-                        {item.earnings} EOTC
+                        {toFixed(item.earnings, 2)} EOTC
                       </Text>
                     </div>
                   </AutoColumn>
@@ -245,6 +255,7 @@ export function Record({ history }: { history: any }) {
                     </div>
                   </AutoColumn> */}
                 </RowEnd>
+
                 {item.type === '2' && (
                   <Box mt={'15px'}>
                     <ButtonUnStake id={item.id} delSetUnstakeData={delSetUnstakeData}>
@@ -252,6 +263,16 @@ export function Record({ history }: { history: any }) {
                     </ButtonUnStake>
                   </Box>
                 )}
+                <Box mt={'25px'}>
+                  <RowBetween>
+                    <Text fontWeight={400} fontSize={14} color={'#90939B'}>
+                      已质押：{item.stakeDate} 天
+                    </Text>
+                    <Text fontWeight={400} fontSize={14} color={'#90939B'}>
+                      赎回时间：{item.unstakeDate}
+                    </Text>
+                  </RowBetween>
+                </Box>
               </Box>
             </OrderCard>
           </Box>
