@@ -28,7 +28,8 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
   [ChainId.BSC]: [WETH[ChainId.BSC]],
   [ChainId.BSC_TSET]: [WETH[ChainId.BSC_TSET]],
-  [ChainId.MATIC]: [WETH[ChainId.MATIC]]
+  [ChainId.MATIC]: [WETH[ChainId.MATIC]],
+  [ChainId.OKExChain]: [WETH[ChainId.OKExChain]]
 }
 interface CONTRACT {
   [key: string]: {
@@ -102,7 +103,8 @@ export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
   [SupportedChainId.ARBITRUM_RINKEBY]: CONTRACT,
   [SupportedChainId.OPTIMISM]: CONTRACT,
   [SupportedChainId.OPTIMISTIC_KOVAN]: CONTRACT,
-  [SupportedChainId.BSC]: BSC_AGGREGATION
+  [SupportedChainId.BSC]: BSC_AGGREGATION,
+  [SupportedChainId.OKExChain]: CONTRACT
 }
 export interface TradesItem {
   name: string

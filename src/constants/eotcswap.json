@@ -26,6 +26,14 @@
       "logoURI": "https://raw.githubusercontent.com/EOTCotc/ListTokens/main/img/usdt.png"
     },
     {
+      "name": "Binance Pegged USDT",
+      "symbol": "USDT",
+      "address": "0x382bB369d343125BfB2117af9c149795C6C65C50",
+      "chainId": 66,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/EOTCotc/ListTokens/main/img/usdt.png"
+    },
+    {
       "chainId": 137,
       "address": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
       "name": "1inch",

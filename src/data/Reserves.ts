@@ -79,10 +79,11 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
           FACTORY: CONTRACTS[chainId as any][item].FACTORY,
           INIT_CODE_HASH: CONTRACTS[chainId as any][item].INIT_CODE_HASH
         })
+        console.log(typeof liquidityTokenAddress, 'liquidityTokenAddress')
 
-        const isEOTCUSDT = liquidityTokenAddress.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
+        const isEOTCUSDT =
+          liquidityTokenAddress && liquidityTokenAddress?.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
         const decimals = isEOTCUSDT ? 6 : 18
-        console.log(decimals, 'decimals')
         const liquidityToken = new Token(
           tokenAmounts[0].token.chainId,
           liquidityTokenAddress,
@@ -146,7 +147,7 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
         FACTORY: CONTRACTS[chainId as any]['EOTC'].FACTORY,
         INIT_CODE_HASH: CONTRACTS[chainId as any]['EOTC'].INIT_CODE_HASH
       })
-      const isEOTCUSDT = liquidityTokenAddress.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
+      const isEOTCUSDT = liquidityTokenAddress?.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
       const decimals = isEOTCUSDT ? 6 : 18
       const liquidityToken = new Token(
         tokenAmounts[0].token.chainId,

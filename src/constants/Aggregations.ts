@@ -164,3 +164,18 @@ export const MAINNET_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/baby.png')
   }
 }
+export const OKE_AGGREGATION: CONTRACT = {
+  Suhsi: {
+    FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
+    ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
+    Icon: require('../assets/images/swapLogo/sushi.png')
+  },
+  EOTC: {
+    name: 'Eotcswap V2',
+    FACTORY: '0x015151d9779c07A8E5039F02d6a23186EA4876Bb',
+    ROUTER: '0xa47c718E7e3405a852C3759224F8edA88E20018B',
+    INIT_CODE_HASH: '0x8f5b0de3ff77e3f4d6539cd371233f258e01de85ec54335eee38954af1d8bec3',
+    Icon: require('../assets/images/eotc.png')
+  }
+}

@@ -359,7 +359,7 @@ export default function AccountDetails({
                             href={chainId && getEtherscanLink(chainId, ENSName, 'address')}
                           >
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>在币安浏览器上查看</span>
+                            <span style={{ marginLeft: '4px' }}>在区块浏览器上查看</span>
                           </AddressLink>
                         )}
                       </div>
@@ -381,7 +381,7 @@ export default function AccountDetails({
                             href={getEtherscanLink(chainId, account, 'address')}
                           >
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>在币安浏览器上查看</span>
+                            <span style={{ marginLeft: '4px' }}>在区块浏览器上查看</span>
                           </AddressLink>
                         )}
                       </div>

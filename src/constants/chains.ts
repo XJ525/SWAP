@@ -19,7 +19,8 @@ export enum SupportedChainId {
 
   CELO = 42220,
   CELO_ALFAJORES = 44787,
-  BSC = 56
+  BSC = 56,
+  OKExChain = 66
 }
 
 export const CHAIN_IDS_TO_NAMES = {
@@ -36,7 +37,8 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.ARBITRUM_RINKEBY]: 'arbitrum_rinkeby',
   [SupportedChainId.OPTIMISM]: 'optimism',
   [SupportedChainId.OPTIMISTIC_KOVAN]: 'optimistic_kovan',
-  [SupportedChainId.BSC]: 'BSC'
+  [SupportedChainId.BSC]: 'BSC',
+  [SupportedChainId.OKExChain]: 'OKExChain'
 }
 
 /**

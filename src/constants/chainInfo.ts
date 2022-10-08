@@ -7,6 +7,7 @@ import celoLogo from '../assets/svg/celo_logo.svg'
 import optimismLogoUrl from '../assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from '../assets/svg/polygon-matic-logo.svg'
 import bscLogoUrl from '../assets/svg/bnb.svg'
+import okxLogoUrl from '../assets/images/okx.png'
 import ms from 'ms.macro'
 import { colorsDark } from '../theme/colors'
 
@@ -228,6 +229,19 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: bscLogoUrl,
     circleLogoUrl: bscLogoUrl,
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.OKExChain]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://www.oklink.com/zh-cn/okc/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'OKXChain Mainnet',
+    logoUrl: okxLogoUrl,
+    circleLogoUrl: okxLogoUrl,
+    nativeCurrency: { name: 'OKT', symbol: 'OKT', decimals: 18 },
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
   }

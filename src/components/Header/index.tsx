@@ -1,4 +1,4 @@
-import { ChainId } from 'eotc-bscswap-sdk'
+// import { ChainId } from 'eotc-bscswap-sdk'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
@@ -21,6 +21,7 @@ import Row from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 import { getChainInfo } from '../../constants/chainInfo'
+import { CHAIN_IDS_TO_NAMES } from '../../constants/chains'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -224,16 +225,17 @@ const StyledNavLink = styled(NavLink)`
 `
 const Trans = styled.div``
 // ChainId.BSC是在sdk中添加的， 对应的值Bsc只是一个展示
-const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
-  [ChainId.MAINNET]: null,
-  [ChainId.RINKEBY]: 'Rinkeby',
-  [ChainId.ROPSTEN]: 'Ropsten',
-  [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan',
-  [ChainId.BSC]: 'BSC',
-  [ChainId.BSC_TSET]: 'BSC_TSET',
-  [ChainId.MATIC]: 'MATIC'
-}
+// const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
+//   [ChainId.MAINNET]: null,
+//   [ChainId.RINKEBY]: 'Rinkeby',
+//   [ChainId.ROPSTEN]: 'Ropsten',
+//   [ChainId.GÖRLI]: 'Görli',
+//   [ChainId.KOVAN]: 'Kovan',
+//   [ChainId.BSC]: 'BSC',
+//   [ChainId.BSC_TSET]: 'BSC_TSET',
+//   [ChainId.MATIC]: 'MATIC'
+// }
+const NETWORK_LABELS = CHAIN_IDS_TO_NAMES
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()

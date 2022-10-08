@@ -39,6 +39,11 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     'https://bsc-dataseed2.binance.org/'
     // "Fallback" URLs
   ],
+  [SupportedChainId.OKExChain]: [
+    // "Safe" URLs
+    'https://exchainrpc.okex.org'
+    // "Fallback" URLs
+  ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
     'https://rpc.ankr.com/eth_ropsten'
@@ -149,5 +154,6 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
-  [SupportedChainId.BSC]: [`https://bsc-dataseed1.ninicoin.io`]
+  [SupportedChainId.BSC]: [`https://bsc-dataseed1.ninicoin.io`],
+  [SupportedChainId.OKExChain]: [`https://exchainrpc.okex.org`]
 }
