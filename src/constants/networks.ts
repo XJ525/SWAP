@@ -106,6 +106,12 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.CELO_ALFAJORES]: [
     // "Safe" URLs
     `https://alfajores-forno.celo-testnet.org`
+  ],
+  [SupportedChainId.Huobi]: [
+    'https://http-mainnet-node.huobichain.com',
+    'https://http-mainnet.hecochain.com',
+    'https://pub001.hg.network/rpc',
+    'https://hecoapi.terminet.io/rpc'
   ]
 }
 
@@ -154,6 +160,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
-  [SupportedChainId.BSC]: [`https://bsc-dataseed1.ninicoin.io`],
-  [SupportedChainId.OKExChain]: [`https://exchainrpc.okex.org`]
+  [SupportedChainId.BSC]: FALLBACK_URLS[SupportedChainId.BSC],
+  [SupportedChainId.OKExChain]: FALLBACK_URLS[SupportedChainId.OKExChain],
+  [SupportedChainId.Huobi]: FALLBACK_URLS[SupportedChainId.Huobi]
 }

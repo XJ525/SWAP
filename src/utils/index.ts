@@ -28,7 +28,8 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   56: 'bscscan.com',
   97: 'testnet.bscscan.com',
   137: 'polygonscan.com',
-  [ChainId.OKExChain]: 'www.oklink.com/zh-cn/okc'
+  [ChainId.OKExChain]: 'www.oklink.com/zh-cn/okc',
+  [ChainId.Huobi]: 'scan.hecochain.com'
 }
 
 export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {

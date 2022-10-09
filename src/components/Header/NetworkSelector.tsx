@@ -214,6 +214,8 @@ const ExplorerLabel = ({ chainId }: { chainId: SupportedChainId }) => {
       return <Trans>BscScan</Trans>
     case SupportedChainId.OKExChain:
       return <Trans>Oklink</Trans>
+    case SupportedChainId.Huobi:
+      return <Trans>Heco Chain Explorer</Trans>
     default:
       return <Trans>Etherscan</Trans>
   }
@@ -289,7 +291,8 @@ const NETWORK_SELECTOR_CHAINS = [
   // SupportedChainId.ARBITRUM_ONE,
   // SupportedChainId.CELO,
   SupportedChainId.BSC,
-  SupportedChainId.OKExChain
+  SupportedChainId.OKExChain,
+  SupportedChainId.Huobi
 ]
 
 export default function NetworkSelector() {

@@ -12,7 +12,8 @@ const V1_FACTORY_ADDRESSES: { [chainId in ChainId]: string } = {
   [ChainId.BSC]: '',
   [ChainId.BSC_TSET]: '',
   [ChainId.MATIC]: '',
-  [ChainId.OKExChain]: ''
+  [ChainId.OKExChain]: '',
+  [ChainId.Huobi]: ''
 }
 
 const V1_FACTORY_INTERFACE = new Interface(V1_FACTORY_ABI)

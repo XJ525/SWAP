@@ -20,7 +20,8 @@ export enum SupportedChainId {
   CELO = 42220,
   CELO_ALFAJORES = 44787,
   BSC = 56,
-  OKExChain = 66
+  OKExChain = 66,
+  Huobi = 128
 }
 
 export const CHAIN_IDS_TO_NAMES = {

@@ -4,7 +4,13 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 import { SupportedChainId } from './chains'
 // import { PairState } from '../data/Reserves'
-import { BSC_AGGREGATION, MAINNET_AGGREGATION, POLYGON_AGGREGATION } from './Aggregations'
+import {
+  BSC_AGGREGATION,
+  MAINNET_AGGREGATION,
+  POLYGON_AGGREGATION,
+  OKE_AGGREGATION,
+  HUIBO_AGGREGATION
+} from './Aggregations'
 export const ROUTER_ADDRESS = '0xbD537A5afBB63295F1cab9A7A670415e153a91B9'
 export const AGGREGATION_ADDRESS = '0x2ae87E829a0bA3d9d7cFDD47128f43917fF5556C'
 
@@ -29,7 +35,8 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.BSC]: [WETH[ChainId.BSC]],
   [ChainId.BSC_TSET]: [WETH[ChainId.BSC_TSET]],
   [ChainId.MATIC]: [WETH[ChainId.MATIC]],
-  [ChainId.OKExChain]: [WETH[ChainId.OKExChain]]
+  [ChainId.OKExChain]: [WETH[ChainId.OKExChain]],
+  [ChainId.Huobi]: [WETH[ChainId.Huobi]]
 }
 interface CONTRACT {
   [key: string]: {
@@ -104,7 +111,8 @@ export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
   [SupportedChainId.OPTIMISM]: CONTRACT,
   [SupportedChainId.OPTIMISTIC_KOVAN]: CONTRACT,
   [SupportedChainId.BSC]: BSC_AGGREGATION,
-  [SupportedChainId.OKExChain]: CONTRACT
+  [SupportedChainId.OKExChain]: OKE_AGGREGATION,
+  [SupportedChainId.Huobi]: HUIBO_AGGREGATION
 }
 export interface TradesItem {
   name: string

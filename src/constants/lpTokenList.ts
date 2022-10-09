@@ -14,5 +14,6 @@ export const LpTokenList: { [key in SupportedChainId]: string } = {
   [SupportedChainId.OPTIMISM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.OPTIMISTIC_KOVAN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.BSC]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.OKExChain]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+  [SupportedChainId.OKExChain]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
+  [SupportedChainId.Huobi]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
 }

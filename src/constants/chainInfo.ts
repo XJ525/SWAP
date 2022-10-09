@@ -8,6 +8,7 @@ import optimismLogoUrl from '../assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from '../assets/svg/polygon-matic-logo.svg'
 import bscLogoUrl from '../assets/svg/bnb.svg'
 import okxLogoUrl from '../assets/images/okx.png'
+import huobiLogoUrl from '../assets/svg/huobi.svg'
 import ms from 'ms.macro'
 import { colorsDark } from '../theme/colors'
 
@@ -54,7 +55,8 @@ export interface L2ChainInfo extends BaseChainInfo {
 export type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
   readonly [chainId in SupportedL2ChainId]: L2ChainInfo
 } &
-  { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
+  { readonly [chainId in SupportedL1ChainId]: L1ChainInfo } &
+  { [key in SupportedChainId]: L1ChainInfo | L2ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
   [SupportedChainId.MAINNET]: {
@@ -242,6 +244,19 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: okxLogoUrl,
     circleLogoUrl: okxLogoUrl,
     nativeCurrency: { name: 'OKT', symbol: 'OKT', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.Huobi]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://scan.hecochain.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Huobi ECO Chain Mainnet',
+    logoUrl: huobiLogoUrl,
+    circleLogoUrl: huobiLogoUrl,
+    nativeCurrency: { name: 'HT', symbol: 'HT', decimals: 18 },
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
   }
