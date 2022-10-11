@@ -14,19 +14,17 @@ function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): any {
   // 默认的中转token
   // 主网有 WETH, DAI, USDC, USDT, COMP, MKR, WBTC
   // 测试网 只有 WETH
-  const bases: Token[] = chainId ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []
+  const bases: Token[] = useMemo(() => (chainId ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []), [chainId])
   //basePairs 由bases两两配对组成的交易对列表
   const [tokenA, tokenB] = chainId
     ? [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)]
     : [undefined, undefined]
 
-  const basePairs: [Token, Token][] = useMemo(
-    () =>
-      flatMap(bases, (base): [Token, Token][] => bases.map(otherBase => [base, otherBase])).filter(
-        ([t0, t1]) => t0.address !== t1.address
-      ),
-    [bases]
-  )
+  const basePairs: [Token, Token][] = useMemo(() => {
+    return flatMap(bases, (base): [Token, Token][] => bases.map(otherBase => [base, otherBase])).filter(
+      ([t0, t1]) => t0.address !== t1.address
+    )
+  }, [bases])
   // console.log(basePairs, 'basePairs') => []
   //在所有可能的中转交易对中进行筛选
   const allPairCombinations: [Token, Token][] = useMemo(
@@ -143,7 +141,7 @@ export function useTradeExactIn(
     //   )
     // }
     // return null
-  }, [allowedPairs, currencyAmountIn, currencyOut])
+  }, [currencyAmountIn, currencyOut])
 }
 
 /**
@@ -182,5 +180,5 @@ export function useTradeExactOut(
       }
     }
     return { allowedPairs, TradeList, Trades: [...Trades] }
-  }, [allowedPairs, currencyIn, currencyAmountOut])
+  }, [currencyAmountOut, currencyIn])
 }
