@@ -35,8 +35,15 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.BSC]: [WETH[ChainId.BSC]],
   [ChainId.BSC_TSET]: [WETH[ChainId.BSC_TSET]],
   [ChainId.MATIC]: [WETH[ChainId.MATIC]],
-  [ChainId.OKExChain]: [WETH[ChainId.OKExChain]],
-  [ChainId.Huobi]: [WETH[ChainId.Huobi]]
+  [ChainId.OKEXCHAIN]: [WETH[ChainId.OKEXCHAIN]],
+  [ChainId.HUOBI]: [WETH[ChainId.HUOBI]],
+  [ChainId.OPTIMISM]: [WETH[ChainId.OPTIMISM]],
+  [ChainId.ARBITRUM]: [WETH[ChainId.ARBITRUM]],
+  [ChainId.GNOSIS]: [WETH[ChainId.GNOSIS]],
+  [ChainId.AVALANCHE]: [WETH[ChainId.AVALANCHE]],
+  [ChainId.FANTOM]: [WETH[ChainId.FANTOM]],
+  [ChainId.KLAYTN]: [WETH[ChainId.KLAYTN]],
+  [ChainId.AURORA]: [WETH[ChainId.AURORA]]
 }
 interface CONTRACT {
   [key: string]: {
@@ -111,8 +118,13 @@ export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
   [SupportedChainId.OPTIMISM]: CONTRACT,
   [SupportedChainId.OPTIMISTIC_KOVAN]: CONTRACT,
   [SupportedChainId.BSC]: BSC_AGGREGATION,
-  [SupportedChainId.OKExChain]: OKE_AGGREGATION,
-  [SupportedChainId.Huobi]: HUIBO_AGGREGATION
+  [SupportedChainId.OKEXCHAIN]: OKE_AGGREGATION,
+  [SupportedChainId.HUOBI]: HUIBO_AGGREGATION,
+  [SupportedChainId.GNOSIS]: CONTRACT,
+  [SupportedChainId.AVALANCHE]: CONTRACT,
+  [SupportedChainId.FANTOM]: CONTRACT,
+  [SupportedChainId.KLAYTN]: CONTRACT,
+  [SupportedChainId.AURORA]: CONTRACT
 }
 export interface TradesItem {
   name: string

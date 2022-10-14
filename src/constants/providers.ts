@@ -63,6 +63,11 @@ export const RPC_PROVIDERS: { [key in SupportedChainId]: StaticJsonRpcProvider }
   [SupportedChainId.CELO]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.CELO]),
   [SupportedChainId.CELO_ALFAJORES]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.CELO_ALFAJORES]),
   [SupportedChainId.BSC]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.BSC]),
-  [SupportedChainId.OKExChain]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.OKExChain]),
-  [SupportedChainId.Huobi]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.Huobi])
+  [SupportedChainId.OKEXCHAIN]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.OKEXCHAIN]),
+  [SupportedChainId.HUOBI]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.HUOBI]),
+  [SupportedChainId.GNOSIS]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.GNOSIS]),
+  [SupportedChainId.AVALANCHE]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.AVALANCHE]),
+  [SupportedChainId.FANTOM]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.FANTOM]),
+  [SupportedChainId.KLAYTN]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.KLAYTN]),
+  [SupportedChainId.AURORA]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.AURORA])
 }

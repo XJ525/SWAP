@@ -2,7 +2,7 @@ import { Currency /**Currency.ETHER**/, Token } from 'eotc-bscswap-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
-// import EthereumLogo from '../../assets/images/ethereum-logo.png'
+import EthereumLogo from '../../assets/images/ethereum-logo.png'
 // import EthereumLogo from '../../assets/images/bnb.png'
 // import EotcLogo from '../../assets/images/eotclogo.png'
 import useHttpLocations from '../../hooks/useHttpLocations'
@@ -52,9 +52,10 @@ export default function CurrencyLogo({
   }, [currency, uriLocations])
   const { chainId } = useWeb3React()
   if (currency === Currency.ETHER) {
+    const isETH = currency?.symbol?.toUpperCase() === 'ETH'
     return (
       <StyledEthereumLogo
-        src={getChainInfo(chainId)?.circleLogoUrl || getChainInfo(chainId)?.logoUrl}
+        src={isETH ? EthereumLogo : getChainInfo(chainId)?.circleLogoUrl || getChainInfo(chainId)?.logoUrl}
         size={size}
         style={style}
       />

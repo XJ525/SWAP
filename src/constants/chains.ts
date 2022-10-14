@@ -7,21 +7,23 @@ export enum SupportedChainId {
   RINKEBY = 4,
   GOERLI = 5,
   KOVAN = 42,
-
   ARBITRUM_ONE = 42161,
   ARBITRUM_RINKEBY = 421611,
-
   OPTIMISM = 10,
   OPTIMISTIC_KOVAN = 69,
-
   POLYGON = 137,
   POLYGON_MUMBAI = 80001,
-
   CELO = 42220,
   CELO_ALFAJORES = 44787,
   BSC = 56,
-  OKExChain = 66,
-  Huobi = 128
+  OKEXCHAIN = 66,
+  HUOBI = 128,
+  ARBITRUM = 42161,
+  GNOSIS = 100,
+  AVALANCHE = 43114,
+  FANTOM = 250,
+  KLAYTN = 8217,
+  AURORA = 1313161554
 }
 
 export const CHAIN_IDS_TO_NAMES = {
@@ -39,7 +41,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.OPTIMISM]: 'optimism',
   [SupportedChainId.OPTIMISTIC_KOVAN]: 'optimistic_kovan',
   [SupportedChainId.BSC]: 'BSC',
-  [SupportedChainId.OKExChain]: 'OKExChain'
+  [SupportedChainId.OKEXCHAIN]: 'OKExChain'
 }
 
 /**

@@ -39,7 +39,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     'https://bsc-dataseed2.binance.org/'
     // "Fallback" URLs
   ],
-  [SupportedChainId.OKExChain]: [
+  [SupportedChainId.OKEXCHAIN]: [
     // "Safe" URLs
     'https://exchainrpc.okex.org'
     // "Fallback" URLs
@@ -107,12 +107,47 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     // "Safe" URLs
     `https://alfajores-forno.celo-testnet.org`
   ],
-  [SupportedChainId.Huobi]: [
+  [SupportedChainId.HUOBI]: [
     'https://http-mainnet-node.huobichain.com',
     'https://http-mainnet.hecochain.com',
     'https://pub001.hg.network/rpc',
     'https://hecoapi.terminet.io/rpc'
-  ]
+  ],
+  [SupportedChainId.GNOSIS]: [
+    'https://rpc.gnosischain.com',
+    'https://xdai-rpc.gateway.pokt.network',
+    'https://xdai-archive.blockscout.com',
+    'https://gnosis-mainnet.public.blastapi.io',
+    'https://rpc.ankr.com/gnosis',
+    'https://rpc.ap-southeast-1.gateway.fm/v1/gnosis/non-archival/mainnet'
+  ],
+  [SupportedChainId.AVALANCHE]: [
+    'https://api.avax.network/ext/bc/C/rpc',
+    'https://rpc.ankr.com/avalanche',
+    'https://ava-mainnet.public.blastapi.io/ext/bc/C/rpc',
+    'https://avalancheapi.terminet.io/ext/bc/C/rpc',
+    'https://1rpc.io/avax/c'
+  ],
+  [SupportedChainId.FANTOM]: [
+    'https://fantom-mainnet.gateway.pokt.network/v1/lb/62759259ea1b320039c9e7ac',
+    'https://rpc.ftm.tools/',
+    'https://rpc.ankr.com/fantom',
+    'https://rpc.fantom.network',
+    'https://rpc2.fantom.network',
+    'https://rpc3.fantom.network',
+    'https://rpcapi.fantom.network',
+    'https://fantom-mainnet.public.blastapi.io'
+  ],
+  [SupportedChainId.KLAYTN]: [
+    'https://public-node-api.klaytnapi.com/v1/cypress',
+    'https://klaytn01.fandom.finance',
+    'https://klaytn02.fandom.finance',
+    'https://klaytn03.fandom.finance',
+    'https://klaytn04.fandom.finance',
+    'https://klaytn05.fandom.finance',
+    'https://cypress.fandom.finance/archive'
+  ],
+  [SupportedChainId.AURORA]: ['https://mainnet.aurora.dev']
 }
 
 /**
@@ -120,47 +155,25 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
  * These are the URLs used by the interface when there is not another available source of chain data.
  */
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
-  [SupportedChainId.MAINNET]: [
-    `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.MAINNET]
-  ],
-  [SupportedChainId.RINKEBY]: [
-    `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.RINKEBY]
-  ],
-  [SupportedChainId.ROPSTEN]: [
-    `https://ropsten.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.ROPSTEN]
-  ],
-  [SupportedChainId.GOERLI]: [`https://goerli.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.GOERLI]],
-  [SupportedChainId.KOVAN]: [`https://kovan.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.KOVAN]],
-  [SupportedChainId.OPTIMISM]: [
-    `https://optimism-mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.OPTIMISM]
-  ],
-  [SupportedChainId.OPTIMISTIC_KOVAN]: [
-    `https://optimism-kovan.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.OPTIMISTIC_KOVAN]
-  ],
-  [SupportedChainId.ARBITRUM_ONE]: [
-    `https://arbitrum-mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.ARBITRUM_ONE]
-  ],
-  [SupportedChainId.ARBITRUM_RINKEBY]: [
-    `https://arbitrum-rinkeby.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.ARBITRUM_RINKEBY]
-  ],
-  [SupportedChainId.POLYGON]: [
-    `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.POLYGON]
-  ],
-  [SupportedChainId.POLYGON_MUMBAI]: [
-    `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.POLYGON_MUMBAI]
-  ],
+  [SupportedChainId.MAINNET]: [...FALLBACK_URLS[SupportedChainId.MAINNET]],
+  [SupportedChainId.RINKEBY]: [...FALLBACK_URLS[SupportedChainId.RINKEBY]],
+  [SupportedChainId.ROPSTEN]: [...FALLBACK_URLS[SupportedChainId.ROPSTEN]],
+  [SupportedChainId.GOERLI]: [...FALLBACK_URLS[SupportedChainId.GOERLI]],
+  [SupportedChainId.KOVAN]: [...FALLBACK_URLS[SupportedChainId.KOVAN]],
+  [SupportedChainId.OPTIMISM]: [...FALLBACK_URLS[SupportedChainId.OPTIMISM]],
+  [SupportedChainId.OPTIMISTIC_KOVAN]: [...FALLBACK_URLS[SupportedChainId.OPTIMISTIC_KOVAN]],
+  [SupportedChainId.ARBITRUM_ONE]: [...FALLBACK_URLS[SupportedChainId.ARBITRUM_ONE]],
+  [SupportedChainId.ARBITRUM_RINKEBY]: [...FALLBACK_URLS[SupportedChainId.ARBITRUM_RINKEBY]],
+  [SupportedChainId.POLYGON]: [...FALLBACK_URLS[SupportedChainId.POLYGON]],
+  [SupportedChainId.POLYGON_MUMBAI]: [...FALLBACK_URLS[SupportedChainId.POLYGON_MUMBAI]],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
   [SupportedChainId.BSC]: FALLBACK_URLS[SupportedChainId.BSC],
-  [SupportedChainId.OKExChain]: FALLBACK_URLS[SupportedChainId.OKExChain],
-  [SupportedChainId.Huobi]: FALLBACK_URLS[SupportedChainId.Huobi]
+  [SupportedChainId.OKEXCHAIN]: FALLBACK_URLS[SupportedChainId.OKEXCHAIN],
+  [SupportedChainId.HUOBI]: FALLBACK_URLS[SupportedChainId.HUOBI],
+  [SupportedChainId.GNOSIS]: FALLBACK_URLS[SupportedChainId.GNOSIS],
+  [SupportedChainId.AVALANCHE]: FALLBACK_URLS[SupportedChainId.AVALANCHE],
+  [SupportedChainId.FANTOM]: FALLBACK_URLS[SupportedChainId.FANTOM],
+  [SupportedChainId.KLAYTN]: FALLBACK_URLS[SupportedChainId.KLAYTN],
+  [SupportedChainId.AURORA]: FALLBACK_URLS[SupportedChainId.AURORA]
 }

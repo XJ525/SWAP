@@ -24,12 +24,18 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   4: 'rinkeby.etherscan.io',
   5: 'goerli.etherscan.io',
   42: 'kovan.etherscan.io',
-  //256: 'testnet.hecoinfo.com'
   56: 'bscscan.com',
   97: 'testnet.bscscan.com',
   137: 'polygonscan.com',
-  [ChainId.OKExChain]: 'www.oklink.com/zh-cn/okc',
-  [ChainId.Huobi]: 'scan.hecochain.com'
+  [ChainId.OKEXCHAIN]: 'www.oklink.com/zh-cn/okc',
+  [ChainId.HUOBI]: 'scan.hecochain.com',
+  [ChainId.OPTIMISM]: 'optimistic.etherscan.io',
+  [ChainId.ARBITRUM]: 'arbiscan.io',
+  [ChainId.GNOSIS]: 'gnosisscan.io',
+  [ChainId.AVALANCHE]: 'subnets.avax.network',
+  [ChainId.FANTOM]: 'ftmscan.com',
+  [ChainId.KLAYTN]: 'scope.klaytn.com',
+  [ChainId.AURORA]: 'aurorascan.dev'
 }
 
 export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {

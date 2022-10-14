@@ -12,8 +12,15 @@ const V1_FACTORY_ADDRESSES: { [chainId in ChainId]: string } = {
   [ChainId.BSC]: '',
   [ChainId.BSC_TSET]: '',
   [ChainId.MATIC]: '',
-  [ChainId.OKExChain]: '',
-  [ChainId.Huobi]: ''
+  [ChainId.OKEXCHAIN]: '',
+  [ChainId.HUOBI]: '',
+  [ChainId.OPTIMISM]: '',
+  [ChainId.ARBITRUM]: '',
+  [ChainId.GNOSIS]: '',
+  [ChainId.AVALANCHE]: '',
+  [ChainId.FANTOM]: '',
+  [ChainId.KLAYTN]: '',
+  [ChainId.AURORA]: ''
 }
 
 const V1_FACTORY_INTERFACE = new Interface(V1_FACTORY_ABI)

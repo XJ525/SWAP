@@ -1,6 +1,6 @@
 import celoCircleLogoUrl from '../assets/images/celoCircle.png'
 import ethereumLogoUrl from '../assets/images/ethereum-logo.png'
-import optimismCircleLogoUrl from '../assets/images/optimismCircle.png'
+// import optimismCircleLogoUrl from '../assets/images/optimismCircle.png'
 import polygonCircleLogoUrl from '../assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from '../assets/svg/arbitrum_logo.svg'
 import celoLogo from '../assets/svg/celo_logo.svg'
@@ -9,6 +9,11 @@ import polygonMaticLogo from '../assets/svg/polygon-matic-logo.svg'
 import bscLogoUrl from '../assets/svg/bnb.svg'
 import okxLogoUrl from '../assets/images/okx.png'
 import huobiLogoUrl from '../assets/svg/huobi.svg'
+import gnosisLogoUrl from '../assets/svg/gnosis.svg'
+import avalancheLogoUrl from '../assets/svg/avalanche.svg'
+import fantomLogoUrl from '../assets/svg/fantom.svg'
+import klaytnLogoUrl from '../assets/svg/klaytn.svg'
+import auroraLogoUrl from '../assets/svg/aurora.svg'
 import ms from 'ms.macro'
 import { colorsDark } from '../theme/colors'
 
@@ -119,7 +124,7 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.uniswap.org/#/optimism/',
     label: 'Optimism',
     logoUrl: optimismLogoUrl,
-    circleLogoUrl: optimismCircleLogoUrl,
+    circleLogoUrl: optimismLogoUrl,
     statusPage: 'https://optimism.io/status',
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
@@ -234,7 +239,7 @@ const CHAIN_INFO: ChainInfoMap = {
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
   },
-  [SupportedChainId.OKExChain]: {
+  [SupportedChainId.OKEXCHAIN]: {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
     docs: 'https://polygon.io/',
@@ -247,7 +252,7 @@ const CHAIN_INFO: ChainInfoMap = {
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
   },
-  [SupportedChainId.Huobi]: {
+  [SupportedChainId.HUOBI]: {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
     docs: 'https://polygon.io/',
@@ -257,6 +262,71 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: huobiLogoUrl,
     circleLogoUrl: huobiLogoUrl,
     nativeCurrency: { name: 'HT', symbol: 'HT', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.GNOSIS]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://gnosisscan.io',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Gnosis',
+    logoUrl: gnosisLogoUrl,
+    circleLogoUrl: gnosisLogoUrl,
+    nativeCurrency: { name: 'xDAI', symbol: 'xDAI', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.AVALANCHE]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://subnets.avax.network/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Avalanche C-Chain',
+    logoUrl: avalancheLogoUrl,
+    circleLogoUrl: avalancheLogoUrl,
+    nativeCurrency: { name: 'AVAX', symbol: 'AVAX', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.FANTOM]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://ftmscan.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Fantom Opera',
+    logoUrl: fantomLogoUrl,
+    circleLogoUrl: fantomLogoUrl,
+    nativeCurrency: { name: 'FTM', symbol: 'FTM', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.KLAYTN]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://scope.klaytn.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Klaytn Mainnet Cypress',
+    logoUrl: klaytnLogoUrl,
+    circleLogoUrl: klaytnLogoUrl,
+    nativeCurrency: { name: 'KLAY', symbol: 'KLAY', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.AURORA]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://aurorascan.dev/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Aurora Mainnet',
+    logoUrl: auroraLogoUrl,
+    circleLogoUrl: auroraLogoUrl,
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
   }
