@@ -216,6 +216,16 @@ const ExplorerLabel = ({ chainId }: { chainId: SupportedChainId }) => {
       return <Trans>Oklink</Trans>
     case SupportedChainId.HUOBI:
       return <Trans>Heco Chain Explorer</Trans>
+    case SupportedChainId.GNOSIS:
+      return <Trans>Gnosis Chain Explorer</Trans>
+    case SupportedChainId.AVALANCHE:
+      return <Trans>Avalanche Explorer</Trans>
+    case SupportedChainId.FANTOM:
+      return <Trans>Fantom Blockchain Explorer</Trans>
+    case SupportedChainId.KLAYTN:
+      return <Trans>Klaytn Explorer</Trans>
+    case SupportedChainId.AURORA:
+      return <Trans>Aurora Explorer</Trans>
     default:
       return <Trans>Etherscan</Trans>
   }

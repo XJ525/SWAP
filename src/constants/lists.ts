@@ -22,7 +22,8 @@ export const DEFAULT_LIST_OF_LISTS: string[] = [
   //  'https://umaproject.org/uma.tokenlist.json'
   //  'https://tokens.pancakeswap.finance/coingecko.json'
   //  'https://tokens.pancakeswap.finance/cmc.json'
-  'https://tokens.pancakeswap.finance/pancakeswap-extended.json'
+  'https://tokens.pancakeswap.finance/pancakeswap-extended.json',
+  'https://static.optimism.io/optimism.tokenlist.json'
 ]
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
