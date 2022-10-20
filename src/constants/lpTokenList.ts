@@ -13,7 +13,7 @@ export const LpTokenList: { [key in SupportedChainId]: string } = {
   [SupportedChainId.ARBITRUM_RINKEBY]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.OPTIMISM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.OPTIMISTIC_KOVAN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.BSC]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
+  [SupportedChainId.BSC]: '0x921A63085943e4F65C7e4409F4FcD17d93642E03',
   [SupportedChainId.OKEXCHAIN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.HUOBI]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.GNOSIS]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',

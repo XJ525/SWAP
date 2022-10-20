@@ -23,9 +23,10 @@ export const BSC_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    name: 'Eotcswap V2',
+    FACTORY: '0x00877DA81120D37629F1eBce1A4cB8432bBD3788',
+    ROUTER: '0xFC4B23ee03cb2947bF063d0CdcF21e25F23aa58D',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {
@@ -226,9 +227,9 @@ export const HUIBO_AGGREGATION: CONTRACT = {
   },
   EOTC: {
     name: 'Eotcswap V2',
-    FACTORY: '0x015151d9779c07A8E5039F02d6a23186EA4876Bb',
-    ROUTER: '0xa47c718E7e3405a852C3759224F8edA88E20018B',
-    INIT_CODE_HASH: '0x8f5b0de3ff77e3f4d6539cd371233f258e01de85ec54335eee38954af1d8bec3',
+    FACTORY: '0x70dD64b802230d583938c6944F06D17c39d60fA9',
+    ROUTER: '0x8582A7396C55D006a8F7b8bC553E63e26A8d5E9a',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {
