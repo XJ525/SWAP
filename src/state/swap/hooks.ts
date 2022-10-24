@@ -27,6 +27,7 @@ import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { computeSlippageAdjustedAmounts } from '../../utils/prices'
 import { Trades } from '../../constants'
+import { useTranslation } from 'react-i18next'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
@@ -145,7 +146,7 @@ export function useDerivedSwapInfo(): {
   v2Trades: Trades
 } {
   const { account } = useActiveWeb3React()
-
+  const { t } = useTranslation()
   const toggledVersion = useToggledVersion()
 
   const {
@@ -201,27 +202,27 @@ export function useDerivedSwapInfo(): {
 
   let inputError: string | undefined
   if (!account) {
-    inputError = '连接钱包'
+    inputError = t('connectWallet')
   }
 
   if (!parsedAmount) {
-    inputError = inputError ?? '输入金额'
+    inputError = inputError ?? t('enterTheAmount')
   }
 
   if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
-    inputError = inputError ?? '选择代币'
+    inputError = inputError ?? t('selectToken')
   }
 
   const formattedTo = isAddress(to)
   if (!to || !formattedTo) {
-    inputError = inputError ?? '输入收件人'
+    inputError = inputError ?? t('noRecipient')
   } else {
     if (
       BAD_RECIPIENT_ADDRESSES.indexOf(formattedTo) !== -1 ||
       (bestTradeExactIn && involvesAddress(bestTradeExactIn, formattedTo)) ||
       (bestTradeExactOut && involvesAddress(bestTradeExactOut, formattedTo))
     ) {
-      inputError = inputError ?? '收件人无效'
+      inputError = inputError ?? t('invalidRecipient')
     }
   }
 
@@ -248,7 +249,7 @@ export function useDerivedSwapInfo(): {
 
   // 若余额小于计算滑点后的数量 则报错
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = amountIn.currency.symbol + ' 余额不足'
+    inputError = amountIn.currency.symbol + ' ' + t('insufficientBalance')
   }
 
   return {

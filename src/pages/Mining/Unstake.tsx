@@ -11,9 +11,11 @@ import { APY_LIST } from './index'
 import { useGetStakeRecord } from './hook'
 import { ButtonUnStake } from './ButtonUnStake'
 import { useGetLpTokenBalance } from './hook'
+import { useTranslation } from 'react-i18next'
 
 export default function UnStake() {
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
   const [selectedDate, setSelectedDate] = useState(6)
   const [stakeRecord] = useGetStakeRecord()
   const [unstakeData, setUnstakeData] = useState([])
@@ -36,7 +38,7 @@ export default function UnStake() {
         <Box mt="33px">
           <BoxSB>
             <ClickableText fontWeight={400} fontSize={16} color={theme.text1}>
-              质押LP (LP: {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'})
+              {t('stake')}LP (LP: {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'})
             </ClickableText>
             <RecordLink></RecordLink>
           </BoxSB>
@@ -47,7 +49,7 @@ export default function UnStake() {
             <OrderCard>
               <BoxSB>
                 <Text fontWeight={400} fontSize={14} color={theme.text7}>
-                  订单编号: {item.id}
+                  {t('orderNumber')}: {item.id}
                 </Text>
                 <Text fontWeight={400} fontSize={14} color={theme.text8}>
                   {item.date}
@@ -57,7 +59,7 @@ export default function UnStake() {
                 <RowEnd>
                   <AutoColumn style={{ width: '50%' }} gap="md">
                     <Text fontWeight={400} fontSize={14} color={theme.text8}>
-                      质押数量
+                      {t('numberStake')}
                     </Text>
                     <Text fontWeight={'bold'} fontSize={20} color={theme.text7}>
                       {item.num}
@@ -65,7 +67,7 @@ export default function UnStake() {
                   </AutoColumn>
                   <AutoColumn style={{ width: '50%' }} gap="md">
                     <Text fontWeight={400} fontSize={14} color={theme.text8}>
-                      预估收益
+                      {t('estimatedEarnings')}
                     </Text>
                     <Text fontWeight={'bold'} fontSize={20} color={'#E6B37C'}>
                       + {item.num * APY_LIST[selectedDate]} EOTC
@@ -81,7 +83,7 @@ export default function UnStake() {
                   </Text>
                 </ButtonLeft> */}
                   <ButtonUnStake id={item.id} delSetUnstakeData={delSetUnstakeData}>
-                    赎回
+                    {t('unstake')}
                   </ButtonUnStake>
                 </BoxSB>
               </Box>
@@ -93,7 +95,7 @@ export default function UnStake() {
         <Box mt="15px">
           <BodyMining>
             <Text style={{ textAlign: 'center' }} fontWeight={400} fontSize={14} color={'#818DA8'}>
-              没有数据
+              {t('noData')}
             </Text>
           </BodyMining>
         </Box>
@@ -101,7 +103,7 @@ export default function UnStake() {
       <Box mt="15px">
         <BodyMining>
           <Text fontWeight={400} fontSize={14} color={'#818DA8'}>
-            由于代币精度问题，LP余额无法在部分钱包显示，不影响质押和赎回
+            {t('text9')}
           </Text>
         </BodyMining>
       </Box>

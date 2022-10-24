@@ -1,6 +1,7 @@
 import { Trade, TradeType } from 'eotc-bscswap-sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
+import { useTranslation } from 'react-i18next'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
@@ -33,6 +34,7 @@ export default function SwapModalFooter({
 }) {
   const [showInverted, setShowInverted] = useState<boolean>(false)
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
   const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
     allowedSlippage,
     trade
@@ -45,7 +47,7 @@ export default function SwapModalFooter({
       <AutoColumn gap="0px">
         <RowBetween align="center">
           <Text fontWeight={400} fontSize={14} color={theme.text2}>
-            价格
+            {t('Prices')}
           </Text>
           <Text
             fontWeight={500}
@@ -69,7 +71,7 @@ export default function SwapModalFooter({
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {trade.tradeType === TradeType.EXACT_INPUT ? '最低收到' : '最大销售量'}
+              {trade.tradeType === TradeType.EXACT_INPUT ? t('minimumReceived') : t('maximumSold')}
             </TYPE.black>
             <QuestionHelper text="如果在确认之前出现较大的不利价格变动，您的交易将恢复。" />
           </RowFixed>

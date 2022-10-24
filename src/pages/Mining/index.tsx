@@ -16,6 +16,7 @@ import recordLogo from '../../assets/images/record.png'
 import backImg from '../../assets/svg/back.svg'
 import backImgDark from '../../assets/svg/back1.svg'
 import { useDarkModeManager } from '../../state/user/hooks'
+import { useTranslation } from 'react-i18next'
 export const APY_LIST: { [key: number]: number } = {
   6: 0.48,
   12: 0.72,
@@ -84,11 +85,12 @@ export function LpTag() {
 }
 export function GoBack({ onCilck }: { onCilck?: any }) {
   const [isDark] = useDarkModeManager()
+  const { t } = useTranslation()
   return (
     <_LpTag style={{ cursor: 'pointer' }} onClick={onCilck}>
       <BackImg src={isDark ? backImg : backImgDark} />
       <Text fontSize={18} fontWeight={600}>
-        质押记录
+        {t('stakeRecords')}
       </Text>
     </_LpTag>
   )
@@ -100,6 +102,7 @@ export function RadioCycle({
   selectedDate: number
   setSelectedDate: React.Dispatch<React.SetStateAction<number>>
 }) {
+  const { t } = useTranslation()
   return (
     <RowBetween>
       <Option
@@ -108,7 +111,7 @@ export function RadioCycle({
         }}
         active={selectedDate === 6}
       >
-        6个月
+        {t('months', { amount: 6 })}
       </Option>
       <Option
         onClick={() => {
@@ -116,7 +119,7 @@ export function RadioCycle({
         }}
         active={selectedDate === 12}
       >
-        12个月
+        {t('months', { amount: 12 })}
       </Option>
       <Option
         onClick={() => {
@@ -124,7 +127,7 @@ export function RadioCycle({
         }}
         active={selectedDate === 24}
       >
-        24个月
+        {t('months', { amount: 24 })}
       </Option>
     </RowBetween>
   )
@@ -132,11 +135,12 @@ export function RadioCycle({
 export function RecordLink() {
   const theme = useContext(ThemeContext)
   const [isDark] = useDarkModeManager()
+  const { t } = useTranslation()
   return (
     <Link to={'/mining/record'}>
       <BoxSB>
         <ClickableText fontWeight={400} fontSize={16} color={theme.text1}>
-          质押记录
+          {t('stakeRecords')}
         </ClickableText>
         <RecordLogo style={{ marginRight: '5px' }} src={!isDark ? recordLogoDark : recordLogo} />
       </BoxSB>

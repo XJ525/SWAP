@@ -43,6 +43,7 @@ import { useUserDeadline, useUserSlippageTolerance } from '../../state/user/hook
 import { BigNumber } from '@ethersproject/bignumber'
 import { useGetRouterAddress } from '../../hooks/useGetRouterAddress'
 import { CONTRACTS } from '../../constants'
+import { useTranslation } from 'react-i18next'
 
 export default function RemoveLiquidity({
   history,
@@ -59,6 +60,7 @@ export default function RemoveLiquidity({
   ])
 
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
 
   // toggle wallet when disconnected
   const toggleWalletModal = useWalletModalToggle()
@@ -369,7 +371,8 @@ export default function RemoveLiquidity({
         </RowBetween>
 
         <TYPE.italic fontSize={12} color={theme.text2} textAlign="left" padding={'12px 0 0 0'}>
-          {`估计输出。 如果价格变化超过 ${allowedSlippage / 100}% ，您的交易将恢复。`}
+          {/* {`估计输出。 如果价格变化超过 ${allowedSlippage / 100}% ，您的交易将恢复。`} */}
+          {t('text7', { slippage: allowedSlippage / 100 })}
         </TYPE.italic>
       </AutoColumn>
     )
@@ -393,7 +396,7 @@ export default function RemoveLiquidity({
           <>
             <RowBetween>
               <Text color={theme.text2} fontWeight={500} fontSize={16}>
-                价格
+                {t('Prices')}
               </Text>
               <Text fontWeight={500} fontSize={16} color={theme.text1}>
                 1 {currencyA?.symbol} = {tokenA ? pair.priceOf(tokenA).toSignificant(6) : '-'} {currencyB?.symbol}
@@ -416,9 +419,9 @@ export default function RemoveLiquidity({
     )
   }
 
-  const pendingText = `移除 ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${
-    currencyA?.symbol
-  } 和 ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencyB?.symbol}`
+  const pendingText = `${t('remove')} ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${currencyA?.symbol} ${t(
+    'and'
+  )} ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencyB?.symbol}`
 
   const liquidityPercentChangeCallback = useCallback(
     (value: number) => {
@@ -482,7 +485,7 @@ export default function RemoveLiquidity({
             hash={txHash ? txHash : ''}
             content={() => (
               <ConfirmationModalContent
-                title={'您将收到'}
+                title={t('youWillReceive')}
                 onDismiss={handleDismissConfirmation}
                 topContent={modalHeader}
                 bottomContent={modalBottom}
@@ -494,14 +497,14 @@ export default function RemoveLiquidity({
             <LightCard>
               <AutoColumn gap="20px">
                 <RowBetween>
-                  <Text fontWeight={500}>金额</Text>
+                  <Text fontWeight={500}>{t('amount')}</Text>
                   <ClickableText
                     fontWeight={500}
                     onClick={() => {
                       setShowDetailed(!showDetailed)
                     }}
                   >
-                    {showDetailed ? '简单的' : '详细的'}
+                    {showDetailed ? t('simple') : t('detailed')}
                   </ClickableText>
                 </RowBetween>
                 <Row style={{ alignItems: 'flex-end' }}>
@@ -609,7 +612,7 @@ export default function RemoveLiquidity({
                   onMax={() => onUserInput(Field.LIQUIDITY_PERCENT, '100')}
                   showMaxButton={!atMaxAmount}
                   currency={currencyA}
-                  label={'输出'}
+                  label={t('output')}
                   onCurrencySelect={handleSelectCurrencyA}
                   id="remove-liquidity-tokena"
                 />
@@ -623,7 +626,7 @@ export default function RemoveLiquidity({
                   onMax={() => onUserInput(Field.LIQUIDITY_PERCENT, '100')}
                   showMaxButton={!atMaxAmount}
                   currency={currencyB}
-                  label={'输出'}
+                  label={t('output')}
                   onCurrencySelect={handleSelectCurrencyB}
                   id="remove-liquidity-tokenb"
                 />
@@ -632,7 +635,7 @@ export default function RemoveLiquidity({
             {pair && (
               <div style={{ padding: '10px 20px' }}>
                 <RowBetween>
-                  价格:
+                  {t('Prices')}:
                   <div>
                     1 {currencyA?.symbol} = {tokenA ? pair.priceOf(tokenA).toSignificant(6) : '-'} {currencyB?.symbol}
                   </div>
@@ -659,11 +662,11 @@ export default function RemoveLiquidity({
                     fontSize={16}
                   >
                     {approval === ApprovalState.PENDING ? (
-                      <Dots>授权</Dots>
+                      <Dots>{t('approval')}</Dots>
                     ) : approval === ApprovalState.APPROVED || signatureData !== null ? (
                       '合法的'
                     ) : (
-                      '授权'
+                      t('approval')
                     )}
                   </ButtonConfirmed>
                   <ButtonError

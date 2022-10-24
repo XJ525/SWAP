@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { useTokenContract } from './useContract'
 import { calculateGasMargin } from '../utils'
+import { useTranslation } from 'react-i18next'
 export const transfer = async ({
   amount,
   to,
@@ -30,7 +31,7 @@ export function useStakeCallback({
 } {
   const addTransaction = useTransactionAdder()
   const contract = useTokenContract(contractAddress, true)
-
+  const { t } = useTranslation()
   return useMemo(() => {
     return {
       callback: async function onStake(): Promise<string> {
@@ -44,7 +45,7 @@ export function useStakeCallback({
         })
           .then((response: any) => {
             console.log(response)
-            const base = `质押 ${amount.toExact()} EOTC-USDT LP`
+            const base = `${t('stake')} ${amount.toExact()} EOTC-USDT LP`
 
             addTransaction(response, {
               summary: base

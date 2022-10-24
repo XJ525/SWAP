@@ -22,6 +22,7 @@ import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 import { getChainInfo } from '../../constants/chainInfo'
 import { CHAIN_IDS_TO_NAMES } from '../../constants/chains'
+import { useTranslation } from 'react-i18next'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -243,6 +244,7 @@ export default function Header() {
   const [isDark] = useDarkModeManager()
   const nativeCurrency = getChainInfo(chainId)?.nativeCurrency
   const { pathname } = useLocation()
+  const { t } = useTranslation()
   const isPoolActive =
     pathname.startsWith('/pool') ||
     pathname.startsWith('/add') ||
@@ -264,7 +266,7 @@ export default function Header() {
           </Title>
           <HeaderLinks>
             <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-              <Trans>兑换</Trans>
+              <Trans> {t('swap')}</Trans>
             </StyledNavLink>
             <StyledNavLink
               data-cy="pool-nav-link"
@@ -272,10 +274,10 @@ export default function Header() {
               to={'/pool'}
               className={isPoolActive ? activeClassName : undefined}
             >
-              <Trans>流动池</Trans>
+              <Trans> {t('pool')}</Trans>
             </StyledNavLink>
             <StyledNavLink data-cy="mining-nav-link" id={`mining-nav-link`} to={'/mining'}>
-              <Trans>挖矿</Trans>
+              <Trans>{t('mining')}</Trans>
             </StyledNavLink>
           </HeaderLinks>
         </HeaderElement>

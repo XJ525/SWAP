@@ -9,6 +9,7 @@ import { APY_LIST, LpTag, GoBack /*PositionsLoadingPlaceholder*/ } from './index
 import { ButtonUnStake } from './ButtonUnStake'
 import dayjs from 'dayjs'
 import { toFixed } from '../../utils'
+import { useTranslation } from 'react-i18next'
 const EarningsCard = styled.div`
   width: 100%;
   padding: 15px 40px 20px 40px;
@@ -34,19 +35,20 @@ const _PledgeTag = styled.div<{
     (type === '4' && '#999999')};
 `
 export function PledgeTag({ type }: { type: string }) {
+  const { t } = useTranslation()
   return (
     <_PledgeTag type={type}>
       <Text style={{ lineHeight: '25px' }} fontWeight={400} fontSize={14}>
         {type === '0'
-          ? '确认中'
+          ? t('beingConfirmed')
           : type === '1'
-          ? '质押中'
+          ? t('underPledge')
           : type === '2'
-          ? '待赎回'
+          ? t('pendingUnstake')
           : type === '3'
-          ? '赎回中'
+          ? t('inRedemption')
           : type === '4'
-          ? '已赎回'
+          ? t('redeemed')
           : ''}
       </Text>
     </_PledgeTag>
@@ -56,6 +58,7 @@ export function PledgeTag({ type }: { type: string }) {
 export function Record({ history }: { history: any }) {
   // history.goBack()
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
   const [stakeRecord, , loading] = useGetStakeRecord()
   const [unstakeData, setUnstakeData] = useState([])
 
@@ -126,7 +129,7 @@ export function Record({ history }: { history: any }) {
 
       <EarningsCard>
         <Text style={{ textAlign: 'center' }} fontWeight={400} fontSize={14} color={'#FFFFFF'}>
-          累计收益
+          {t('earnings')}
         </Text>
         <Text
           style={{ textAlign: 'center', lineHeight: '25px', marginTop: '5px' }}
@@ -140,7 +143,7 @@ export function Record({ history }: { history: any }) {
           <RowEnd>
             <AutoColumn style={{ width: '50%' }} gap="md">
               <Text fontWeight={400} fontSize={14} color={'#FFFFFF'}>
-                当前质押
+                {t('currentStaked')}
               </Text>
               <Text style={{ lineHeight: '25px' }} fontWeight={'bold'} fontSize={18} color={'#FFFFFF'}>
                 {toFixed(data.atStake, 2)}
@@ -148,7 +151,7 @@ export function Record({ history }: { history: any }) {
             </AutoColumn>
             <AutoColumn style={{ width: '50%', justifyContent: 'end' }} gap="md">
               <Text fontWeight={400} fontSize={14} color={'#ffffff'}>
-                待赎回
+                {t('pendingUnstake')}
               </Text>
               <Text style={{ lineHeight: '25px' }} fontWeight={'bold'} fontSize={18} color={'#ffffff'}>
                 {toFixed(data.toRedeem, 2)}
@@ -197,7 +200,7 @@ export function Record({ history }: { history: any }) {
               <RowEnd style={{ alignItems: 'flex-start' }}>
                 <AutoColumn style={{ width: '50%' }} gap="sm">
                   <Text fontWeight={400} fontSize={14} color={theme.text7}>
-                    订单编号: {item.id}
+                    {t('orderNumber')}: {item.id}
                   </Text>
                   <Text fontWeight={400} fontSize={14} color={theme.text8}>
                     {item.date}
@@ -212,7 +215,7 @@ export function Record({ history }: { history: any }) {
                   <AutoColumn style={{ width: '50%' }} gap="md">
                     <div style={{ textAlign: 'center' }}>
                       <Text fontWeight={400} fontSize={14} color={'#90939B'}>
-                        质押数量
+                        {t('numberStake')}
                       </Text>
                       <Text
                         style={{ lineHeight: '25px', marginTop: '5px' }}
@@ -227,7 +230,7 @@ export function Record({ history }: { history: any }) {
                   <AutoColumn style={{ width: '50%' }} gap="md">
                     <div style={{ textAlign: 'center' }}>
                       <Text fontWeight={400} fontSize={14} color={'#90939B'}>
-                        预估收益
+                        {t('estimatedEarnings')}
                       </Text>
                       <Text
                         style={{ lineHeight: '25px', marginTop: '5px' }}
@@ -259,17 +262,17 @@ export function Record({ history }: { history: any }) {
                 {item.type === '2' && (
                   <Box mt={'15px'}>
                     <ButtonUnStake id={item.id} delSetUnstakeData={delSetUnstakeData}>
-                      赎回
+                      {t('unstake')}
                     </ButtonUnStake>
                   </Box>
                 )}
                 <Box mt={'25px'}>
                   <RowBetween>
                     <Text fontWeight={400} fontSize={14} color={'#90939B'}>
-                      已质押：{item.stakeDate} 天
+                      {t('staked')}：{item.stakeDate} {t('days')}
                     </Text>
                     <Text fontWeight={400} fontSize={14} color={'#90939B'}>
-                      赎回时间：{item.unstakeDate}
+                      {t('unstakeTime')}：{item.unstakeDate}
                     </Text>
                   </RowBetween>
                 </Box>
@@ -282,7 +285,7 @@ export function Record({ history }: { history: any }) {
         <Box mt="15px">
           <OrderCard>
             <Text style={{ textAlign: 'center' }} fontWeight={400} fontSize={14} color={'#818DA8'}>
-              没有数据
+              {t('noData')}
             </Text>
           </OrderCard>
         </Box>

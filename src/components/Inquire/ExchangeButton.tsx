@@ -31,6 +31,7 @@ import Wallet from '../../assets/images/wallet.png'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import ConfirmSwapModal from '../swap/ConfirmSwapModal'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 const LoadingButton = styled.div`
   /* display: flex; */
   justify-content: center;
@@ -46,6 +47,7 @@ export default function ExchangeButton({
   dexName: string
 }) {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
   const { independentField, typedValue, recipient } = useSwapState()
   const { parsedAmount, currencies, inputError: swapInputError } = useDerivedSwapInfo()
   const { wrapType, execute: onWrap, inputError: wrapInputError } = useWrapCallback(
@@ -186,7 +188,7 @@ export default function ExchangeButton({
           <>
             <ButtonLight onClick={toggleWalletModal}>
               <ButtonWallet src={Wallet} />
-              连接钱包
+              {t('connectWallet')}
             </ButtonLight>
           </>
         ) : showWrap ? (
@@ -209,12 +211,12 @@ export default function ExchangeButton({
               <Text fontSize={16} fontWeight={500}>
                 {approval === ApprovalState.PENDING ? (
                   <LoadingButton>
-                    授权 <Loader stroke="white" />
+                    {t('approval')} <Loader stroke="white" />
                   </LoadingButton>
                 ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                   '合法的'
                 ) : (
-                  '授权 '
+                  t('approval')
                 )}
               </Text>
             </ButtonConfirmedExchange>

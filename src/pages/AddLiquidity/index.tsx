@@ -38,6 +38,7 @@ import { ConfirmAddModalBottom } from './ConfirmAddModalBottom'
 import { currencyId } from '../../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
 import { useGetRouterAddress } from '../../hooks/useGetRouterAddress'
+import { useTranslation } from 'react-i18next'
 
 export default function AddLiquidity({
   match: {
@@ -47,7 +48,7 @@ export default function AddLiquidity({
 }: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string }>) {
   const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
-
+  const { t } = useTranslation()
   const currencyA = useCurrency(currencyIdA)
   const currencyB = useCurrency(currencyIdB)
 
@@ -245,11 +246,15 @@ export default function AddLiquidity({
         </RowFlat>
         <Row>
           <Text fontSize="24px">
-            {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol + '池代币'}
+            {currencies[Field.CURRENCY_A]?.symbol +
+              '/' +
+              currencies[Field.CURRENCY_B]?.symbol +
+              t('liquidityPoolToken')}
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
-          {`估计输出。如果价格变化超过 ${allowedSlippage / 100}% 您的交易将恢复。`}
+          {/* {`估计输出。如果价格变化超过 ${allowedSlippage / 100}% 您的交易将恢复。`} */}
+          {t('text7', { slippage: allowedSlippage / 100 })}
         </TYPE.italic>
       </AutoColumn>
     )
@@ -320,7 +325,7 @@ export default function AddLiquidity({
             hash={txHash}
             content={() => (
               <ConfirmationModalContent
-                title={noLiquidity ? '您正在创建一个池' : '您将收到'}
+                title={noLiquidity ? '您正在创建一个池' : t('youWillReceive')}
                 onDismiss={handleDismissConfirmation}
                 topContent={modalHeader}
                 bottomContent={modalBottom}
@@ -334,13 +339,13 @@ export default function AddLiquidity({
                 <BlueCard>
                   <AutoColumn gap="10px">
                     <TYPE.link fontWeight={600} color={'primaryText1'}>
-                      您是第一个流动性提供者。
+                      {t('firstLiquidity')}
                     </TYPE.link>
                     <TYPE.link fontWeight={400} color={'primaryText1'}>
-                      您添加的代币比例将决定该池的价格。
+                      {t('text3')}
                     </TYPE.link>
                     <TYPE.link fontWeight={400} color={'primaryText1'}>
-                      一旦您对价格感到满意，请单击供应进行审查。
+                      {t('text4')}
                     </TYPE.link>
                   </AutoColumn>
                 </BlueCard>
@@ -378,7 +383,8 @@ export default function AddLiquidity({
                 <GreyCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
                     <TYPE.subHeader fontWeight={500} fontSize={14}>
-                      {noLiquidity ? '初始价格' : '价格'} 和池份额
+                      {/* {noLiquidity ? '初始价格' : '价格'} 和池份额 */}
+                      {t('initialPrices')}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
                   <LightCard padding="1rem" borderRadius={'20px'}>
@@ -410,9 +416,11 @@ export default function AddLiquidity({
                           width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
-                            <Dots>授权 {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                            <Dots>
+                              {t('approval')} {currencies[Field.CURRENCY_A]?.symbol}
+                            </Dots>
                           ) : (
-                            '授权 ' + currencies[Field.CURRENCY_A]?.symbol
+                            t('approval') + ' ' + currencies[Field.CURRENCY_A]?.symbol
                           )}
                         </ButtonPrimary>
                       )}
@@ -423,9 +431,11 @@ export default function AddLiquidity({
                           width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
-                            <Dots>授权 {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                            <Dots>
+                              {t('approval')} {currencies[Field.CURRENCY_B]?.symbol}
+                            </Dots>
                           ) : (
-                            '授权 ' + currencies[Field.CURRENCY_B]?.symbol
+                            t('approval') + ' ' + currencies[Field.CURRENCY_B]?.symbol
                           )}
                         </ButtonPrimary>
                       )}
@@ -439,7 +449,7 @@ export default function AddLiquidity({
                   error={!isValid && !!parsedAmounts[Field.CURRENCY_A] && !!parsedAmounts[Field.CURRENCY_B]}
                 >
                   <Text fontSize={20} fontWeight={500}>
-                    {error ?? '供应'}
+                    {error ?? t('supply')}
                   </Text>
                 </ButtonError>
               </AutoColumn>
