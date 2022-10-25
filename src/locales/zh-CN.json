@@ -71,6 +71,7 @@
   "label": "通证符号",
   "decimals": "小数位数",
   "enterTokenCont": "输入通证地址并继续",
+  "tokenSearchPlaceholder": "搜索名称或粘贴地址",
   "mining": "挖矿",
   "from": "从",
   "From(estimated)": "从（估计）",

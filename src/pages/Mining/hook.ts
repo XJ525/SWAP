@@ -26,7 +26,7 @@ export function useGetStakeRecord() {
 export function useGetLpTokenBalance() {
   const { account, chainId } = useActiveWeb3React()
   const LPTOKEN_ADDRESS = LpTokenList[chainId as number]
-  const LpTonke = new Token(chainId as number, LPTOKEN_ADDRESS, 6, 'EOTC-V2', 'Eotcswap V2')
+  const LpTonke = new Token(chainId as number, LPTOKEN_ADDRESS, 12, 'EOTC-V2', 'Eotcswap V2')
   const userPoolBalance = useTokenBalance(account ?? undefined, LpTonke)
   return { LPTOKEN_ADDRESS, userPoolBalance, LpTonke }
 }

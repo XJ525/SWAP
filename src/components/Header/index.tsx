@@ -19,7 +19,7 @@ import Menu from '../Menu'
 
 import Row from '../Row'
 import Web3Status from '../Web3Status'
-import VersionSwitch from './VersionSwitch'
+// import VersionSwitch from './VersionSwitch'
 import { getChainInfo } from '../../constants/chainInfo'
 import { CHAIN_IDS_TO_NAMES } from '../../constants/chains'
 import { useTranslation } from 'react-i18next'
@@ -254,6 +254,11 @@ export default function Header() {
   return (
     <HeaderFrame>
       <RowBetweenHeader>
+        {isMobile && (
+          <HeaderElementWrap style={{ flex: '2' }}>
+            <Menu />
+          </HeaderElementWrap>
+        )}
         <HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -281,7 +286,7 @@ export default function Header() {
             </StyledNavLink>
           </HeaderLinks>
         </HeaderElement>
-        <HeaderControls>
+        <HeaderControls style={{ justifyContent: 'flex-end', flex: '2' }}>
           <HeaderElement>
             <NetworkSelector />
           </HeaderElement>
@@ -306,9 +311,9 @@ export default function Header() {
           )}
 
           <HeaderElementWrap>
-            <VersionSwitch />
+            {/* <VersionSwitch /> */}
             <Settings />
-            <Menu />
+            {!isMobile && <Menu />}
           </HeaderElementWrap>
         </HeaderControls>
       </RowBetweenHeader>
