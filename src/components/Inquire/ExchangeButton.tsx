@@ -214,7 +214,7 @@ export default function ExchangeButton({
                     {t('approval')} <Loader stroke="white" />
                   </LoadingButton>
                 ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
-                  '合法的'
+                  t('allowed')
                 ) : (
                   t('approval')
                 )}
@@ -241,8 +241,8 @@ export default function ExchangeButton({
             >
               <Text fontSize={16} fontWeight={500}>
                 {priceImpactSeverity > 3 && !isExpertMode
-                  ? `价格影响高`
-                  : `${priceImpactSeverity > 2 ? ' 仍要' : ''}兑换`}
+                  ? t('highPriceInfluence')
+                  : `${priceImpactSeverity > 2 ? t('stillTo') : ''}${t('swap')}`}
               </Text>
             </ButtonErrorExchang>
           </RowBetween>
@@ -269,8 +269,8 @@ export default function ExchangeButton({
               {swapInputError
                 ? swapInputError
                 : priceImpactSeverity > 3 && !isExpertMode
-                ? `价格影响太高`
-                : `${priceImpactSeverity > 2 ? ' 仍要' : ''}兑换`}
+                ? t('highPriceInfluence')
+                : `${priceImpactSeverity > 2 ? t('stillTo') : ''}${t('swap')}`}
             </Text>
           </ButtonErrorExchang>
         )}

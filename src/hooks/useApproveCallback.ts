@@ -111,5 +111,8 @@ export function useApproveCallbackFromTrade(trade?: Trade, allowedSlippage = 0, 
   const { chainId } = useActiveWeb3React()
   const tradeIsV1 = getTradeVersion(trade) === Version.v1
   const v1ExchangeAddress = useV1TradeExchangeAddress(trade)
-  return useApproveCallback(amountToApprove, tradeIsV1 ? v1ExchangeAddress : CONTRACTS[chainId as any][dexName].ROUTER)
+  return useApproveCallback(
+    amountToApprove,
+    tradeIsV1 ? v1ExchangeAddress : CONTRACTS[chainId as any]?.[dexName].ROUTER
+  )
 }

@@ -30,7 +30,7 @@ export default function Stake() {
   const buttonError = useMemo(() => {
     if (!amount) return t('input')
     if (userPoolBalance?.lessThan(amount)) return t('insufficientBalance')
-    if (amount.lessThan(MIN_STAKE)) return `最低抵押${MIN_STAKE} LP`
+    if (amount.lessThan(MIN_STAKE)) return t('text10', { amount: MIN_STAKE })
     return ''
   }, [amount, t, userPoolBalance])
 

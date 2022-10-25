@@ -233,7 +233,8 @@ export function useSwapCallback(
           })
           .catch((error: any) => {
             // if the user rejected the tx, pass this along
-            if (error?.code === 4001) {
+            console.log(error?.code, 'error?.code')
+            if (error?.code === 4001 || error?.code === 'ACTION_REJECTED') {
               throw new Error('交易被拒绝')
             } else {
               // otherwise, the error was unexpected and we need to convey that
