@@ -229,6 +229,8 @@
   "liquidityProviderFees": "Liquidity provider fees",
   "text18": "A portion of each transaction (0.30%) flows to the liquidity provider as an agreed incentive.",
   "refuseToUpdate": "Refuse to update",
-  "text19": "Estimated output. You will receive at least {{amount}} {{symbol}} otherwise the transaction will resume."
+  "text19": "Estimated output. You will receive at least {{amount}} {{symbol}} otherwise the transaction will resume.",
+  "text20":"The deal was rejected",
+  "text21":"Exchange {{tokenA}} for {{tokenB}}"
 
 }

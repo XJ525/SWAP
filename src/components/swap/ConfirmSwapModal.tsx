@@ -77,10 +77,13 @@ export default function ConfirmSwapModal({
   }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
   // text to show while loading
-  const pendingText = `用 ${trade?.inputAmount?.toSignificant(6)} ${
-    trade?.inputAmount?.currency?.symbol
-  } 换 ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
-
+  // const pendingText = `用 ${trade?.inputAmount?.toSignificant(6)} ${
+  //   trade?.inputAmount?.currency?.symbol
+  // } 换 ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
+  const pendingText = t('text21', {
+    tokenA: `${trade?.inputAmount?.toSignificant(6)} ${trade?.inputAmount?.currency?.symbol}`,
+    tokenB: `${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
+  })
   const confirmationContent = useCallback(
     () =>
       swapErrorMessage ? (

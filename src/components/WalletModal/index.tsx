@@ -297,7 +297,7 @@ export default function WalletModal({
           <CloseIcon onClick={toggleWalletModal}>
             <CloseColor />
           </CloseIcon>
-          <HeaderRow>{error instanceof UnsupportedChainIdError ? '错误的网络' : '连接错误'}</HeaderRow>
+          <HeaderRow>{error instanceof UnsupportedChainIdError ? t('wrongNetwork') : '连接错误'}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
               <h5>请连接到适当的以太坊网络。</h5>

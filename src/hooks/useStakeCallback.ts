@@ -56,7 +56,7 @@ export function useStakeCallback({
           .catch((error: any) => {
             // if the user rejected the tx, pass this along
             if (error?.code === 4001 || error?.code === 'ACTION_REJECTED') {
-              throw new Error('交易被拒绝')
+              throw new Error(t('text20'))
             } else {
               console.log(error, 'error')
               console.error(`质押失败`, error, 'error')

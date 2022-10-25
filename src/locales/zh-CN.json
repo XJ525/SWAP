@@ -213,5 +213,7 @@
   "liquidityProviderFees": "流动性供应商费用",
   "text18": "每笔交易的一部分（0.30%）作为协议激励流向流动性提供者。",
   "refuseToUpdate": "拒绝更新",
-  "text19": "估计输出。你至少会收到{{amount}} {{symbol}} 否则交易将恢复。"
+  "text19": "估计输出。你至少会收到{{amount}} {{symbol}} 否则交易将恢复。",
+  "text20": "交易被拒绝",
+  "text21": "用 {{tokenA}} 换 {{tokenB}}"
 }
