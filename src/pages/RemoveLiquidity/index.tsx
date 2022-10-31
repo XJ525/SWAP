@@ -383,7 +383,7 @@ export default function RemoveLiquidity({
       <>
         <RowBetween>
           <Text color={theme.text2} fontWeight={500} fontSize={16}>
-            {'统一 ' + currencyA?.symbol + '/' + currencyB?.symbol} 销毁
+            {'EOTC Swap ' + currencyA?.symbol + '/' + currencyB?.symbol + t('burned')}
           </Text>
           <RowFixed>
             <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin={true} />
@@ -412,7 +412,7 @@ export default function RemoveLiquidity({
         )}
         <ButtonPrimary disabled={!(approval === ApprovalState.APPROVED || signatureData !== null)} onClick={onRemove}>
           <Text fontWeight={500} fontSize={20}>
-            确认
+            {t('confirm')}
           </Text>
         </ButtonPrimary>
       </>
@@ -664,7 +664,7 @@ export default function RemoveLiquidity({
                     {approval === ApprovalState.PENDING ? (
                       <Dots>{t('approval')}</Dots>
                     ) : approval === ApprovalState.APPROVED || signatureData !== null ? (
-                      '合法的'
+                      t('allowed')
                     ) : (
                       t('approval')
                     )}
@@ -677,7 +677,7 @@ export default function RemoveLiquidity({
                     error={!isValid && !!parsedAmounts[Field.CURRENCY_A] && !!parsedAmounts[Field.CURRENCY_B]}
                   >
                     <Text fontSize={16} fontWeight={500}>
-                      {error || '移除'}
+                      {error || t('remove')}
                     </Text>
                   </ButtonError>
                 </RowBetween>

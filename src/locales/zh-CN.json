@@ -71,7 +71,6 @@
   "label": "通证符号",
   "decimals": "小数位数",
   "enterTokenCont": "输入通证地址并继续",
-  "tokenSearchPlaceholder": "搜索名称或粘贴地址",
   "mining": "挖矿",
   "from": "从",
   "From(estimated)": "从（估计）",
@@ -216,5 +215,19 @@
   "refuseToUpdate": "拒绝更新",
   "text19": "估计输出。你至少会收到{{amount}} {{symbol}} 否则交易将恢复。",
   "text20": "交易被拒绝",
-  "text21": "用 {{tokenA}} 换 {{tokenB}}"
+  "text21": "用 {{tokenA}} 换 {{tokenB}}",
+  "text22": "EOTC官网",
+  "text23":"链上理财赚币",
+  "text24":"去中心化OTC交易所",
+  "text25":"去中心化借贷交易所",
+  "text26":"去中心化合约交易所",
+  "text27":"DID去中心化身份系统",
+  "text28":"去中心化应用系统",
+  "text29":"EOTC 元宇宙",
+  "text30":"您正在创建一个池",
+  "text31":"供应 {{tokenA}} 和 {{tokenB}}",
+  "text32":"添加 {{tokenA}} 和 {{tokenB}}",
+  "burned":"销毁",
+  "confirm":"确认"
+
 }

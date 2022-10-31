@@ -256,7 +256,7 @@ const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
     docs: 'https://polygon.io/',
-    explorer: 'https://scan.hecochain.com/',
+    explorer: 'https://www.hecoinfo.com/',
     infoLink: 'https://info.uniswap.org/#/polygon/',
     label: 'Huobi ECO Chain Mainnet',
     logoUrl: huobiLogoUrl,

@@ -28,7 +28,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   97: 'testnet.bscscan.com',
   137: 'polygonscan.com',
   [ChainId.OKEXCHAIN]: 'www.oklink.com/zh-cn/okc',
-  [ChainId.HUOBI]: 'scan.hecochain.com',
+  [ChainId.HUOBI]: 'www.hecoinfo.com',
   [ChainId.OPTIMISM]: 'optimistic.etherscan.io',
   [ChainId.ARBITRUM]: 'arbiscan.io',
   [ChainId.GNOSIS]: 'gnosisscan.io',

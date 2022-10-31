@@ -187,15 +187,10 @@ export default function AddLiquidity({
           setAttemptingTxn(false)
 
           addTransaction(response, {
-            summary:
-              '添加 ' +
-              parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
-              ' ' +
-              currencies[Field.CURRENCY_A]?.symbol +
-              ' 和 ' +
-              parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
-              ' ' +
-              currencies[Field.CURRENCY_B]?.symbol
+            summary: t('text32', {
+              tokenA: `${parsedAmounts[Field.CURRENCY_A]?.toSignificant(3)} ${currencies[Field.CURRENCY_A]?.symbol}`,
+              tokenB: `${parsedAmounts[Field.CURRENCY_B]?.toSignificant(3)} ${currencies[Field.CURRENCY_B]?.symbol}`
+            })
           })
 
           setTxHash(response.hash)
@@ -273,10 +268,13 @@ export default function AddLiquidity({
     )
   }
 
-  const pendingText = `提供 ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${
-    currencies[Field.CURRENCY_A]?.symbol
-  } 和 ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
-
+  // const pendingText = `提供 ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${
+  //   currencies[Field.CURRENCY_A]?.symbol
+  // } 和 ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
+  const pendingText = t('text31', {
+    tokanA: `${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${currencies[Field.CURRENCY_A]?.symbol}`,
+    tokenB: `${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
+  })
   const handleCurrencyASelect = useCallback(
     (currencyA: Currency) => {
       const newCurrencyIdA = currencyId(currencyA)
@@ -325,7 +323,7 @@ export default function AddLiquidity({
             hash={txHash}
             content={() => (
               <ConfirmationModalContent
-                title={noLiquidity ? '您正在创建一个池' : t('youWillReceive')}
+                title={noLiquidity ? t('text30') : t('youWillReceive')}
                 onDismiss={handleDismissConfirmation}
                 topContent={modalHeader}
                 bottomContent={modalBottom}

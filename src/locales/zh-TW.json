@@ -71,7 +71,6 @@
   "label": "代幣符號",
   "decimals": "小數位數",
   "enterTokenCont": "輸入代幣地址",
-  "tokenSearchPlaceholder": "搜索名稱或粘貼地址",
   "mining": "挖礦",
   "from": "從",
   "From(estimated)": "從（估計)",
@@ -216,5 +215,18 @@
   "refuseToUpdate": "拒絕更新",
   "text19": "估計輸出。你至少會收到{{amount}} {{symbol}} 否則交易將恢復。",
   "text20": "交易被拒絕",
-  "text21": "用 {{tokenA}} 換 {{tokenB}}"
+  "text21": "用 {{tokenA}} 換 {{tokenB}}",
+  "text22": "EOTC官網",
+  "text23": "鏈上理財賺幣",
+  "text24": "去中心化OTC交易所",
+  "text25": "去中心化借貸交易所",
+  "text26": "去中心化合約交易所",
+  "text27": "DID去中心化身份系統",
+  "text28": "去中心化應用系統",
+  "text29": "EOTC 元宇宙",
+  "text30": "您正在創建一個流動性池",
+  "text31":"供應 {{token}} 和 {{token}}",
+  "text32":"添加 {{tokenA}} 和 {{tokenB}}",
+  "burned":"銷毀",
+  "confirm":"確認"
 }
