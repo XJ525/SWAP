@@ -2,7 +2,7 @@ import React, { useRef, useContext, useState, useEffect } from 'react'
 import { Settings, X } from 'react-feather'
 import styled from 'styled-components'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
-import { LangOptions } from './ToggleLang '
+import { LangOptions } from '../../i18n'
 import {
   useUserSlippageTolerance,
   useExpertModeManager,

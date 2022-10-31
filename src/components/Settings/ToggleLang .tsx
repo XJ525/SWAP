@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { MEDIA_WIDTHSV3 } from '../../theme'
-import i18n from '../../i18n'
+import i18n, { LangOptions } from '../../i18n'
 const FlyoutHeader = styled.div`
   color: ${({ theme }) => theme.text2};
   cursor: default;
@@ -75,12 +75,6 @@ function Row({ item, language, setLanguage }: { item: any; language: string; set
 
   return rowContent
 }
-
-export const LangOptions = [
-  { label: 'English', value: 'en-US' },
-  { label: '简体中文', value: 'zh-CN' },
-  { label: '繁体中文', value: 'zh-TW' }
-]
 
 export default function ToggleLang({ language, setLanguage }: { language: string; setLanguage: any }) {
   return (
