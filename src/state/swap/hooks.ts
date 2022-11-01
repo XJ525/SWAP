@@ -249,7 +249,8 @@ export function useDerivedSwapInfo(): {
 
   // 若余额小于计算滑点后的数量 则报错
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = amountIn.currency.symbol + ' ' + t('insufficientBalance')
+    inputError = t('insufficientBalance')
+    // inputError = amountIn.currency.symbol + ' ' + t('insufficientBalance')
   }
 
   return {

@@ -14,6 +14,11 @@ import ru from './locales/ru-RU.json'
 import es from './locales/es-ES.json'
 import pt from './locales/pt-PT.json'
 import it from './locales/it-IT.json'
+import vi from './locales/vi-VN.json'
+import id from './locales/id-ID.json'
+import ar from './locales/ar-EG.json'
+import nl from './locales/nl-NL.json'
+import th from './locales/th-TH.json'
 
 const resources = {
   'zh-CN': {
@@ -56,6 +61,26 @@ const resources = {
   //意大利
   'it-IT': {
     translation: it
+  },
+  // 越南
+  'vi-VN': {
+    translation: vi
+  },
+  //印尼
+  'id-ID': {
+    translation: id
+  },
+  //阿拉伯
+  'ar-EG': {
+    translation: ar
+  },
+  //荷兰
+  'nl-NL': {
+    translation: nl
+  },
+  //泰语
+  'th-TH': {
+    translation: th
   }
 }
 export const LangOptions = [
@@ -66,10 +91,15 @@ export const LangOptions = [
   { label: '한국어', value: 'ko-KO' },
   { label: 'Français', value: 'fr-FR' },
   { label: 'Deutsch', value: 'de-DE' },
-  { label: 'русский язык', value: 'de-DE' },
+  { label: 'русский язык', value: 'ru-RU' },
   { label: 'español', value: 'es-ES' },
   { label: 'Português', value: 'pt-PT' },
-  { label: 'Italiano', value: 'it-IT' }
+  { label: 'Italiano', value: 'it-IT' },
+  { label: 'Tiếng Việt', value: 'vi-VN' },
+  { label: 'Indonesia', value: 'id-ID' },
+  { label: 'عربي', value: 'ar-EG' },
+  { label: 'Nederlands', value: 'nl-NL' },
+  { label: 'ไทย', value: 'th-TH' }
 ]
 i18next
   .use(LanguageDetector)

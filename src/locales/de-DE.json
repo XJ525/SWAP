@@ -81,7 +81,7 @@
   "inputNotValid": "ungültiger Eingabewert",
   "installMetamask": "Bitte greifen Sie über Chrome oder Brave mit installiertem Metamask-Plugin zu.",
   "installWeb3MobileBrowser": "Bitte greifen Sie über einen mobilen Browser zu, der web3 unterstützt, wie z. B. Trust Wallet oder Coinbase Wallet.",
-  "insufficientBalance": "Mangelhaftes Gleichgewicht",
+  "insufficientBalance": "Gleichgewicht",
   "insufficientLiquidity": "",
   "interfaceSettings": "Schnittstelleneinstellungen",
   "intoPool": "in den Liquiditätspool.",
