@@ -15,7 +15,10 @@ export function useGetStakeRecord() {
   const { account, chainId } = useActiveWeb3React()
   useEffect(() => {
     async function handleStakeRecord() {
-      const result = await getStakeRecord({ net: CHAIN_IDS_TO_NAMES[chainId as number], ads: account as string })
+      const result = await getStakeRecord({
+        net: CHAIN_IDS_TO_NAMES[chainId as number]?.toLowerCase(),
+        ads: account as string
+      })
       setStakeRecord(result)
       setLoading(false)
     }

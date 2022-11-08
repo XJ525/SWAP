@@ -55,7 +55,7 @@ export default function Stake() {
         console.log(hash, 'hash')
         // console.log(hash.hash)
         await stakeApi({
-          net: CHAIN_IDS_TO_NAMES[chainId as number], // 网络类型 bsc trx
+          net: CHAIN_IDS_TO_NAMES[chainId as number]?.toLowerCase(), // 网络类型 bsc trx
           ads: account, // 钱包地址
           hx: hash, // 交易哈希
           num: amount.toExact(), // 交易数量,精度6位
