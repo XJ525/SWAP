@@ -204,7 +204,6 @@
   "toggleExpertMode": "สลับโหมดผู้เชี่ยวชาญ",
   "tokenAddress": "ที่อยู่โทเค็น",
   "tokenName": "ชื่อโทเค็น",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "อัปเดตโทเค็น",
   "tokenWorth": "ที่อัตราแลกเปลี่ยนปัจจุบัน มูลค่าโทเค็นของแต่ละกองทุนรวม",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "ส่วนแบ่งของสระว่ายน้ำของคุณ",
   "yourPosition": "ตำแหน่งของคุณ",
   "yourTransactionFail": "ธุรกรรมของคุณอาจล้มเหลว",
-  "yourTransactions": "ธุรกรรมของคุณจะปรากฏที่นี่"
+  "yourTransactions": "ธุรกรรมของคุณจะปรากฏที่นี่",
+  "tokenSearchPlaceholder": "ค้นหาชื่อหรือวางที่อยู่"
 }

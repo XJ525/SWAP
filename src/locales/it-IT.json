@@ -223,7 +223,6 @@
   "toggleDarkMode": "commuta la modalità giorno",
   "toggleExpertMode": "Attiva/disattiva la modalità esperto",
   "tokenName": "Nome del token",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token aggiornato",
   "toleranceExplanation": "",
   "transactionDeadline": "scadenza commerciale",
@@ -245,5 +244,6 @@
   "yourLiquidityQuestion": "Quando aggiungi liquidità, ottieni gettoni che rappresentano la percentuale del tuo pool.",
   "yourPosition": "la tua posizione",
   "yourTransactionFail": "La tua transazione potrebbe non riuscire",
-  "yourTransactions": "La tua transazione apparirà qui"
+  "yourTransactions": "La tua transazione apparirà qui",
+  "tokenSearchPlaceholder": "Cerca un nome o incolla un indirizzo"
 }

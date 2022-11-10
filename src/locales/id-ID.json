@@ -202,7 +202,6 @@
   "toggleExpertMode": "Alihkan mode ahli",
   "tokenAddress": "Alamat token",
   "tokenName": "Nama token",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token diperbarui",
   "tokenWorth": "Pada nilai tukar saat ini, nilai token dari setiap kumpulan dana",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourTransactions": "Transaksi Anda akan muncul di sini",
   "stake": "sumpah",
   "toggleDarkMode": "beralih mode hari",
-  "willReceive": "akan menerima setidaknya"
+  "willReceive": "akan menerima setidaknya",
+  "tokenSearchPlaceholder": "Cari nama atau tempel alamat"
 }

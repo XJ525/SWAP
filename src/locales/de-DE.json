@@ -204,7 +204,6 @@
   "toggleExpertMode": "Expertenmodus umschalten",
   "tokenAddress": "Token-Adresse",
   "tokenName": "Token-Name",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token aktualisiert",
   "tokenWorth": "Zum aktuellen Wechselkurs der Token-Wert jedes Fondspools",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "Ihr Anteil am Pool",
   "yourPosition": "deine Position",
   "yourTransactionFail": "Ihre Transaktion kann fehlschlagen",
-  "yourTransactions": "Ihre Transaktion wird hier angezeigt"
+  "yourTransactions": "Ihre Transaktion wird hier angezeigt",
+  "tokenSearchPlaceholder": "Suchen Sie nach einem Namen oder fügen Sie eine Adresse ein"
 }

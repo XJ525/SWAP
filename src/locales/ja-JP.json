@@ -204,7 +204,6 @@
   "toggleExpertMode": "エキスパートモードの切り替え",
   "tokenAddress": "トークンアドレス",
   "tokenName": "トークン名",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "トークンが更新されました",
   "tokenWorth": "現在の為替レートで、各資金プールのトークン値",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "プールのあなたの分け前",
   "yourPosition": "あなたの位置",
   "yourTransactionFail": "あなたの取引は失敗するかもしれません",
-  "yourTransactions": "あなたの取引はここに表示されます"
+  "yourTransactions": "あなたの取引はここに表示されます",
+  "tokenSearchPlaceholder": "名前を検索するか、住所を貼り付けてください"
 }

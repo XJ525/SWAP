@@ -204,7 +204,6 @@
   "toggleExpertMode": "Chuyển đổi chế độ chuyên gia",
   "tokenAddress": "Địa chỉ mã thông báo",
   "tokenName": "Tên mã thông báo",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Đã cập nhật mã thông báo",
   "tokenWorth": "Theo tỷ giá hối đoái hiện tại, giá trị mã thông báo của mỗi nhóm quỹ",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "phần của bạn trong hồ bơi",
   "yourPosition": "vị trí của bạn",
   "yourTransactionFail": "Giao dịch của bạn có thể thất bại",
-  "yourTransactions": "Giao dịch của bạn sẽ xuất hiện ở đây"
+  "yourTransactions": "Giao dịch của bạn sẽ xuất hiện ở đây",
+  "tokenSearchPlaceholder": "Tìm kiếm tên hoặc dán địa chỉ"
 }

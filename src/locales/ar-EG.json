@@ -204,7 +204,6 @@
   "toggleExpertMode": "تبديل وضع الخبير",
   "tokenAddress": "عنوان الرمز",
   "tokenName": "اسم الرمز",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "تم تحديث الرمز",
   "tokenWorth": "بسعر الصرف الحالي ، القيمة الرمزية لكل تجمع أموال",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "حصتك من البركة",
   "yourPosition": "موقعك",
   "yourTransactionFail": "قد تفشل معاملتك",
-  "yourTransactions": "ستظهر معاملتك هنا"
+  "yourTransactions": "ستظهر معاملتك هنا",
+  "tokenSearchPlaceholder": "ابحث عن اسم أو الصق عنوانًا"
 }

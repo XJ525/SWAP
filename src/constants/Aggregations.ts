@@ -2,6 +2,7 @@ import Cherryswap from '../assets/images/swapLogo/Cherryswap.svg'
 import Spooky from '../assets/images/swapLogo/Spooky.svg'
 import Pangolin from '../assets/images/swapLogo/Pangolin.svg'
 import Tomb from '../assets/images/swapLogo/Tomb.svg'
+import Dfyn from '../assets/images/swapLogo/Dfyn_Network.svg'
 interface CONTRACT {
   [key: string]: {
     name?: string
@@ -95,11 +96,11 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x95fdd2079c005e7643dcf9411501657242ed5023f2115be16f29fbfa7894adb5',
     Icon: require('../assets/images/swapLogo/Aura.png')
   },
-  Julswap: {
-    FACTORY: '0x553990F2CBA90272390f62C5BDb1681fFc899675',
-    ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
-    INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
-    Icon: require('../assets/images/swapLogo/Jul.png')
+  RadioShack: {
+    FACTORY: '0xB581D0A3b7Ea5cDc029260e989f768Ae167Ef39B',
+    ROUTER: '0xAf877420786516FC6692372c209e0056169eebAf',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   },
   BakerySwap: {
     FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
@@ -202,11 +203,11 @@ export const OKE_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
     Icon: require('../assets/images/swapLogo/Bakery.png')
   },
-  ApeSwap: {
-    FACTORY: '0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6',
-    ROUTER: '0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7',
-    INIT_CODE_HASH: '0xf4ccce374816856d11f00e4069e7cada164065686fbef53c6167a63ec2fd8c5b',
-    Icon: require('../assets/images/swapLogo/Ape.png')
+  Dfyn: {
+    FACTORY: '0xE7Fb3e833eFE5F9c441105EB65Ef8b261266423B',
+    ROUTER: '0x34686CBF7229ed0bff2Fbe7ED2CFC916317764f6',
+    INIT_CODE_HASH: '0xd9fecb0a9f5bfd6ce2daf90b441ed5860c3fed2fcde57ba9819eb98d2422e418',
+    Icon: Dfyn
   },
   CherrySwap: {
     FACTORY: '0x709102921812b3276a65092fe79edfc76c4d4afe',

@@ -222,7 +222,6 @@
   "toggleDarkMode": "cambiar el modo de día",
   "toggleExpertMode": "Alternar modo experto",
   "tokenName": "nombre simbólico",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token actualizado",
   "toleranceExplanation": "",
   "transactionDeadline": "fecha límite de cambios",
@@ -245,5 +244,6 @@
   "yourLiquidityQuestion": "Cuando agrega liquidez, obtiene tokens que representan el porcentaje de su grupo.",
   "yourPosition": "tu posición",
   "yourTransactionFail": "Su transacción puede fallar",
-  "yourTransactions": "Su transacción aparecerá aquí"
+  "yourTransactions": "Su transacción aparecerá aquí",
+  "tokenSearchPlaceholder": "Buscar un nombre o pegar una dirección"
 }

@@ -204,7 +204,6 @@
   "toggleExpertMode": "Schakel de expertmodus in",
   "tokenAddress": "Token adres",
   "tokenName": "Token naam",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token bijgewerkt",
   "tokenWorth": "Tegen de huidige wisselkoers is de symbolische waarde van elke fondspool",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "jouw deel van het zwembad",
   "yourPosition": "jouw positie",
   "yourTransactionFail": "Uw transactie kan mislukken",
-  "yourTransactions": "Uw transactie zal hier verschijnen"
+  "yourTransactions": "Uw transactie zal hier verschijnen",
+  "tokenSearchPlaceholder": "Zoek naar een naam of plak een adres"
 }

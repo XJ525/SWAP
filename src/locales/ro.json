@@ -222,7 +222,6 @@
   "toggleDarkMode": "comutați modul zi",
   "toggleExpertMode": "Comutați modul expert",
   "tokenName": "Nume simbol",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token actualizat",
   "toleranceExplanation": "",
   "transactionDeadline": "termen de tranzacționare",
@@ -245,5 +244,6 @@
   "yourLiquidityQuestion": "Când adăugați lichiditate, obțineți jetoane care reprezintă procentul din fondul dvs.",
   "yourPosition": "pozitia ta",
   "yourTransactionFail": "Tranzacția dvs. poate eșua",
-  "yourTransactions": "Tranzacția dvs. va apărea aici"
+  "yourTransactions": "Tranzacția dvs. va apărea aici",
+  "tokenSearchPlaceholder": "Căutați un nume sau lipiți o adresă"
 }

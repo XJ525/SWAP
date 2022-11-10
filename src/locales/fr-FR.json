@@ -204,7 +204,6 @@
   "toggleExpertMode": "Basculer en mode expert",
   "tokenAddress": "Adresse du jeton",
   "tokenName": "Nom du jeton",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Jeton mis à jour",
   "tokenWorth": "Au taux de change actuel, la valeur symbolique de chaque pool de fonds",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "votre part de la piscine",
   "yourPosition": "ta position",
   "yourTransactionFail": "Votre transaction peut échouer",
-  "yourTransactions": "Votre transaction apparaîtra ici"
+  "yourTransactions": "Votre transaction apparaîtra ici",
+  "tokenSearchPlaceholder": "Rechercher un nom ou coller une adresse"
 }

@@ -204,7 +204,6 @@
   "toggleExpertMode": "Переключить экспертный режим",
   "tokenAddress": "Адрес токена",
   "tokenName": "Имя токена",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Токен обновлен",
   "tokenWorth": "По текущему обменному курсу стоимость токена каждого пула фондов",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "ваша доля в пуле",
   "yourPosition": "твоя позиция",
   "yourTransactionFail": "Ваша транзакция может завершиться неудачей",
-  "yourTransactions": "Ваша транзакция появится здесь"
+  "yourTransactions": "Ваша транзакция появится здесь",
+  "tokenSearchPlaceholder": "Найдите имя или вставьте адрес"
 }

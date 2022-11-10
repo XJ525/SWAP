@@ -204,7 +204,6 @@
   "toggleExpertMode": "전문가 모드 전환",
   "tokenAddress": "토큰 주소",
   "tokenName": "토큰 이름",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "토큰 업데이트됨",
   "tokenWorth": "현재 환율에서 각 펀드 풀의 토큰 가치",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "풀의 당신의 몫",
   "yourPosition": "너의 위치",
   "yourTransactionFail": "거래가 실패할 수 있습니다.",
-  "yourTransactions": "거래가 여기에 표시됩니다."
+  "yourTransactions": "거래가 여기에 표시됩니다.",
+  "tokenSearchPlaceholder": "Search for a name or paste an address"
 }

@@ -204,7 +204,6 @@
   "toggleExpertMode": "Alternar o modo especialista",
   "tokenAddress": "Endereço do token",
   "tokenName": "Nome do token",
-  "tokenSearchPlaceholder": "",
   "tokenUpdated": "Token atualizado",
   "tokenWorth": "Na taxa de câmbio atual, o valor simbólico de cada pool de fundos",
   "toleranceExplanation": "",
@@ -245,5 +244,6 @@
   "yourPoolShare": "sua parte da piscina",
   "yourPosition": "sua posição",
   "yourTransactionFail": "Sua transação pode falhar",
-  "yourTransactions": "Sua transação aparecerá aqui"
+  "yourTransactions": "Sua transação aparecerá aqui",
+  "tokenSearchPlaceholder": "Pesquise um nome ou cole um endereço"
 }

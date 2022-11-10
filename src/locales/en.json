@@ -243,6 +243,7 @@
   "text30": "You are creating a liquidity pool.",
   "text31": "Supplying {{tokenA}} and {{tokenB}}",
   "text32": "Add {{tokenA}} and {{tokenB}}",
-  "burned":"Burned",
-  "confirm":"Confirm"
+  "burned": "Burned",
+  "confirm": "Confirm",
+  "invertedRate": ""
 }

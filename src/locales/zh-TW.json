@@ -225,8 +225,15 @@
   "text28": "去中心化應用系統",
   "text29": "EOTC 元宇宙",
   "text30": "您正在創建一個流動性池",
-  "text31":"供應 {{token}} 和 {{token}}",
-  "text32":"添加 {{tokenA}} 和 {{tokenB}}",
-  "burned":"銷毀",
-  "confirm":"確認"
+  "text31": "供應 {{token}} 和 {{token}}",
+  "text32": "添加 {{tokenA}} 和 {{tokenB}}",
+  "burned": "銷毀",
+  "confirm": "確認",
+  "invertedRate": "",
+  "name": "",
+  "noToken": "",
+  "priceChange": "",
+  "searchOrPasteMobile": ""
+}
+Liquidity": ""
 }
