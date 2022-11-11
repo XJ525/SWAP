@@ -1,5 +1,6 @@
 import { SupportedChainId } from './chains'
-export const LpTokenList: { [key in SupportedChainId]: string } = {
+
+export const logoUrlKey: { [key in SupportedChainId]: string } = {
   [SupportedChainId.MAINNET]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.ROPSTEN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.RINKEBY]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
@@ -13,9 +14,9 @@ export const LpTokenList: { [key in SupportedChainId]: string } = {
   [SupportedChainId.ARBITRUM_RINKEBY]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.OPTIMISM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.OPTIMISTIC_KOVAN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.BSC]: '0x921A63085943e4F65C7e4409F4FcD17d93642E03',
+  [SupportedChainId.BSC]: 'binance',
   [SupportedChainId.OKEXCHAIN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.HUOBI]: '0x9e5FA2fB7820e3dc16F3d7eCCA74F166dDaE72e7',
+  [SupportedChainId.HUOBI]: 'heco',
   [SupportedChainId.GNOSIS]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.AVALANCHE]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.FANTOM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',

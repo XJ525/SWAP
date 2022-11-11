@@ -53,7 +53,7 @@ export const switchChain = async (connector: any, chainId: SupportedChainId) => 
           })
         }
 
-        throw error
+        // throw error
       })
     if (connector.isTokenPocket) {
       window.location.reload()

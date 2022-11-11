@@ -10,11 +10,13 @@ import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
 import { getChainInfo } from '../../constants/chainInfo'
 import { useWeb3React } from '@web3-react/core'
-const getTokenLogoURL = (address: string) =>
-  // `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
-  `https://raw.githubusercontent.com/xiaoMocygz/ListTokens/bscImg/img/${address}/logo.png`
-// `https://raw.githubusercontent.com/EOTCotc/ListTokens/main/img/eotc.png`
-
+// const getTokenLogoURL = (address: string) =>
+//   // `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
+//   `https://raw.githubusercontent.com/xiaoMocygz/ListTokens/bscImg/img/${address}/logo.png`
+// // `https://raw.githubusercontent.com/EOTCotc/ListTokens/main/img/eotc.png`
+const getTokenLogoURL1 = (address: string, chainName: string) =>
+  `https://raw.githubusercontent.com/XJ525/assets/master/blockchains/${chainName}/assets/${address.toLowerCase()}/logo.png`
+import { logoUrlKey } from '../../constants/logoUrlKey'
 const StyledEthereumLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
@@ -37,20 +39,21 @@ export default function CurrencyLogo({
   style?: React.CSSProperties
 }) {
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
-
+  const { chainId } = useWeb3React()
   const srcs: string[] = useMemo(() => {
     if (currency === Currency.ETHER) return []
 
     if (currency instanceof Token) {
       if (currency instanceof WrappedTokenInfo) {
-        return [...uriLocations, getTokenLogoURL(currency.address)]
+        return [...uriLocations, getTokenLogoURL1(currency.address, logoUrlKey[chainId as number])]
       }
 
-      return [getTokenLogoURL(currency.address)]
+      return [getTokenLogoURL1(currency.address, logoUrlKey[chainId as number])]
     }
     return []
-  }, [currency, uriLocations])
-  const { chainId } = useWeb3React()
+  }, [chainId, currency, uriLocations])
+  console.log('srcs', srcs)
+
   if (currency === Currency.ETHER) {
     const isETH = currency?.symbol?.toUpperCase() === 'ETH'
     return (

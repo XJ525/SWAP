@@ -79,7 +79,8 @@ export function usePairsPor(currencies: [Currency | undefined, Currency | undefi
           FACTORY: CONTRACTS[chainId as any][item].FACTORY,
           INIT_CODE_HASH: CONTRACTS[chainId as any][item].INIT_CODE_HASH
         })
-        console.log(liquidityTokenAddress, 'liquidityTokenAddress')
+        console.log(tokenA.symbol, tokenB.symbol)
+        console.log(liquidityTokenAddress, 'liquidityTokenAddress' + item)
 
         const isEOTCUSDT =
           liquidityTokenAddress && liquidityTokenAddress?.toLowerCase() === LpTokenList[chainId as number].toLowerCase()
