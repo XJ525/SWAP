@@ -52,7 +52,6 @@ export default function CurrencyLogo({
     }
     return []
   }, [chainId, currency, uriLocations])
-  console.log('srcs', srcs)
 
   if (currency === Currency.ETHER) {
     const isETH = currency?.symbol?.toUpperCase() === 'ETH'

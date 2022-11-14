@@ -5,6 +5,11 @@ import Tomb from '../assets/images/swapLogo/Tomb.svg'
 import Dfyn from '../assets/images/swapLogo/Dfyn_Network.svg'
 import elk from '../assets/images/swapLogo/elk_color.svg'
 import defiswap from '../assets/images/swapLogo/defiswap.svg'
+import shibaSwap from '../assets/images/swapLogo/shibaSwap.svg'
+import cometh from '../assets/images/swapLogo/cometh.svg'
+import levin from '../assets/images/swapLogo/levin.svg'
+import honey from '../assets/images/swapLogo/honey.svg'
+import velodrome from '../assets/images/swapLogo/velodrome.svg'
 
 interface CONTRACT {
   [key: string]: {
@@ -23,7 +28,7 @@ export const BSC_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
     Icon: require('../assets/images/swapLogo/pancake.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -80,7 +85,7 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
     Icon: require('../assets/images/swapLogo/quickswap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -105,11 +110,11 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
     Icon: require('../assets/images/swapLogo/RadioShack.png')
   },
-  BakerySwap: {
-    FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
-    ROUTER: '0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F',
-    INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
-    Icon: require('../assets/images/swapLogo/Bakery.png')
+  Cometh: {
+    FACTORY: '0x800b052609c355cA8103E06F022aA30647eAd60a',
+    ROUTER: '0x93bcDc45f7e62f89a8e901DC4A0E2c6C427D9F25',
+    INIT_CODE_HASH: '0x499154cad90a3563f914a25c3710ed01b9a43b8471a35ba8a66a056f37638542',
+    Icon: cometh
   },
   ELK: {
     FACTORY: '0xE3BD06c7ac7E1CeB17BdD2E5BA83E40D1515AF2a',
@@ -125,7 +130,7 @@ export const MAINNET_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
     Icon: require('../assets/images/swapLogo/Uniswap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac',
     ROUTER: '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -144,29 +149,29 @@ export const MAINNET_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x69d637e77615df9f235f642acebbdad8963ef35c5523142078c9b8f9d0ceba7e',
     Icon: defiswap
   },
-  Julswap: {
-    FACTORY: '0x553990F2CBA90272390f62C5BDb1681fFc899675',
-    ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
-    INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
-    Icon: require('../assets/images/swapLogo/Jul.png')
+  ShibaSwap: {
+    FACTORY: '0x115934131916C8b277DD010Ee02de363c09d037c',
+    ROUTER: '0x03f7724180AA6b939894B5Ca4314783B0b36b329',
+    INIT_CODE_HASH: '0x65d1a3b1e46c6e4f1be1ad5f99ef14dc488ae0549dc97db9b30afe2241ce1c7a',
+    Icon: shibaSwap
   },
-  BakerySwap: {
-    FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
-    ROUTER: '0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F',
-    INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
-    Icon: require('../assets/images/swapLogo/Bakery.png')
+  PancakeSwap: {
+    FACTORY: '0x1097053Fd2ea711dad45caCcc45EfF7548fCB362',
+    ROUTER: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
+    INIT_CODE_HASH: '0x57224589c67f3f30a6b0d7a1b54cf3153ab84563bc609ef41dfb34f8b2974d2d',
+    Icon: require('../assets/images/swapLogo/pancake.png')
   },
-  ApeSwap: {
-    FACTORY: '0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6',
-    ROUTER: '0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7',
-    INIT_CODE_HASH: '0xf4ccce374816856d11f00e4069e7cada164065686fbef53c6167a63ec2fd8c5b',
-    Icon: require('../assets/images/swapLogo/Ape.png')
+  Swapr: {
+    FACTORY: '0xd34971BaB6E5E356fd250715F5dE0492BB070452',
+    ROUTER: '0xB9960d9bcA016e9748bE75dd52F02188B9d0829f',
+    INIT_CODE_HASH: '0xd306a548755b9295ee49cc729e13ca4a45e00199bbd890fa146da43a50571776',
+    Icon: require('../assets/images/swapLogo/swapr.png')
   },
-  BabySwap: {
-    FACTORY: '0x86407bEa2078ea5f5EB5A52B2caA963bC1F889Da',
-    ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
-    INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
-    Icon: require('../assets/images/swapLogo/baby.png')
+  ELK: {
+    FACTORY: '0x6511eBA915fC1b94b2364289CCa2b27AE5898d80',
+    ROUTER: '0xb5e9F6C58f548CeE53257304e287b23757eFFCA1',
+    INIT_CODE_HASH: '0x84845e7ccb283dec564acfcd3d9287a491dec6d675705545a2ab8be22ad78f31',
+    Icon: elk
   }
 }
 export const OKE_AGGREGATION: CONTRACT = {
@@ -176,7 +181,7 @@ export const OKE_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
     Icon: require('../assets/images/swapLogo/pancake.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -227,7 +232,7 @@ export const HUIBO_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
     Icon: require('../assets/images/swapLogo/pancake.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -278,41 +283,42 @@ export const OPTIMISM_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0xc1ac28b1c4ebe53c0cff67bab5878c4eb68759bb1e9f73977cd266b247d149f0',
     Icon: require('../assets/images/swapLogo/Uniswap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0x8A42df1C1c6adef6cef7cea8BF3eD85B32891F30',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
-  Mdex: {
-    FACTORY: '0x3CD1C46068dAEa5Ebb0d3f55F6915B10648062B8',
-    ROUTER: '0x0384E9ad329396C3A6A401243Ca71633B2bC4333',
-    INIT_CODE_HASH: '0x0d994d996174b05cfc7bed897dc1b20b4c458fc8d64fe98bc78b3c64a6b4d093',
-    Icon: require('../assets/images/swapLogo/mdex.png')
+  ELK: {
+    FACTORY: '0xedfad3a0F42A8920B011bb0332aDe632e552d846',
+    ROUTER: '0xeadE97aFC8f79A8E5Ba85d57C4a4E629b1160C6A',
+    INIT_CODE_HASH: '0x84845e7ccb283dec564acfcd3d9287a491dec6d675705545a2ab8be22ad78f31',
+    Icon: elk
   },
-  Julswap: {
-    FACTORY: '0x553990F2CBA90272390f62C5BDb1681fFc899675',
-    ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
-    INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
-    Icon: require('../assets/images/swapLogo/Jul.png')
+  Velodrome: {
+    FACTORY: '0x25CbdDb98b35ab1FF77413456B31EC81A6B6B746',
+    ROUTER: '0x9c12939390052919aF3155f41Bf4160Fd3666A6f',
+    INIT_CODE_HASH: '0xc1ac28b1c4ebe53c0cff67bab5878c4eb68759bb1e9f73977cd266b247d149f0',
+    Icon: velodrome
   },
-  BakerySwap: {
-    FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
-    ROUTER: '0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F',
-    INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
-    Icon: require('../assets/images/swapLogo/Bakery.png')
+  VelodromeSwap: {
+    FACTORY: '0x25CbdDb98b35ab1FF77413456B31EC81A6B6B746',
+    ROUTER: '0xa132DAB612dB5cB9fC9Ac426A0Cc215A3423F9c9',
+    INIT_CODE_HASH: '0xc1ac28b1c4ebe53c0cff67bab5878c4eb68759bb1e9f73977cd266b247d149f0',
+    Icon: velodrome
   },
-  ApeSwap: {
-    FACTORY: '0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6',
-    ROUTER: '0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7',
-    INIT_CODE_HASH: '0xf4ccce374816856d11f00e4069e7cada164065686fbef53c6167a63ec2fd8c5b',
-    Icon: require('../assets/images/swapLogo/Ape.png')
+  ZipSwap: {
+    FACTORY: '0x8BCeDD62DD46F1A76F8A1633d4f5B76e0CDa521E',
+    ROUTER: '0xE6Df0BB08e5A97b40B21950a0A51b94c4DbA0Ff6',
+    INIT_CODE_HASH: '0x1a76b7e7272f6187014e23f04d1b2e543eed2fd1f76481149008cc6eacb05c22',
+    Icon: require('../assets/images/swapLogo/zipswap.png')
   },
   BabySwap: {
     FACTORY: '0x86407bEa2078ea5f5EB5A52B2caA963bC1F889Da',
@@ -328,7 +334,7 @@ export const GNOSIS_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x0bae3ead48c325ce433426d2e8e6b07dac10835baec21e163760682ea3d3520d',
     Icon: require('../assets/images/swapLogo/BaoSwap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -340,17 +346,17 @@ export const GNOSIS_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
     Icon: require('../assets/images/eotc.png')
   },
-  Mdex: {
-    FACTORY: '0x3CD1C46068dAEa5Ebb0d3f55F6915B10648062B8',
-    ROUTER: '0x0384E9ad329396C3A6A401243Ca71633B2bC4333',
-    INIT_CODE_HASH: '0x0d994d996174b05cfc7bed897dc1b20b4c458fc8d64fe98bc78b3c64a6b4d093',
-    Icon: require('../assets/images/swapLogo/mdex.png')
+  Levin: {
+    FACTORY: '0x965769C9CeA8A7667246058504dcdcDb1E2975A5',
+    ROUTER: '0xb18d4f69627F8320619A696202Ad2C430CeF7C53',
+    INIT_CODE_HASH: '0x4955fd9146732ca7a64d43c7a8d65fe6db1acca27e9c5b3bee7c3abe5849f441',
+    Icon: levin
   },
-  Julswap: {
-    FACTORY: '0x553990F2CBA90272390f62C5BDb1681fFc899675',
-    ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
-    INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
-    Icon: require('../assets/images/swapLogo/Jul.png')
+  HoneySwap: {
+    FACTORY: '0xA818b4F111Ccac7AA31D0BCc0806d64F2E0737D7',
+    ROUTER: '0x1C232F01118CB8B424793ae03F870aa7D0ac7f77',
+    INIT_CODE_HASH: '0x3f88503e8580ab941773b59034fb4b2a63e86dbc031b3633a925533ad3ed2b93',
+    Icon: honey
   },
   BakerySwap: {
     FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
@@ -378,7 +384,7 @@ export const AVALANCHE_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x0bbca9af0511ad1a1da383135cf3a8d2ac620e549ef9f6ae3a4c33c2fed0af91',
     Icon: require('../assets/images/swapLogo/TraderJoe.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -428,7 +434,7 @@ export const FANTOM_AGGREGATION: CONTRACT = {
     INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
     Icon: require('../assets/images/swapLogo/Uniswap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
@@ -478,7 +484,7 @@ export const ARBITRUM_ONE: CONTRACT = {
     INIT_CODE_HASH: '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
     Icon: require('../assets/images/swapLogo/Uniswap.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',

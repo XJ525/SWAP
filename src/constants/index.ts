@@ -65,7 +65,7 @@ export const CONTRACT: CONTRACT = {
     INIT_CODE_HASH: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
     Icon: require('../assets/images/swapLogo/pancake.png')
   },
-  Suhsi: {
+  Sushi: {
     FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
     ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
     INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
