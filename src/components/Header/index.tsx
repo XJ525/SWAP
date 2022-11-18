@@ -281,9 +281,11 @@ export default function Header() {
             >
               <Trans> {t('pool')}</Trans>
             </StyledNavLink>
-            <StyledNavLink data-cy="mining-nav-link" id={`mining-nav-link`} to={'/mining'}>
-              <Trans>{t('mining')}</Trans>
-            </StyledNavLink>
+            {chainId === 56 && (
+              <StyledNavLink data-cy="mining-nav-link" id={`mining-nav-link`} to={'/mining'}>
+                <Trans>{t('mining')}</Trans>
+              </StyledNavLink>
+            )}
           </HeaderLinks>
         </HeaderElement>
         <HeaderControls style={{ justifyContent: 'flex-end', flex: '2' }}>

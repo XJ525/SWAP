@@ -249,6 +249,7 @@ export default function ExchangeButton({
         ) : (
           <ButtonErrorExchang
             onClick={() => {
+              console.log('77777')
               if (isExpertMode) {
                 handleSwap()
               } else {

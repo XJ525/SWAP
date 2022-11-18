@@ -10,6 +10,9 @@ import cometh from '../assets/images/swapLogo/cometh.svg'
 import levin from '../assets/images/swapLogo/levin.svg'
 import honey from '../assets/images/swapLogo/honey.svg'
 import velodrome from '../assets/images/swapLogo/velodrome.svg'
+import claimSwap from '../assets/images/swapLogo/claimSwap.svg'
+import NearPAD from '../assets/images/swapLogo/nearpad_color.svg'
+import trisolaris from '../assets/images/swapLogo/trisolaris.svg'
 
 interface CONTRACT {
   [key: string]: {
@@ -17,7 +20,7 @@ interface CONTRACT {
     FACTORY: string
     ROUTER: string
     INIT_CODE_HASH: string
-    Icon: string
+    Icon: any
   }
 }
 
@@ -341,9 +344,10 @@ export const GNOSIS_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0xA297996553Ce7D5070Ca06B64D0B0da8068499CE',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Levin: {
@@ -391,9 +395,10 @@ export const AVALANCHE_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0xA297996553Ce7D5070Ca06B64D0B0da8068499CE',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {
@@ -441,9 +446,10 @@ export const FANTOM_AGGREGATION: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0x8A42df1C1c6adef6cef7cea8BF3eD85B32891F30',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Spooky: {
@@ -491,9 +497,60 @@ export const ARBITRUM_ONE: CONTRACT = {
     Icon: require('../assets/images/swapLogo/sushi.png')
   },
   EOTC: {
-    FACTORY: '0x73857Fa9a849Cd6DC8387C37f54Ad0F56B575eA2',
-    ROUTER: '0xbD537A5afBB63295F1cab9A7A670415e153a91B9',
-    INIT_CODE_HASH: '0xa9fbfced95fed0f4cbe56a6f056f7f895c31bee594b6a273f043d2ae917102e3',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0x172da9588c526b7ceC92979CADe26482B8a46421',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
+    Icon: require('../assets/images/eotc.png')
+  },
+  Swapr: {
+    FACTORY: '0x359F20Ad0F42D75a5077e65F30274cABe6f4F01a',
+    ROUTER: '0x530476d5583724A89c8841eB6Da76E7Af4C0F17E',
+    INIT_CODE_HASH: '0xd306a548755b9295ee49cc729e13ca4a45e00199bbd890fa146da43a50571776',
+    Icon: require('../assets/images/swapLogo/swapr.png')
+  },
+  Julswap: {
+    FACTORY: '0x553990F2CBA90272390f62C5BDb1681fFc899675',
+    ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
+    INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
+    Icon: require('../assets/images/swapLogo/Jul.png')
+  },
+  BakerySwap: {
+    FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
+    ROUTER: '0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F',
+    INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
+    Icon: require('../assets/images/swapLogo/Bakery.png')
+  },
+  ApeSwap: {
+    FACTORY: '0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6',
+    ROUTER: '0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7',
+    INIT_CODE_HASH: '0xf4ccce374816856d11f00e4069e7cada164065686fbef53c6167a63ec2fd8c5b',
+    Icon: require('../assets/images/swapLogo/Ape.png')
+  },
+  BabySwap: {
+    FACTORY: '0x86407bEa2078ea5f5EB5A52B2caA963bC1F889Da',
+    ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
+    INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
+    Icon: require('../assets/images/swapLogo/baby.png')
+  }
+}
+export const KLAYTN: CONTRACT = {
+  ClaimSwap: {
+    FACTORY: '0x3679c3766E70133Ee4A7eb76031E49d3d1f2B50c',
+    ROUTER: '0xEf71750C100f7918d6Ded239Ff1CF09E81dEA92D',
+    INIT_CODE_HASH: '0x10e61440550fba8ac19847f73eaa43e9d8150e875dbed699274b465524bea5f1',
+    Icon: claimSwap
+  },
+  Sushi: {
+    FACTORY: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
+    ROUTER: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
+    Icon: require('../assets/images/swapLogo/sushi.png')
+  },
+  EOTC: {
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0x172da9588c526b7ceC92979CADe26482B8a46421',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
     Icon: require('../assets/images/eotc.png')
   },
   Mdex: {
@@ -507,6 +564,57 @@ export const ARBITRUM_ONE: CONTRACT = {
     ROUTER: '0xbd67d157502A23309Db761c41965600c2Ec788b2',
     INIT_CODE_HASH: '0xb1e98e21a5335633815a8cfb3b580071c2e4561c50afd57a8746def9ed890b18',
     Icon: require('../assets/images/swapLogo/Jul.png')
+  },
+  BakerySwap: {
+    FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',
+    ROUTER: '0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F',
+    INIT_CODE_HASH: '0xe2e87433120e32c4738a7d8f3271f3d872cbe16241d67537139158d90bac61d3',
+    Icon: require('../assets/images/swapLogo/Bakery.png')
+  },
+  ApeSwap: {
+    FACTORY: '0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6',
+    ROUTER: '0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7',
+    INIT_CODE_HASH: '0xf4ccce374816856d11f00e4069e7cada164065686fbef53c6167a63ec2fd8c5b',
+    Icon: require('../assets/images/swapLogo/Ape.png')
+  },
+  BabySwap: {
+    FACTORY: '0x86407bEa2078ea5f5EB5A52B2caA963bC1F889Da',
+    ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
+    INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
+    Icon: require('../assets/images/swapLogo/baby.png')
+  }
+}
+export const AURORA: CONTRACT = {
+  AuroraSwap: {
+    FACTORY: '0xC5E1DaeC2ad401eBEBdd3E32516d90Ab251A3aA3',
+    ROUTER: '0xA1B1742e9c32C7cAa9726d8204bD5715e3419861',
+    INIT_CODE_HASH: '0xb919a60aa3c8bbfdcc188f8aad10c9d83aa77960d72f2586258a16c280a90ed4',
+    Icon: require('../assets/images/swapLogo/auroraSwap.png')
+  },
+  WannaSwap: {
+    FACTORY: '0x7928D4FeA7b2c90C732c10aFF59cf403f0C38246',
+    ROUTER: '0xa3a1eF5Ae6561572023363862e238aFA84C72ef5',
+    INIT_CODE_HASH: '0xa06b8b0642cf6a9298322d0c8ac3c68c291ca24dc66245cf23aa2abc33b57e21',
+    Icon: require('../assets/images/swapLogo/WannaSwap.png')
+  },
+  EOTC: {
+    name: 'Eotcswap V2',
+    FACTORY: '0xDd2Ee85837B2A87a2F518Cd75A59b1548CD6D574',
+    ROUTER: '0xA297996553Ce7D5070Ca06B64D0B0da8068499CE',
+    INIT_CODE_HASH: '0x831202ecdb0b250291d1a60e015ef7606497321b8272abf8e3b438cdca2695e6',
+    Icon: require('../assets/images/eotc.png')
+  },
+  NearPAD: {
+    FACTORY: '0x34484b4E416f5d4B45D4Add0B6eF6Ca08FcED8f1',
+    ROUTER: '0xBaE0d7DFcd03C90EBCe003C58332c1346A72836A',
+    INIT_CODE_HASH: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
+    Icon: NearPAD
+  },
+  Trisolaris: {
+    FACTORY: '0xc66F594268041dB60507F00703b152492fb176E7',
+    ROUTER: '0x2CB45Edb4517d5947aFdE3BEAbF95A582506858B',
+    INIT_CODE_HASH: '0x754e1d90e536e4c1df81b7f030f47b4ca80c87120e145c294f098c83a6cb5ace',
+    Icon: trisolaris
   },
   BakerySwap: {
     FACTORY: '0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7',

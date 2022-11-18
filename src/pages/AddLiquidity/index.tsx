@@ -272,9 +272,11 @@ export default function AddLiquidity({
   //   currencies[Field.CURRENCY_A]?.symbol
   // } 和 ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
   const pendingText = t('text31', {
-    tokanA: `${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${currencies[Field.CURRENCY_A]?.symbol}`,
+    tokenA: `${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${currencies[Field.CURRENCY_A]?.symbol}`,
     tokenB: `${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
   })
+  // console.log(parsedAmounts[Field.CURRENCY_A]?.toSignificant(6))
+
   const handleCurrencyASelect = useCallback(
     (currencyA: Currency) => {
       const newCurrencyIdA = currencyId(currencyA)

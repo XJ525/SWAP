@@ -14,7 +14,9 @@ import {
   GNOSIS_AGGREGATION,
   AVALANCHE_AGGREGATION,
   FANTOM_AGGREGATION,
-  ARBITRUM_ONE
+  ARBITRUM_ONE,
+  KLAYTN,
+  AURORA
 } from './Aggregations'
 export const ROUTER_ADDRESS = '0xbD537A5afBB63295F1cab9A7A670415e153a91B9'
 export const AGGREGATION_ADDRESS = '0x2ae87E829a0bA3d9d7cFDD47128f43917fF5556C'
@@ -128,8 +130,8 @@ export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
   [SupportedChainId.GNOSIS]: GNOSIS_AGGREGATION,
   [SupportedChainId.AVALANCHE]: AVALANCHE_AGGREGATION,
   [SupportedChainId.FANTOM]: FANTOM_AGGREGATION,
-  [SupportedChainId.KLAYTN]: CONTRACT,
-  [SupportedChainId.AURORA]: CONTRACT
+  [SupportedChainId.KLAYTN]: KLAYTN,
+  [SupportedChainId.AURORA]: AURORA
 }
 export interface TradesItem {
   name: string
