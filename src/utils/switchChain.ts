@@ -58,7 +58,7 @@ export const switchChain = async (connector: any, chainId: SupportedChainId) => 
     if (connector.isTokenPocket) {
       window.location.reload()
     }
-    // window.location.reload()
+    window.location.reload()
     // window.location.reload()
   }
 
