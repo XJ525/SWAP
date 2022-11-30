@@ -142,6 +142,24 @@ export const BSC_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const POLYGON_AGGREGATION: CONTRACT = {
@@ -193,6 +211,24 @@ export const POLYGON_AGGREGATION: CONTRACT = {
     ROUTER: '0xf38a7A7Ac2D745E2204c13F824c00139DF831FFf',
     INIT_CODE_HASH: '0x84845e7ccb283dec564acfcd3d9287a491dec6d675705545a2ab8be22ad78f31',
     Icon: elk
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  C: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 
@@ -245,6 +281,24 @@ export const OKE_AGGREGATION: CONTRACT = {
     ROUTER: '0x865bfde337C8aFBffF144Ff4C29f9404EBb22b15',
     INIT_CODE_HASH: '0xe3ae0327539fda6ee87492b9ce166b7419808c231acd1fe54dd3fbf7754704f5',
     Icon: Cherryswap
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const HUIBO_AGGREGATION: CONTRACT = {
@@ -296,6 +350,24 @@ export const HUIBO_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const OPTIMISM_AGGREGATION: CONTRACT = {
@@ -347,6 +419,24 @@ export const OPTIMISM_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const GNOSIS_AGGREGATION: CONTRACT = {
@@ -398,6 +488,24 @@ export const GNOSIS_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const AVALANCHE_AGGREGATION: CONTRACT = {
@@ -449,6 +557,24 @@ export const AVALANCHE_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const FANTOM_AGGREGATION: CONTRACT = {
@@ -500,6 +626,24 @@ export const FANTOM_AGGREGATION: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const ARBITRUM_ONE: CONTRACT = {
@@ -550,6 +694,24 @@ export const ARBITRUM_ONE: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const KLAYTN: CONTRACT = {
@@ -601,6 +763,24 @@ export const KLAYTN: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
 export const AURORA: CONTRACT = {
@@ -652,5 +832,23 @@ export const AURORA: CONTRACT = {
     ROUTER: '0x8317c460C22A9958c27b4B6403b98d2Ef4E2ad32',
     INIT_CODE_HASH: '0x48c8bec5512d397a5d512fbb7d83d515e7b6d91e9838730bd1aa1b16575da7f5',
     Icon: require('../assets/images/swapLogo/baby.png')
+  },
+  SwapX: {
+    FACTORY: '0xbec1C22fA669Bf17b9d2326Beb9Adce4fC697614',
+    ROUTER: '0x917f3F8D22Af0AedBe9491002F0c6838769E2925',
+    INIT_CODE_HASH: '0x8a838d3f197b37a44c61957f48e39c7c4102bc1c5496802ad8473865bb6eb733',
+    Icon: require('../assets/images/swapLogo/SwapX.png')
+  },
+  LuaSwap: {
+    FACTORY: '0x0388C1E0f210AbAe597B7DE712B9510C6C36C857',
+    ROUTER: '0x1d5C6F1607A171Ad52EFB270121331b3039dD83e',
+    INIT_CODE_HASH: '0xf176ce2ef2ec9c3333f7ab282e4269fdd75024da47415e2c7c6e04272fc1bfab',
+    Icon: luaswap
+  },
+  RadioShack: {
+    FACTORY: '0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10',
+    ROUTER: '0x3e445e3280C5747a188DB8d0aB7762838A50E4ff',
+    INIT_CODE_HASH: '0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596',
+    Icon: require('../assets/images/swapLogo/RadioShack.png')
   }
 }
