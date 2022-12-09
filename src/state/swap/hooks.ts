@@ -13,6 +13,7 @@ import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { isAddress } from '../../utils'
 import { AppDispatch, AppState } from '../index'
 import { useCurrencyBalances } from '../wallet/hooks'
+import { DefaultPair } from '../../constants/defaultPair'
 import {
   Field,
   replaceSwapState,
@@ -338,13 +339,16 @@ export function useDefaultsFromURLSearch():
   useEffect(() => {
     if (!chainId) return
     const parsed = queryParametersToSwapState(parsedQs)
-
+    const inputCurrencyId = DefaultPair[chainId].inputCurrencyId
+    const outputCurrencyId = DefaultPair[chainId].outputCurrencyId
     dispatch(
       replaceSwapState({
         typedValue: parsed.typedValue,
         field: parsed.independentField,
-        inputCurrencyId: '0x55d398326f99059fF775485246999027B3197955',
-        outputCurrencyId: '0x52445374E55a63C0De647445D5B6a4244702980C',
+        inputCurrencyId,
+        outputCurrencyId,
+        // inputCurrencyId: '0x55d398326f99059fF775485246999027B3197955',
+        // outputCurrencyId: '0x52445374E55a63C0De647445D5B6a4244702980C',
         // inputCurrencyId: parsed[Field.INPUT].currencyId,
         // outputCurrencyId: parsed[Field.OUTPUT].currencyId,
         recipient: parsed.recipient

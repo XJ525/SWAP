@@ -24,12 +24,13 @@ import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks
 import AppBody from '../AppBody'
 import { Dots } from '../../components/swap/styleds'
 import { useTranslation } from 'react-i18next'
+import { DefaultPair } from '../../constants/defaultPair'
 // import { CONTRACT } from '../../constants'
 
 export default function Pool() {
   // Context Hook允许我们通过Hook来直接获取某个Context的值
   const theme = useContext(ThemeContext)
-  const { account } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
   // fetch the user's balances of all tracked V2 LP tokens
   // 获取所有跟踪的V2 LP令牌的用户余额
@@ -62,17 +63,14 @@ export default function Pool() {
   const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
   const hasV1Liquidity = useUserHasLiquidityInAllTokens()
 
+  const to =
+    '/add/' + DefaultPair[chainId as number].inputCurrencyId + '/' + DefaultPair[chainId as number].outputCurrencyId
   return (
     <>
       <AppBody>
         <SwapPoolTabs active={'pool'} />
         <AutoColumn gap="lg" justify="center">
-          <ButtonPrimary
-            id="join-pool-button"
-            as={Link}
-            style={{ padding: 16 }}
-            to="/add/0x55d398326f99059fF775485246999027B3197955/0x52445374E55a63C0De647445D5B6a4244702980C"
-          >
+          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to={to}>
             <Text fontWeight={500} fontSize={20}>
               {t('addLiquidity')}
             </Text>
