@@ -5,7 +5,7 @@ export const DEFAULT_TOKEN_LIST_URL =
   // 'https://raw.githubusercontent.com/EOTCotc/ListTokens/main/bscTokenLists/eotcswap.json'
   'https://raw.githubusercontent.com/XJ525/ListTokens/main/bscTokenLists/eotcswap.json'
 export const DEFAULT_LIST_OF_LISTS: string[] = [
-  DEFAULT_TOKEN_LIST_URL
+  DEFAULT_TOKEN_LIST_URL,
   // 't2crtokens.eth', // kleros
   // 'tokens.1inch.eth', // 1inch
   // 'synths.snx.eth',
@@ -22,7 +22,8 @@ export const DEFAULT_LIST_OF_LISTS: string[] = [
   //  'https://umaproject.org/uma.tokenlist.json'
   //  'https://tokens.pancakeswap.finance/coingecko.json'
   //  'https://tokens.pancakeswap.finance/cmc.json'
-  // 'https://tokens.pancakeswap.finance/pancakeswap-extended.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-extended.json',
+  'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link'
   // 'https://static.optimism.io/optimism.tokenlist.json'
 ]
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
