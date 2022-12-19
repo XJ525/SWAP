@@ -16,6 +16,7 @@ export enum SupportedChainId {
   CELO = 42220,
   CELO_ALFAJORES = 44787,
   BSC = 56,
+  BSC_TEST = 97,
   OKEXCHAIN = 66,
   HUOBI = 128,
   ARBITRUM = 42161,

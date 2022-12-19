@@ -329,6 +329,19 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: colorsDark.chain_137,
     backgroundColor: colorsDark.chain_137_background
+  },
+  [SupportedChainId.BSC_TEST]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    docs: 'https://polygon.io/',
+    explorer: 'https://bscscan.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'BSC_TEST',
+    logoUrl: bscLogoUrl,
+    circleLogoUrl: bscLogoUrl,
+    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+    color: colorsDark.chain_137,
+    backgroundColor: colorsDark.chain_137_background
   }
 }
 

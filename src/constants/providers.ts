@@ -69,5 +69,6 @@ export const RPC_PROVIDERS: { [key in SupportedChainId]: StaticJsonRpcProvider }
   [SupportedChainId.AVALANCHE]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.AVALANCHE]),
   [SupportedChainId.FANTOM]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.FANTOM]),
   [SupportedChainId.KLAYTN]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.KLAYTN]),
-  [SupportedChainId.AURORA]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.AURORA])
+  [SupportedChainId.AURORA]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.AURORA]),
+  [SupportedChainId.BSC_TEST]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.BSC_TEST])
 }

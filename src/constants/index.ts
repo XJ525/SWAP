@@ -131,7 +131,8 @@ export const CONTRACTS: { [key in SupportedChainId]: CONTRACT } = {
   [SupportedChainId.AVALANCHE]: AVALANCHE_AGGREGATION,
   [SupportedChainId.FANTOM]: FANTOM_AGGREGATION,
   [SupportedChainId.KLAYTN]: KLAYTN,
-  [SupportedChainId.AURORA]: AURORA
+  [SupportedChainId.AURORA]: AURORA,
+  [SupportedChainId.BSC_TEST]: CONTRACT
 }
 export interface TradesItem {
   name: string

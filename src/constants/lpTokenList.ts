@@ -20,5 +20,6 @@ export const LpTokenList: { [key in SupportedChainId]: string } = {
   [SupportedChainId.AVALANCHE]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.FANTOM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.KLAYTN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.AURORA]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac'
+  [SupportedChainId.AURORA]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
+  [SupportedChainId.BSC_TEST]: '0x921A63085943e4F65C7e4409F4FcD17d93642E03'
 }

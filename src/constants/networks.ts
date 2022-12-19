@@ -147,7 +147,14 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     'https://klaytn05.fandom.finance',
     'https://cypress.fandom.finance/archive'
   ],
-  [SupportedChainId.AURORA]: ['https://mainnet.aurora.dev']
+  [SupportedChainId.AURORA]: ['https://mainnet.aurora.dev'],
+  [SupportedChainId.BSC_TEST]: [
+    // "Safe" URLs
+    'https://data-seed-prebsc-1-s1.binance.org:8545',
+    'https://bsc-testnet.public.blastapi.io'
+
+    // "Fallback" URLs
+  ]
 }
 
 /**
@@ -175,5 +182,6 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.AVALANCHE]: FALLBACK_URLS[SupportedChainId.AVALANCHE],
   [SupportedChainId.FANTOM]: FALLBACK_URLS[SupportedChainId.FANTOM],
   [SupportedChainId.KLAYTN]: FALLBACK_URLS[SupportedChainId.KLAYTN],
-  [SupportedChainId.AURORA]: FALLBACK_URLS[SupportedChainId.AURORA]
+  [SupportedChainId.AURORA]: FALLBACK_URLS[SupportedChainId.AURORA],
+  [SupportedChainId.BSC_TEST]: FALLBACK_URLS[SupportedChainId.BSC_TEST]
 }

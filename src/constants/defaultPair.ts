@@ -56,5 +56,9 @@ export const DefaultPair: { [key in SupportedChainId]: { inputCurrencyId: string
   [SupportedChainId.AURORA]: {
     inputCurrencyId: 'ETH',
     outputCurrencyId: '0x4988a896b1227218e4A686fdE5EabdcAbd91571f'
+  },
+  [SupportedChainId.BSC_TEST]: {
+    inputCurrencyId: '0x55d398326f99059fF775485246999027B3197955',
+    outputCurrencyId: '0x52445374E55a63C0De647445D5B6a4244702980C'
   }
 }
