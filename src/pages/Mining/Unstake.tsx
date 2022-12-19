@@ -82,7 +82,7 @@ export default function UnStake() {
                     继续质押
                   </Text>
                 </ButtonLeft> */}
-                  <ButtonUnStake id={item.id} delSetUnstakeData={delSetUnstakeData}>
+                  <ButtonUnStake num={item.num} cycle={item.cycle} id={item.id} delSetUnstakeData={delSetUnstakeData}>
                     {t('unstake')}
                   </ButtonUnStake>
                 </BoxSB>

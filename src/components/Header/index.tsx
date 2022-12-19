@@ -281,7 +281,7 @@ export default function Header() {
             >
               <Trans> {t('pool')}</Trans>
             </StyledNavLink>
-            {chainId === 56 && (
+            {(chainId === 56 || chainId === 97) && (
               <StyledNavLink data-cy="mining-nav-link" id={`mining-nav-link`} to={'/mining'}>
                 <Trans>{t('mining')}</Trans>
               </StyledNavLink>

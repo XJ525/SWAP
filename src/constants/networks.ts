@@ -18,7 +18,7 @@ if (typeof INFURA_KEY === 'undefined') {
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.MAINNET]: [
     // "Safe" URLs
-    'https://api.mycryptoapi.com/eth',
+    'https://singapore.rpc.blxrbdn.com',
     'https://cloudflare-eth.com',
     // "Fallback" URLs
     'https://rpc.ankr.com/eth',
@@ -50,7 +50,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.RINKEBY]: [
     // "Fallback" URLs
-    'https://rinkeby-light.eth.linkpool.io/'
+    'https://rpc.ankr.com/eth_rinkeby/'
   ],
   [SupportedChainId.GOERLI]: [
     // "Safe" URLs
@@ -60,7 +60,6 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.KOVAN]: [
     // "Safe" URLs
-    'https://kovan.poa.network',
     // "Fallback" URLs
     'https://eth-kovan.public.blastapi.io'
   ],

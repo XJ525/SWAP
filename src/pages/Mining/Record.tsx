@@ -5,7 +5,7 @@ import { RowBetween, RowEnd } from '../../components/Row'
 import { AutoColumn } from '../../components/Column'
 import { Box, OrderCard, BoxSB, LoadingRows } from './styleds'
 import { useGetStakeRecord } from './hook'
-import { APY_LIST, LpTag, GoBack /*PositionsLoadingPlaceholder*/ } from './index'
+import { LpTag, GoBack /*PositionsLoadingPlaceholder*/ } from './index'
 import { ButtonUnStake } from './ButtonUnStake'
 import dayjs from 'dayjs'
 import { toFixed } from '../../utils'
@@ -67,7 +67,7 @@ export function Record({ history }: { history: any }) {
       // if (Date.now() > Date.parse(item.date) + item.cycle * 30 * 24 * 60 * 60 * 1000) {
       //   item.type = '2'
       // }
-      item.earnings = item.num * APY_LIST[item.cycle]
+      // item.earnings = item.num * APY_LIST[item.cycle]
       const dayms = 24 * 60 * 60 * 1000
 
       item.stakeDate =
@@ -87,10 +87,11 @@ export function Record({ history }: { history: any }) {
       atStake: 0, // 当前质押
       toRedeem: 0 //待赎回
     }
+    console.log(stakeRecord, 'stakeRecord')
     // 累计收益
     temp.accEarnings = stakeRecord
-      .filter((item: { type: string; earnings: any }) => item.type === '4' && item.earnings)
-      .reduce((acc: any, item: { earnings: any }) => acc + item.earnings, 0)
+      .filter((item: { type: string; earnings: any }) => item.type === '2' && item.earnings)
+      .reduce((acc: any, item: { earnings: any }) => acc + Number(item.earnings), 0)
     // 当前质押
     temp.atStake = stakeRecord
       .filter((item: { type: string; earnings: any; num: string }) => item.type === '1' && item.num)
@@ -261,7 +262,7 @@ export function Record({ history }: { history: any }) {
 
                 {item.type === '2' && (
                   <Box mt={'15px'}>
-                    <ButtonUnStake id={item.id} delSetUnstakeData={delSetUnstakeData}>
+                    <ButtonUnStake num={item.num} cycle={item.cycle} id={item.id} delSetUnstakeData={delSetUnstakeData}>
                       {t('unstake')}
                     </ButtonUnStake>
                   </Box>

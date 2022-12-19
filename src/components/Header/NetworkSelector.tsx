@@ -309,7 +309,9 @@ const NETWORK_SELECTOR_CHAINS = [
   SupportedChainId.KLAYTN,
   SupportedChainId.AURORA
 ]
-
+process.env.NODE_ENV === 'development' && NETWORK_SELECTOR_CHAINS.push(SupportedChainId.BSC_TEST)
+console.log(process.env.NODE_ENV === 'development', 'process.env')
+// debugger
 export default function NetworkSelector() {
   const { chainId } = useWeb3React()
   const { library: provider } = useActiveWeb3React()

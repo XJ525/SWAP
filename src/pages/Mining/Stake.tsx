@@ -1,11 +1,11 @@
 import React, { useState, useContext, useMemo, useCallback } from 'react'
 import { RowBetween } from '../../components/Row'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { ActionSheet, Toast } from 'react-vant'
 import Header from './Header'
 import { ClickableText } from '../Pool/styleds'
 import { Text } from 'rebass'
-import { ButtonPrimary } from '../../components/Button'
+import { ButtonConfirmed } from '../../components/Button'
 import { Input as NumericalInput } from '../../components/NumericalInput'
 import { RadioCycle, RecordLink, APY_LIST } from './index'
 import { useActiveWeb3React } from '../../hooks'
@@ -16,13 +16,21 @@ import { useStakeCallback } from '../../hooks/useStakeCallback'
 import { CHAIN_IDS_TO_NAMES } from '../../constants/chains'
 import { useGetLpTokenBalance } from './hook'
 import { useTranslation } from 'react-i18next'
+import { LpTokenPoolV2ADDRESS } from '../../constants/LpTokenPoolV2ADDRESS'
+import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
+import Loader from '../../components/Loader'
+const LoadingButton = styled.div`
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+`
 export default function Stake() {
   const theme = useContext(ThemeContext)
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
   const [selectedDate, setSelectedDate] = useState(6)
   const [visible, setVisible] = useState(false)
-  const to = '0xdCAaB3E9Ade1000fd23Fa0EAcd2D7E1359300D8B'
+  // const to = '0xdCAaB3E9Ade1000fd23Fa0EAcd2D7E1359300D8B'
   const { userPoolBalance, LpTonke, LPTOKEN_ADDRESS } = useGetLpTokenBalance()
   const [lpInput, setLpInput] = useState('')
   const MIN_STAKE = '100'
@@ -41,10 +49,16 @@ export default function Stake() {
     { name: '10000 LP', value: '10000' },
     { name: '50000 LP', value: '50000' }
   ]
+  const [approval, approveCallback] = useApproveCallback(amount, chainId ? LpTokenPoolV2ADDRESS[chainId] : undefined)
+  const [approvalSubmitted] = useState<boolean>(false)
+  const showApprove =
+    approval === ApprovalState.NOT_APPROVED ||
+    approval === ApprovalState.PENDING ||
+    (approvalSubmitted && approval === ApprovalState.APPROVED)
   const { callback: stakeCallback, error: swapCallbackError } = useStakeCallback({
     amount,
-    to,
-    contractAddress: LPTOKEN_ADDRESS
+    lpTokenAddress: LPTOKEN_ADDRESS,
+    investType: selectedDate
   })
   const handleStake = useCallback(() => {
     if (!stakeCallback) return
@@ -126,14 +140,39 @@ export default function Stake() {
           </BoxInput>
         </Box>
         <Box mt="20px">
-          <ButtonPrimary
-            onClick={() => {
-              handleStake()
-            }}
-            disabled={Boolean(buttonError)}
-          >
-            {buttonError || t('stake')}{' '}
-          </ButtonPrimary>
+          <RowBetween style={!showApprove ? { justifyContent: 'center' } : {}}>
+            {showApprove && (
+              <ButtonConfirmed
+                onClick={approveCallback}
+                disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
+                width="48%"
+                altDisabledStyle={approval === ApprovalState.PENDING} // show solid button while waiting
+                confirmed={approval === ApprovalState.APPROVED}
+              >
+                <Text fontSize={16} fontWeight={500}>
+                  {approval === ApprovalState.PENDING ? (
+                    <LoadingButton>
+                      {t('approval')} <Loader stroke="white" />
+                    </LoadingButton>
+                  ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
+                    t('allowed')
+                  ) : (
+                    t('approval')
+                  )}
+                </Text>
+              </ButtonConfirmed>
+            )}
+
+            <ButtonConfirmed
+              onClick={handleStake}
+              disabled={buttonError || showApprove}
+              width={showApprove ? '48%' : '100%'}
+            >
+              <Text fontSize={16} fontWeight={500}>
+                {buttonError || t('stake')}{' '}
+              </Text>
+            </ButtonConfirmed>
+          </RowBetween>
         </Box>
         <ActionSheet
           title={t('stakeInterval')}

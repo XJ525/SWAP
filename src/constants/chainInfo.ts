@@ -334,7 +334,7 @@ const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
     docs: 'https://polygon.io/',
-    explorer: 'https://bscscan.com/',
+    explorer: 'https://testnet.bscscan.com/',
     infoLink: 'https://info.uniswap.org/#/polygon/',
     label: 'BSC_TEST',
     logoUrl: bscLogoUrl,

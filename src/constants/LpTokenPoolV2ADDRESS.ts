@@ -1,5 +1,5 @@
 import { SupportedChainId } from './chains'
-export const LpTokenList: { [key in SupportedChainId]: string } = {
+export const LpTokenPoolV2ADDRESS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.MAINNET]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.ROPSTEN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.RINKEBY]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
@@ -21,5 +21,5 @@ export const LpTokenList: { [key in SupportedChainId]: string } = {
   [SupportedChainId.FANTOM]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.KLAYTN]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
   [SupportedChainId.AURORA]: '0x5f50c44637Dd639E4be73bE40c0D1fb0152398ac',
-  [SupportedChainId.BSC_TEST]: '0x9F7e2625794505F3b0CcCd46e56cDF2aC4c840BB'
+  [SupportedChainId.BSC_TEST]: '0xD3F027c1AE5b2d777f1b43f7dD519bF89212D58B'
 }

@@ -42,7 +42,8 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.OPTIMISM]: 'optimism',
   [SupportedChainId.OPTIMISTIC_KOVAN]: 'optimistic_kovan',
   [SupportedChainId.BSC]: 'BSC',
-  [SupportedChainId.OKEXCHAIN]: 'OKExChain'
+  [SupportedChainId.OKEXCHAIN]: 'OKExChain',
+  [SupportedChainId.BSC_TEST]: 'BSC_TEST'
 }
 
 /**
